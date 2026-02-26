@@ -1,3 +1,14 @@
+* { /* Como el figma, todo en Inter */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: justify;
+    font-family: "Inter", Helvetica; /* Especifica la fuente a utilizar, en este caso "Inter", con una alternativa por si no carga el Inter, Helvetica */
+    font-optical-sizing: auto;
+    font-weight: 400; /* Controla gordura de la fuente, 300 (light), 400 (regular), 500 (medium) o 700 (bold) */
+    font-style: normal;
+}
+
 .titulares{
     font-size : 80px;
     font-style: italic;
