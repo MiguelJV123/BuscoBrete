@@ -1,17 +1,93 @@
-* { /* Como el figma, todo en Inter */
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-align: justify;
-    font-family: "Inter", Helvetica; /* Especifica la fuente a utilizar, en este caso "Inter", con una alternativa por si no carga el Inter, Helvetica */
-    font-optical-sizing: auto;
-    font-weight: 400; /* Controla gordura de la fuente, 300 (light), 400 (regular), 500 (medium) o 700 (bold) */
-    font-style: normal;
+* {
+  /* Como el figma, todo en Inter */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-align: justify;
+  font-family:
+    "Inter", Helvetica; /* Especifica la fuente a utilizar, en este caso "Inter", con una alternativa por si no carga el Inter, Helvetica */
+  font-optical-sizing: auto;
+  font-weight: 400; /* Controla gordura de la fuente, 300 (light), 400 (regular), 500 (medium) o 700 (bold) */
+  font-style: normal;
 }
 
-.titulares{
-    font-size : 80px;
-    font-style: italic;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    color: rgb(69, 28, 167);
+.body-bckg {
+  background-color: #e4eaf0;
+}
+
+.titulares {
+  font-size: 80px;
+  font-style: italic;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: rgb(155, 137, 197);
+}
+
+.topBanner {
+  background: #243244;
+  color: white;
+  padding: 100px 0;
+  text-align: center;
+}
+
+.destacadas {
+  background: #f5f7fa;
+  padding: 80px 0;
+}
+
+.ofrecerCuenta {
+  background: #2c3a4a;
+  color: white;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.footer {
+  background: #1f2a38;
+  color: white;
+  padding: 60px 0;  
+}
+
+.footer a{
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+}
+
+
+.list-unstyled a {
+  pointer-events: auto; /* ensure clickable */
+}
+
+
+.subfooter {
+  background: #1f2a38;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 20px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.navbar {
+  background: #f1f5f9;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.buscador {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  padding: 8px;
+}
+
+.tarjeta-filtros {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.tarjeta-trabajo {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
