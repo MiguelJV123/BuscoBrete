@@ -66,3 +66,47 @@ php/
 templates/
 README.md
 ```
+
+---
+
+## Avances del proyecto
+
+### Avance 1 — Definición del proyecto
+
+En el primer avance se estableció la base conceptual y documental del proyecto, incluyendo la definición del problema, el enfoque de la solución, los objetivos, los roles del sistema y la documentación inicial en formato IEEE.
+
+Además, se definió la propuesta general de la aplicación web, su orientación innovadora y la estructura funcional inicial requerida por el curso.
+
+### Avance 2 — Desarrollo inicial del proyecto
+
+En el segundo avance se desarrollaron componentes clave del proyecto y se documentaron aportes concretos en el repositorio de GitHub, en cumplimiento de los lineamientos del curso.
+
+Durante esta etapa se trabajó en:
+
+- Prototipado y diseño **UI/UX en Figma**
+- Diseño y documentación de la **base de datos**
+- Desarrollo de vistas iniciales en **HTML**
+- Organización del código del proyecto dentro del repositorio colaborativo
+
+---
+
+## Distribución del trabajo del equipo
+
+- **Miguel Jimenez Valverde** — Diseño UI/UX y prototipado en Figma
+- **Jeffry Elizondo Madrigal** — Diseño y desarrollo de base de datos
+- **Erick Ramos Vargas** — Desarrollo de vistas HTML
+- **Esteban Solis Campos** — Desarrollo de vistas HTML
+
+---
+
+## Prototipo en Figma
+
+El prototipo visual del proyecto puede consultarse en el siguiente enlace público:
+
+[Ver prototipo de BuscoBrete en Figma](https://www.figma.com/design/DkDUmgK9x3uydqZBFo3T5z/BuscoBrete-Prototipo?node-id=28-65&t=IZQFepip8wp7eEIP-1)
+
+---
+
+## Repositorio del proyecto
+
+Este repositorio contiene el código, la documentación, los recursos visuales y los archivos de apoyo utilizados durante el desarrollo colaborativo del proyecto académico **BuscoBrete**.
