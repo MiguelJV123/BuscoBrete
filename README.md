@@ -110,3 +110,60 @@ El prototipo visual del proyecto puede consultarse en el siguiente enlace públi
 ## Repositorio del proyecto
 
 Este repositorio contiene el código, la documentación, los recursos visuales y los archivos de apoyo utilizados durante el desarrollo colaborativo del proyecto académico **BuscoBrete**.
+
+---
+
+## Módulos y vistas planteadas
+
+### Público general
+
+- Página principal
+- Búsqueda de empleos
+- Detalle de oferta laboral
+- Registro
+- Inicio de sesión
+
+### Usuario candidato
+
+- Dashboard del usuario
+- Edición de perfil
+- Mis postulaciones
+- Perfil de empleador
+
+### Empleador
+
+- Dashboard del empleador
+- Crear o editar oferta laboral
+- Postulaciones recibidas
+- Perfil del candidato
+- Mensajería
+- Notificaciones
+
+### Administrador
+
+- Panel de administración
+- Gestión de usuarios
+- Gestión de ofertas
+- Moderación de empleadores
+- Módulo de soporte
+- Monitoreo del sistema
+
+---
+
+## Estado actual del proyecto
+
+Actualmente, **BuscoBrete** se encuentra en desarrollo colaborativo como parte del curso **SC-502 Ambiente Web Cliente/Servidor**.
+
+El repositorio integra documentación del proyecto, prototipos visuales, estructura frontend, archivos de base de datos y recursos utilizados durante los avances del curso.
+
+---
+
+## Integrantes
+
+- Jeffry Elizondo Madrigal
+- Miguel Jimenez Valverde
+- Erick Ramos Vargas
+- Esteban Solis Campos
+
+**Universidad Fidélitas**  
+Costa Rica
