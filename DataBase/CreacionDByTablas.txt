@@ -1,1 +1,96 @@
+-- SCRIPT DE CREACION DE DB Y TABLAS
 
+CREATE DATABASE BuscoBrete;
+
+USE BuscoBrete;
+
+
+-- ========================= TABLA CANDIDATOS =========================
+
+CREATE TABLE candidatos (
+    id_candidato INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    apellidos VARCHAR(100) NOT NULL,
+    correo VARCHAR(150) UNIQUE NOT NULL,
+    passwordEnc VARCHAR(255) NOT NULL,
+    telefono VARCHAR(20),
+    fechaRegistro DATETIME DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
+
+-- ========================= TABLA EMPLEADORES =========================
+
+CREATE TABLE empleadores (
+    idEmpleador INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    correo VARCHAR(150) UNIQUE NOT NULL,
+    passwordEnc VARCHAR(255) NOT NULL,
+    nombreEmpresa VARCHAR(150) NOT NULL,
+    descripcionEmpresa TEXT,
+    telefono VARCHAR(20),
+    fechaRegistro DATETIME DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
+
+-- ========================= TABLA ADMINISTRADORES =========================
+
+CREATE TABLE administradores (
+    idAdmin INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    correo VARCHAR(150) UNIQUE NOT NULL,
+    passwordEnc VARCHAR(255) NOT NULL
+) ENGINE=InnoDB;
+
+
+-- ========================= TABLA UBICACIONES =========================
+
+CREATE TABLE ubicaciones (
+    idUbicacion INT AUTO_INCREMENT PRIMARY KEY,
+    provincia VARCHAR(100) NOT NULL,
+    canton VARCHAR(100) NOT NULL
+) ENGINE=InnoDB;
+
+
+-- ========================= TABLA CATEGORIAS =========================
+
+CREATE TABLE categorias (
+    idCategoria INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL
+) ENGINE=InnoDB;
+
+
+
+-- ========================= TABLA OFERTAS =========================
+
+CREATE TABLE ofertas (
+    idOferta INT AUTO_INCREMENT PRIMARY KEY,
+    idEmpleador INT NOT NULL,
+    idCategoria INT NOT NULL,
+    idUbicacion INT NOT NULL,
+    titulo VARCHAR(150) NOT NULL,
+    descripcion TEXT NOT NULL,
+    requisitos TEXT,
+    salario DECIMAL(10,2),
+    tipoEmpleo ENUM('tiempo completo','medio tiempo','temporal','remoto'),
+    estado ENUM('activa','cerrada','pausada') DEFAULT 'activa',
+    fechaPublicacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (idEmpleador) REFERENCES empleadores(idEmpleador),
+    FOREIGN KEY (idCategoria) REFERENCES categorias(idCategoria),
+    FOREIGN KEY (idUbicacion) REFERENCES ubicaciones(idUbicacion)
+) ENGINE=InnoDB;
+
+
+-- ========================= TABLA POSTULACIONES =========================
+
+CREATE TABLE postulaciones (
+    idPostulacion INT AUTO_INCREMENT PRIMARY KEY,
+    idCandidato INT NOT NULL,
+    idOferta INT NOT NULL,
+    estado ENUM('pendiente','aceptada','rechazada') DEFAULT 'pendiente',
+    fechaPostulacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (idCandidato) REFERENCES candidatos(id_candidato),
+    FOREIGN KEY (idOferta) REFERENCES ofertas(idOferta)
+	
+) ENGINE=InnoDB;
