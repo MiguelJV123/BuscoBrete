@@ -26,12 +26,12 @@
 
     <!--Top Nav Bar  -->
     <nav class="navbar navbar-expand-lg bg-white border-bottom">
-        <div class="container">
-            <a class="navbar-brand fw-bold fs-4">
+        <div class="container-fluid px-4">
+            <a href="home.html" class="navbar-brand fw-bold fs-4">
                 <span class="brand-busco">Busco</span><span class="brand-brete">Brete</span>
             </a>
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
-                <span class="navbar-toggler-icon"></span>                
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="menu">
                 <ul class="navbar-nav align-items-center gap-3">
@@ -51,219 +51,219 @@
             </div>
         </div>
     </nav>
-    <!-- BODY BODY BODY BODY BODY BODY BODY BODY BODY BODY -->
 
-    <!-- BUSCADORR -->
-    <section class="py-5 text-center">
-        <div class="container">
-            <h2 class="mb-2 text-center">Buscar empleos</h2>
-            <p class="text-secondary text-center">
-                Explora oportunidades laborales en tecnología y negocios
-            </p>
-            <div class="row justify-content-center mt-4">
-                <div class="col-md-7">
-                    <div class="buscador input-group">
-                        <span class="input-group-text bg-transparent border-0">
-                            <i class="bi bi-search"></i>
-                        </span>
-                        <input class="form-control border-0" placeholder="Busca por puesto, empresa o ubicación">
-                        <button class="btn btn-primary">
-                            Buscar
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- RESULTADOS -->
-    <section class="container mb-5">
-        <div class="row g-5">
-            <!-- FILTROS -->
-            <div class="col-md-3">
-                <div class="tarjeta-filtros p-3">
-                    <h5 class="text-center mb-3">Filtros</h5>
-                    <!--PROVINICIAS-->
-                    <label class="small fw-bold">Provincia</label>
-                    <select class="form-select mb-3">
-                        <option value="" disabled selected hidden>Seleccionar provincia</option>
-                        <option value="alajuela">Alajuela</option>
-                        <option value="cartago">Cartago</option>
-                        <option value="guanacaste">Guanacaste</option>
-                        <option value="heredia">Heredia</option>
-                        <option value="limon">Limon</option>
-                        <option value="puntarenas">Puntarenas</option>
-                        <option value="san jose">San Jose</option>
-                    </select>
-                    <!--TIPO DE EMPLEO-->
-                    <label class="small fw-bold">Tipo de empleo</label>
-                    <select class="form-select mb-3">
-                        <option value="" disabled selected hidden>Seleccionar tipo de empleo</option>
-                        <option value="internship">Internship</option>
-                        <option value="freelance">Freelance</option>
-                        <option value="full-time">Full-time</option>
-                    </select>
-                    <!--CATEGORIAS-->
-                    <label class="small fw-bold">Categoria</label>
-                    <select class="form-select mb-3">
-                        <option value="" disabled selected hidden>Seleccionar categoria</option>
-                        <option value="software">Software</option>
-                        <option value="mecanica">Mecanica</option>
-                        <option value="otros">Otros</option>
-                    </select>
-                    <!--MODALIDAD-->
-                    <label class="small fw-bold">Modalidad</label>
-                    <select class="form-select">
-                        <option value="" disabled selected hidden>Seleccionar modalidad</option>
-                        <option value="presencial">Presencial</option>
-                        <option value="hibrido">Hibrido</option>
-                        <option value="virtual">Virtual</option>
-                    </select>
-                </div>
-            </div>
-
-
-            <!-- RESULTADOS EMPLEOS -->
-            <div class="col-md-9">
-                <div class="d-flex justify-content-between mb-3">
-                    <h5>Resultados (4)</h5>
-                    <select class="form-select w-auto">
-                        <option value="" disabled selected hidden>Ordenar por</option>
-                        <option>Pago</option>
-                        <option>Proximidad</option>
-                    </select>
-                </div>
-                <!-- Los resultados se modificaran con informacion desde la DB -->
-                <!-- tarjeta 1 -->
-                <div class="tarjeta-trabajo p-4 mb-3">
-                    <div class="row align-items-center">
-                        <div class="col-md-3 text-center">
-                            <h5>Intel</h5>
-                        </div>
-                        <div class="col-md-6">
-                            <h6 class="fw-bold">
-                                Backend Developer
-                            </h6>
-                            <p class="text-primary mb-1">
-                                Intel, Heredia
-                            </p>
-                            <p class="text-secondary small">
-                                Requisitos: Java, C#
-                            </p>
-                            <p class="text-secondary small">
-                                Remoto | Tiempo completo | ₡900000
-                            </p>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <button class="btn btn-primary btn-sm mb-2" id="btnVerDetalles">
-                                Ver detalles
-                            </button>
-                            <br>
-                            <button class="btn btn-light btn-sm" id="btnGuardar">
-                                Guardar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- tarjeta 2 -->
-                <div class="tarjeta-trabajo p-4 mb-3">
-                    <div class="row align-items-center">
-                        <div class="col-md-3 text-center">
-                            <h5>Intel</h5>
-                        </div>
-                        <div class="col-md-6">
-                            <h6 class="fw-bold">
-                                Backend Developer
-                            </h6>
-                            <p class="text-primary mb-1">
-                                Intel, Heredia
-                            </p>
-                            <p class="text-secondary small">
-                                Requisitos: Java, C#
-                            </p>
-                            <p class="text-secondary small">
-                                Remoto | Tiempo completo | ₡900000
-                            </p>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <button class="btn btn-primary btn-sm mb-2" id="btnVerDetalles">
-                                Ver detalles
-                            </button>
-                            <br>
-                            <button class="btn btn-light btn-sm" id="btnGuardar">
-                                Guardar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- tarjeta 3 -->
-                <div class="tarjeta-trabajo p-4 mb-3">
-                    <div class="row align-items-center">
-                        <div class="col-md-3 text-center">
-                            <h5>Intel</h5>
-                        </div>
-                        <div class="col-md-6">
-                            <h6 class="fw-bold">
-                                Backend Developer
-                            </h6>
-                            <p class="text-primary mb-1">
-                                Intel, Heredia
-                            </p>
-                            <p class="text-secondary small">
-                                Requisitos: Java, C#
-                            </p>
-                            <p class="text-secondary small">
-                                Remoto | Tiempo completo | ₡900000
-                            </p>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <button class="btn btn-primary btn-sm mb-2" id="btnVerDetalles">
-                                Ver detalles
-                            </button>
-                            <br>
-                            <button class="btn btn-light btn-sm" id="btnGuardar">
-                                Guardar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- tarjeta 4 -->
-                <div class="tarjeta-trabajo p-4 mb-3">
-                    <div class="row align-items-center">
-                        <div class="col-md-3 text-center">
-                            <h5>Intel</h5>
-                        </div>
-                        <div class="col-md-6">
-                            <h6 class="fw-bold">
-                                Backend Developer
-                            </h6>
-                            <p class="text-primary mb-1">
-                                Intel, Heredia
-                            </p>
-                            <p class="text-secondary small">
-                                Requisitos: Java, C#
-                            </p>
-                            <p class="text-secondary small">
-                                Remoto | Tiempo completo | ₡900000
-                            </p>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <button class="btn btn-primary btn-sm mb-2" id="btnVerDetalles">
-                                Ver detalles
-                            </button>
-                            <br>
-                            <button class="btn btn-light btn-sm" id="btnGuardar">
-                                Guardar
+    <main>
+        <!-- BUSCADORR -->
+        <section class="py-5 text-center">
+            <div class="container">
+                <h2 class="mb-2 text-center">Buscar empleos</h2>
+                <p class="text-secondary text-center">
+                    Explora oportunidades laborales en tecnología y negocios
+                </p>
+                <div class="row justify-content-center mt-4">
+                    <div class="col-md-7">
+                        <div class="buscador input-group">
+                            <span class="input-group-text bg-transparent border-0">
+                                <i class="bi bi-search"></i>
+                            </span>
+                            <input class="form-control border-0" placeholder="Busca por puesto, empresa o ubicación">
+                            <button class="btn btn-primary">
+                                Buscar
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        </div>
-    </section>
-    <!-- BODY BODY BODY BODY BODY BODY BODY BODY BODY BODY -->
+        </section>
+
+        <!-- RESULTADOS -->
+        <section class="container mb-5">
+            <div class="row g-5">
+                <!-- FILTROS -->
+                <div class="col-md-3">
+                    <div class="tarjeta-filtros p-3">
+                        <h5 class="text-center mb-3">Filtros</h5>
+                        <!--PROVINICIAS-->
+                        <label class="small fw-bold">Provincia</label>
+                        <select class="form-select mb-3">
+                            <option value="" disabled selected hidden>Seleccionar provincia</option>
+                            <option value="alajuela">Alajuela</option>
+                            <option value="cartago">Cartago</option>
+                            <option value="guanacaste">Guanacaste</option>
+                            <option value="heredia">Heredia</option>
+                            <option value="limon">Limon</option>
+                            <option value="puntarenas">Puntarenas</option>
+                            <option value="san jose">San Jose</option>
+                        </select>
+                        <!--TIPO DE EMPLEO-->
+                        <label class="small fw-bold">Tipo de empleo</label>
+                        <select class="form-select mb-3">
+                            <option value="" disabled selected hidden>Seleccionar tipo de empleo</option>
+                            <option value="internship">Internship</option>
+                            <option value="freelance">Freelance</option>
+                            <option value="full-time">Full-time</option>
+                        </select>
+                        <!--CATEGORIAS-->
+                        <label class="small fw-bold">Categoria</label>
+                        <select class="form-select mb-3">
+                            <option value="" disabled selected hidden>Seleccionar categoria</option>
+                            <option value="software">Software</option>
+                            <option value="mecanica">Mecanica</option>
+                            <option value="otros">Otros</option>
+                        </select>
+                        <!--MODALIDAD-->
+                        <label class="small fw-bold">Modalidad</label>
+                        <select class="form-select">
+                            <option value="" disabled selected hidden>Seleccionar modalidad</option>
+                            <option value="presencial">Presencial</option>
+                            <option value="hibrido">Hibrido</option>
+                            <option value="virtual">Virtual</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <!-- RESULTADOS EMPLEOS -->
+                <div class="col-md-9">
+                    <div class="d-flex justify-content-between mb-3">
+                        <h5>Resultados (4)</h5>
+                        <select class="form-select w-auto">
+                            <option value="" disabled selected hidden>Ordenar por</option>
+                            <option>Pago</option>
+                            <option>Proximidad</option>
+                        </select>
+                    </div>
+                    <!-- Los resultados se modificaran con informacion desde la DB -->
+                    <!-- tarjeta 1 -->
+                    <div class="tarjeta-trabajo p-4 mb-3">
+                        <div class="row align-items-center">
+                            <div class="col-md-3 text-center">
+                                <h5>Intel</h5>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="fw-bold">
+                                    Backend Developer
+                                </h6>
+                                <p class="text-primary mb-1">
+                                    Intel, Heredia
+                                </p>
+                                <p class="text-secondary small">
+                                    Requisitos: Java, C#
+                                </p>
+                                <p class="text-secondary small">
+                                    Remoto | Tiempo completo | ₡900000
+                                </p>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <button class="btn btn-primary btn-sm mb-2" id="btnVerDetalles">
+                                    Ver detalles
+                                </button>
+                                <br>
+                                <button class="btn btn-light btn-sm" id="btnGuardar">
+                                    Guardar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- tarjeta 2 -->
+                    <div class="tarjeta-trabajo p-4 mb-3">
+                        <div class="row align-items-center">
+                            <div class="col-md-3 text-center">
+                                <h5>Intel</h5>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="fw-bold">
+                                    Backend Developer
+                                </h6>
+                                <p class="text-primary mb-1">
+                                    Intel, Heredia
+                                </p>
+                                <p class="text-secondary small">
+                                    Requisitos: Java, C#
+                                </p>
+                                <p class="text-secondary small">
+                                    Remoto | Tiempo completo | ₡900000
+                                </p>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <button class="btn btn-primary btn-sm mb-2" id="btnVerDetalles">
+                                    Ver detalles
+                                </button>
+                                <br>
+                                <button class="btn btn-light btn-sm" id="btnGuardar">
+                                    Guardar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- tarjeta 3 -->
+                    <div class="tarjeta-trabajo p-4 mb-3">
+                        <div class="row align-items-center">
+                            <div class="col-md-3 text-center">
+                                <h5>Intel</h5>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="fw-bold">
+                                    Backend Developer
+                                </h6>
+                                <p class="text-primary mb-1">
+                                    Intel, Heredia
+                                </p>
+                                <p class="text-secondary small">
+                                    Requisitos: Java, C#
+                                </p>
+                                <p class="text-secondary small">
+                                    Remoto | Tiempo completo | ₡900000
+                                </p>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <button class="btn btn-primary btn-sm mb-2" id="btnVerDetalles">
+                                    Ver detalles
+                                </button>
+                                <br>
+                                <button class="btn btn-light btn-sm" id="btnGuardar">
+                                    Guardar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- tarjeta 4 -->
+                    <div class="tarjeta-trabajo p-4 mb-3">
+                        <div class="row align-items-center">
+                            <div class="col-md-3 text-center">
+                                <h5>Intel</h5>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="fw-bold">
+                                    Backend Developer
+                                </h6>
+                                <p class="text-primary mb-1">
+                                    Intel, Heredia
+                                </p>
+                                <p class="text-secondary small">
+                                    Requisitos: Java, C#
+                                </p>
+                                <p class="text-secondary small">
+                                    Remoto | Tiempo completo | ₡900000
+                                </p>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <button class="btn btn-primary btn-sm mb-2" id="btnVerDetalles">
+                                    Ver detalles
+                                </button>
+                                <br>
+                                <button class="btn btn-light btn-sm" id="btnGuardar">
+                                    Guardar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+    </main>
 
     <!-- FOOTER -->
     <footer class="footer">

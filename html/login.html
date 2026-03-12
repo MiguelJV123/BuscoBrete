@@ -22,12 +22,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
 
-<body class="body-bckg"> <!-- para el css???, se puede referenciar la class instead, no?-->
+<body class="body-bckg">
 
     <!-- TOP NAV BAR -->
     <nav class="navbar navbar-expand-lg bg-white border-bottom">
-        <div class="container">
-            <a class="navbar-brand fw-bold fs-4">
+        <div class="container-fluid px-4">
+            <a href="home.html" class="navbar-brand fw-bold fs-4">
                 <span class="brand-busco">Busco</span><span class="brand-brete">Brete</span>
             </a>
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
@@ -52,49 +52,51 @@
         </div>
     </nav>
 
-    <!-- PAGE HEADER -->
-    <section class="py-5 text-center">
-        <div class="container">
-            <h2 class="auth-page-title">INICIAR SESIÓN</h2>
-            <p class="auth-page-subtitle">Guarda empleos y postúlate más rápido</p>
-        </div>
-    </section>
+    <main>
+        <!-- PAGE HEADER -->
+        <section class="py-5 text-center">
+            <div class="container">
+                <h2 class="auth-page-title">INICIAR SESIÓN</h2>
+                <p class="auth-page-subtitle">Guarda empleos y postúlate más rápido</p>
+            </div>
+        </section>
 
-    <!-- LOGIN FORM -->
-    <section class="container mb-5">
-        <div class="row justify-content-center">
-            <div class="auth-card">
-                <h5>Iniciar sesión</h5>
+        <!-- LOGIN FORM -->
+        <section class="container mb-5">
+            <div class="row justify-content-center">
+                <div class="auth-card">
+                    <h5>Iniciar sesión</h5>
 
-                <div class="mb-3">
-                    <label class="auth-label" for="correo">Correo</label>
-                    <input class="auth-input" type="email" id="correo" placeholder="correo@correo.com">
-                </div>
-
-                <div class="mb-3">
-                    <label class="auth-label" for="contrasena">Contraseña</label>
-                    <input class="auth-input" type="password" id="contrasena" placeholder="****************">
-                </div>
-
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <div class="form-check mb-0">
-                        <input class="form-check-input" type="checkbox" id="recordarme">
-                        <label class="form-check-label small" for="recordarme">Recordarme</label>
+                    <div class="mb-3">
+                        <label class="auth-label" for="correo">Correo</label>
+                        <input class="auth-input" type="email" id="correo" placeholder="correo@correo.com">
                     </div>
-                    <a href="#" class="small text-primary text-decoration-none">¿Olvidaste tu contraseña?</a>
-                </div>
 
-                <button class="btn-auth" onclick="iniciarSesion()">Iniciar Sesión</button>
+                    <div class="mb-3">
+                        <label class="auth-label" for="contrasena">Contraseña</label>
+                        <input class="auth-input" type="password" id="contrasena" placeholder="****************">
+                    </div>
 
-                <div class="auth-divider">o</div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="form-check mb-0">
+                            <input class="form-check-input" type="checkbox" id="recordarme">
+                            <label class="form-check-label small" for="recordarme">Recordarme</label>
+                        </div>
+                        <a href="#" class="small text-primary text-decoration-none">¿Olvidaste tu contraseña?</a>
+                    </div>
 
-                <div class="auth-card-links">
-                    <p class="mb-1">¿No tienes cuenta? <a href="registro.html">Crear cuenta</a></p>
-                    <p class="mb-0">¿Eres empleador? <a href="#">Publicar ofertas</a></p>
+                    <button class="btn-auth" onclick="iniciarSesion()">Iniciar Sesión</button>
+
+                    <div class="auth-divider">o</div>
+
+                    <div class="auth-card-links">
+                        <p class="mb-1">¿No tienes cuenta? <a href="registro.html">Crear cuenta</a></p>
+                        <p class="mb-0">¿Eres empleador? <a href="#">Publicar ofertas</a></p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>  
 
     <!-- FOOTER -->
     <footer class="footer">

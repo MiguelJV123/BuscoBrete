@@ -22,11 +22,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="body-bckg">
+
     <!--Top Nav Bar  -->
     <nav class="navbar navbar-expand-lg bg-white border-bottom">
-        <div class="container">
-            <a class="navbar-brand fw-bold fs-4">
+        <div class="container-fluid px-4">
+            <a href="home.html" class="navbar-brand fw-bold fs-4">
                 <span class="brand-busco">Busco</span><span class="brand-brete">Brete</span>
             </a>
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
@@ -35,177 +36,171 @@
             <div class="collapse navbar-collapse justify-content-end" id="menu">
                 <ul class="navbar-nav align-items-center gap-3">
                     <li class="nav-item">
-                        <a class="nav-link">Inicio</a>
+                        <a href="home.html" class="nav-link">Inicio</a>
                     </li>
-
                     <li class="nav-item">
                         <a href="buscarEmpleos.html" class="nav-link">Buscar empleos</a>
                     </li>
-
                     <li class="nav-item">
-                        <a class=""> <!-- Figure out how fix-->
-                            <a href="login.html" class="nav-link"></a>Iniciar sesión</a>
+                        <a href="login.html" class="nav-link">Iniciar sesión</a>
                     </li>
                     <li class="nav-item">
-                        <button class="btn btn-primary">
-                            <a href="registro.html" class="nav-link"></a>Registrarse</button>
+                        <a href="registro.html"><button class="btn btn-primary">Registrarse</button></a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- BODY BODY BODY BODY BODY BODY BODY BODY BODY BODY -->
-    <!-- BODY BODY BODY BODY BODY BODY BODY BODY BODY BODY -->
-    <!-- top banner -->
-    <section class="topBanner">
-        <div class="container">
-            <h1 class="fw-bold display-5 mb-3 text-center shado">
-                Encuentra tu próximo empleo <br> hoy
-            </h1>
-            <p class="mb-4 text-center">
-                Explora miles de oportunidades en tecnología, negocios y más
-            </p>
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="input-group shadow">
-                        <input class="form-control form-control-lg text-center"
-                            placeholder="Busca por puesto, empresa o ubicación">
-                        <button class="btn btn-primary">
-                            Buscar
-                        </button>
+    <main>
+       <!-- top banner -->
+        <section class="topBanner">
+            <div class="container">
+                <h1 class="fw-bold display-5 mb-3 text-center shado">
+                    Encuentra tu próximo empleo <br> hoy
+                </h1>
+                <p class="mb-4 text-center">
+                    Explora miles de oportunidades en tecnología, negocios y más
+                </p>
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="input-group shadow">
+                            <input class="form-control form-control-lg text-center"
+                                placeholder="Busca por puesto, empresa o ubicación">
+                            <button class="btn btn-primary">
+                                Buscar
+                            </button>
 
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- OFERTAS DESTACADAS -->
+        <!-- OFERTAS DESTACADAS -->
+        <section class="destacadas">
+            <div class="container text-center">
+                <p class="text-primary fw-bold small text-center">
+                    PARA TI
+                </p>
+                <h2 class="fw-bold mb-2 text-center">
+                    Ofertas Destacadas
+                </h2>
+                <p class="text-muted mb-5 text-center">
+                    Explora oportunidades recomendadas según tu perfil.
+                </p>
 
-    <section class="destacadas">
-        <div class="container text-center">
-            <p class="text-primary fw-bold small text-center">
-                PARA TI
-            </p>
-            <h2 class="fw-bold mb-2 text-center">
-                Ofertas Destacadas
-            </h2>
-            <p class="text-muted mb-5 text-center">
-                Explora oportunidades recomendadas según tu perfil.
-            </p>
-
-            <!-- ESTAS TARJETAS SE VAN A REEMPLAZAR A POSTERIOR CON PHP PARA CARGARLAS DESDE LA BBDD -->
-            <!-- ESTAS TARJETAS SE VAN A REEMPLAZAR A POSTERIOR CON PHP PARA CARGARLAS DESDE LA BBDD -->
-            <div class="row g-4">
-                <!-- tarjeta -->
-                <div class="col-md-3">
-                    <div class="card shadow-sm h-100">
-                        <div class="card-body">
-                            <h5 class="fw-bold">
-                                Programador
-                            </h5>
-                            <p class="text-muted">
-                                Intel, Heredia
-                            </p>
-                            <p class="text-secondary">
-                                Requisitos: Java, C...
-                            </p>
-                            <button class="btn btn-primary btn-sm">
-                                Ver más
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- tarjeta -->
-                <div class="col-md-3">
-                    <div class="card shadow-sm h-100">
-                        <div class="card-body">
-                            <h5 class="fw-bold">
-                                Programador
-                            </h5>
-                            <p class="text-muted">
-                                Intel, Heredia
-                            </p>
-                            <p class="text-secondary">
-                                Requisitos: Java, C...
-                            </p>
-                            <button class="btn btn-primary btn-sm">
-                                Ver más
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- tarjeta -->
-                <div class="col-md-3">
-                    <div class="card shadow-sm h-100">
-                        <div class="card-body">
-                            <h5 class="fw-bold">
-                                Programador
-                            </h5>
-                            <p class="text-muted">
-                                Intel, Heredia
-                            </p>
-                            <p class="text-secondary">
-                                Requisitos: Java, C...
-                            </p>
-                            <button class="btn btn-primary btn-sm">
-                                Ver más
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- tarjeta -->
-                <div class="col-md-3">
-                    <div class="card shadow-sm h-100">
-                        <div class="card-body">
-                            <h5 class="fw-bold">
-                                Programador
-                            </h5>
-                            <p class="text-muted">
-                                Intel, Heredia
-                            </p>
-                            <p class="text-secondary">
-                                Requisitos: Java, C...
-                            </p>
-                            <button class="btn btn-primary btn-sm">
-                                Ver más
-                            </button>
-                        </div>
-                    </div>
-                </div>
                 <!-- ESTAS TARJETAS SE VAN A REEMPLAZAR A POSTERIOR CON PHP PARA CARGARLAS DESDE LA BBDD -->
                 <!-- ESTAS TARJETAS SE VAN A REEMPLAZAR A POSTERIOR CON PHP PARA CARGARLAS DESDE LA BBDD -->
+                <div class="row g-4">
+                    <!-- tarjeta -->
+                    <div class="col-md-3">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-body">
+                                <h5 class="fw-bold">
+                                    Programador
+                                </h5>
+                                <p class="text-muted">
+                                    Intel, Heredia
+                                </p>
+                                <p class="text-secondary">
+                                    Requisitos: Java, C...
+                                </p>
+                                <button class="btn btn-primary btn-sm">
+                                    Ver más
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- tarjeta -->
+                    <div class="col-md-3">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-body">
+                                <h5 class="fw-bold">
+                                    Programador
+                                </h5>
+                                <p class="text-muted">
+                                    Intel, Heredia
+                                </p>
+                                <p class="text-secondary">
+                                    Requisitos: Java, C...
+                                </p>
+                                <button class="btn btn-primary btn-sm">
+                                    Ver más
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- tarjeta -->
+                    <div class="col-md-3">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-body">
+                                <h5 class="fw-bold">
+                                    Programador
+                                </h5>
+                                <p class="text-muted">
+                                    Intel, Heredia
+                                </p>
+                                <p class="text-secondary">
+                                    Requisitos: Java, C...
+                                </p>
+                                <button class="btn btn-primary btn-sm">
+                                    Ver más
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- tarjeta -->
+                    <div class="col-md-3">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-body">
+                                <h5 class="fw-bold">
+                                    Programador
+                                </h5>
+                                <p class="text-muted">
+                                    Intel, Heredia
+                                </p>
+                                <p class="text-secondary">
+                                    Requisitos: Java, C...
+                                </p>
+                                <button class="btn btn-primary btn-sm">
+                                    Ver más
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ESTAS TARJETAS SE VAN A REEMPLAZAR A POSTERIOR CON PHP PARA CARGARLAS DESDE LA BBDD -->
+                    <!-- ESTAS TARJETAS SE VAN A REEMPLAZAR A POSTERIOR CON PHP PARA CARGARLAS DESDE LA BBDD -->
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-
-    <!-- ofrecer la cuenta -->
-    <section class="ofrecerCuenta">
-        <div class="container">
-            <h2 class="display-6 fw-bold mb-3 text-center">
-                Crea tu cuenta y empieza a <br> postularte hoy
-            </h2>
-            <p class="mb-4 text-center">
-                Guarda ofertas, postúlate rápido y recibe recomendaciones.
-            </p>
-            <div class="d-flex flex-column justify-content-center gap-3 ">
-                <ul class="d-flex flex-column align-items-center list-unstyled center">
-                    <li>
-                        <button class="btn btn-primary mb-2">
-                            Crear cuenta gratis
-                        </button>
-                    </li>
-                    <li>
-                        <button class="mb btn btn-light mb-2">
-                            Ver ofertas
-                        </button>
-                    </li>
-                </ul>
+        <!-- ofrecer la cuenta -->
+        <section class="ofrecerCuenta">
+            <div class="container">
+                <h2 class="display-6 fw-bold mb-3 text-center">
+                    Crea tu cuenta y empieza a <br> postularte hoy
+                </h2>
+                <p class="mb-4 text-center">
+                    Guarda ofertas, postúlate rápido y recibe recomendaciones.
+                </p>
+                <div class="d-flex flex-column justify-content-center gap-3 ">
+                    <ul class="d-flex flex-column align-items-center list-unstyled center">
+                        <li>
+                            <button class="btn btn-primary mb-2">
+                                Crear cuenta gratis
+                            </button>
+                        </li>
+                        <li>
+                            <button class="mb btn btn-light mb-2">
+                                Ver ofertas
+                            </button>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- FOOTER -->
     <footer class="footer">
