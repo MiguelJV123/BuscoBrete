@@ -257,3 +257,183 @@ main {
 
 /* TODO: Hacer texto centrado y dinamico, en footer, forms, etc. */
 /* TODO: Cambiar footer para que el footer main no tenga tanto espacio entre subfooter, dinamico */
+
+  
+    :root{
+      --bb-bg: #F1F5F9;
+      --bb-main: #E4EAF0;
+      --bb-text-900:#0f172a;
+      --bb-text-800:#1E293B;
+      --bb-text-700:#334155;
+      --bb-text-600:#374151;
+      --bb-text-500:#475569;
+      --bb-text-400:#64748B;
+      --bb-muted:#9CA3AF;
+
+      --bb-border:#E6EAF0;
+      --bb-border-2:#E5E7EB;
+
+      --bb-white:#FFFFFF;
+      --bb-surface:#FFFFFF;
+
+      --bb-primary:#2563EB;
+
+      --bb-green-bg:#D1FAE5;
+      --bb-green-text:#065F46;
+
+      --bb-red-bg:#FEE2E2;
+      --bb-red-text:#991B1B;
+
+      --bb-amber-bg:#FEF3C7;
+      --bb-amber-text:#92400E;
+
+      --bb-chip:#E2E8F0;
+
+      --bb-footer:#1F2A38;
+    }
+
+    html, body{
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: var(--bb-bg);
+      color: var(--bb-text-800);
+    }
+
+    /* Contenedor ancho máximo similar a 1248px */
+    .container-bb{ max-width: 1248px; }
+
+    /* Header */
+    .bb-header{
+      background: var(--bb-bg);
+      border-bottom: 1px solid var(--bb-border-2);
+    }
+    .bb-brand{
+      font-weight: 700;
+      font-size: 24px;
+      letter-spacing: .01em;
+      color: var(--bb-text-800);
+      text-decoration: none;
+    }
+
+    .bb-user-badge{
+      background: var(--bb-white);
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      padding: 8px 12px;
+    }
+    .bb-avatar{
+      width: 24px; height: 24px; border-radius: 999px;
+      background: rgba(59,130,246,.5);
+    }
+    .bb-user-name{ font-size:14px; color:var(--bb-text-800); font-weight:500; }
+    .bb-user-role{ font-size:11px; color:var(--bb-text-400); }
+
+    /* Main wrapper */
+    main{ background: var(--bb-main); }
+
+    /* Hero */
+    .bb-hero-title{
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 34px;
+      color: var(--bb-text-800);
+    }
+    .bb-hero-subtitle{
+      font-weight: 400;
+      font-size: 14px;
+      color: var(--bb-text-400);
+    }
+
+    /* Tarjetas de stats */
+    .bb-stat-card{
+      background: var(--bb-white);
+      border:1px solid var(--bb-border);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.063);
+      border-radius:16px;
+      padding:20px;
+      width:100%;
+      max-width:180px;
+    }
+    .bb-number{ font-size:32px; line-height:39px; font-weight:700; color:var(--bb-text-800); }
+    .bb-label{ font-size:14px; color:var(--bb-text-700); font-weight:500; }
+    .bb-small{ font-size:12px; color:var(--bb-text-400); }
+
+    /* Tarjetas con tabla */
+    .bb-card{
+      background: var(--bb-white);
+      border:1px solid var(--bb-border);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+      border-radius:16px;
+    }
+    .bb-table-header{
+      background:#F9FAFB;
+      border-bottom:1px solid var(--bb-border-2);
+      font-weight:600; color:#374151; font-size:14px;
+    }
+    .bb-row{
+      border-bottom:1px solid var(--bb-border-2);
+      font-size:16px; color:var(--bb-text-500);
+    }
+    .bb-badge{
+      border-radius:6px; padding:8px 6px; font-size:13px; font-weight:500; text-align:center; display:inline-block; min-width:100px;
+    }
+    .bb-badge--green{ background:var(--bb-green-bg); color:var(--bb-green-text); }
+    .bb-badge--red{ background:var(--bb-red-bg); color:var(--bb-red-text); }
+    .bb-badge--amber{ background:var(--bb-amber-bg); color:var(--bb-amber-text); }
+
+    .bb-btn-chip{
+      background: var(--bb-chip);
+      border-radius:10px;
+      color:#334155;
+      font-weight:500;
+      font-size:14px;
+      border:none;
+      padding:8px 14px;
+      box-shadow:0 4px 4px rgba(0,0,0,.25);
+    }
+
+    .bb-btn-primary{
+      background: var(--bb-primary);
+      color:#fff;
+      border:none;
+      border-radius:6px;
+      padding:8px 16px;
+      font-size:14px; font-weight:500;
+    }
+
+    /* Actividad */
+    .bb-activity-item{
+      border-bottom:1px solid var(--bb-border-2);
+    }
+    .bb-activity-time{ color:var(--bb-muted); }
+
+    /* Footer */
+    footer{
+      background: var(--bb-footer);
+      color:#F1F5F9;
+    }
+    .bb-footer-link{
+      color: rgba(255,255,255,.7);
+      text-decoration: none;
+    }
+    .bb-footer-link:hover{ color:#fff; text-decoration: underline; }
+    .bb-footer-sub{
+      color: rgba(255,255,255,.6);
+    }
+
+    /* Helpers de spacing según Figma aproximado */
+    .gap-20{ gap:20px; }
+    .gap-35{ gap:35px; }
+    .gap-80{ gap:80px; }
+
+    /* Responsivo: ajustar tarjetas de stats y tablas */
+    @media (max-width: 1200px){
+      .bb-stat-card{ max-width: 100%; }
+    }
+  
+    .bb-hi-btn{
+    background-color:#2563EB;   /* azul */
+    color:#be3c3c;
+    border: none;
+  }
+  .btn-bb:hover{ background-color:#1e4fc2; }
+  .btn-bb:focus{ box-shadow:0 0 0 .25rem rgba(37,99,235,.35); }
