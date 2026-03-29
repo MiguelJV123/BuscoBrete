@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BuscoBrete - Buscar Empleos</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../../public/css/styles.css">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -27,7 +27,7 @@
     <!--Top Nav Bar  -->
     <nav class="navbar navbar-expand-lg bg-white border-bottom">
         <div class="container-fluid px-4">
-            <a href="home.html" class="navbar-brand fw-bold fs-4">
+            <a href="home.php" class="navbar-brand fw-bold fs-4">
                 <span class="brand-busco">Busco</span><span class="brand-brete">Brete</span>
             </a>
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
@@ -36,16 +36,16 @@
             <div class="collapse navbar-collapse justify-content-end" id="menu">
                 <ul class="navbar-nav align-items-center gap-3">
                     <li class="nav-item">
-                        <a href="home.html" class="nav-link">Inicio</a>
+                        <a href="home.php" class="nav-link">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a href="buscarEmpleos.html" class="nav-link">Buscar empleos</a>
+                        <a href="buscarEmpleos.php" class="nav-link">Buscar empleos</a>
                     </li>
                     <li class="nav-item">
-                        <a href="login.html" class="nav-link">Iniciar sesión</a>
+                        <a href="login.php" class="nav-link">Iniciar sesión</a>
                     </li>
                     <li class="nav-item">
-                        <a href="registro.html"><button class="btn btn-primary">Registrarse</button></a>
+                        <a href="registro.php"><button class="btn btn-primary">Registrarse</button></a>
                     </li>
                 </ul>
             </div>
@@ -276,13 +276,13 @@
                     <p class="small text-md-start">
                         Encuentra oportunidades laborales<br>en tecnología y negocios.
                     </p>
-                    <a href="https://instagram.com"><img src="../img/instagram.png" alt="instagram icon"
+                    <a href="https://instagram.com"><img src="../../public/img/instagram.png" alt="instagram icon"
                         width="24" height="24"></a>
-                    <a href="https://facebook.com"><img src="../img/facebook.png" alt="facebook icon" 
+                    <a href="https://facebook.com"><img src="../../public/img/facebook.png" alt="facebook icon" 
                         width="24" height="24"></a>
-                    <a href="https://linkedin.com"><img src="../img/linkedin.png" alt="linkedin icon" 
+                    <a href="https://linkedin.com"><img src="../../public/img/linkedin.png" alt="linkedin icon" 
                         width="24" height="24"></a>
-                    <a href="https://www.youtube.com"><img src="../img/youtube.png" alt="youtube icon" 
+                    <a href="https://www.youtube.com"><img src="../../public/img/youtube.png" alt="youtube icon" 
                         width="24" height="24"></a>
                 </div>
                 <div class="col-md-3">
@@ -330,3 +330,4 @@
     <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>-->
 
 </body>
+</html>

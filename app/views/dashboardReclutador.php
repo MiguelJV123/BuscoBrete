@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BuscoBrete - Dashboard</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../../public/css/styles.css">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -30,7 +30,7 @@
         <!--Top Nav Bar  -->
         <nav class="navbar navbar-expand-lg bg-white border-bottom">
             <div class="container-fluid px-4">
-                <a href="home.html" class="navbar-brand fw-bold fs-4">
+                <a href="home.php" class="navbar-brand fw-bold fs-4">
                     <span class="brand-busco">Busco</span><span class="brand-brete">Brete</span>
                 </a>
                 <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
@@ -39,14 +39,14 @@
                 <div class="collapse navbar-collapse justify-content-end" id="menu">
                     <ul class="navbar-nav align-items-center gap-3">
                         <li class="nav-item">
-                            <a href="home.html" class="nav-link">Inicio</a>
+                            <a href="home.php" class="nav-link">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a href="buscarEmpleos.html" class="nav-link">Buscar empleos</a>
+                            <a href="buscarEmpleos.php" class="nav-link">Buscar empleos</a>
                         </li>
                         <li>
                             <div class="dropdown">
-                                <button class="btn dropdown-toggle tn-outline-dark bb-hi-btn" type="button"
+                                <button class="btn dropdown-toggle shadow-sm bb-hi-btn" type="button"
                                     id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                                     <div class="bb-avatar mx-auto"></div>
                                     Hola, Reclutador
@@ -170,15 +170,15 @@
                                     <button class="bb-btn-chip w-100">Ver</button>
                                 </div>
                             </div>
-                            
 
-                        <!-- Ver todas -->
-                        <div class="mt-3">
-                            <button class="bb-btn-primary">
-                                Ver todas las ofertas &rarr;
-                            </button>
+
+                            <!-- Ver todas -->
+                            <div class="mt-3">
+                                <button class="bb-btn-primary">
+                                    Ver todas las ofertas &rarr;
+                                </button>
+                            </div>
                         </div>
-                    </div>
                 </section>
 
                 <!-- POSTULACIONES RECIENTES -->
@@ -228,7 +228,7 @@
                                     <button class="bb-btn-chip" style="min-width:93px;">Ver</button>
                                 </div>
                             </div>
-                            
+
                         </div>
 
                         <!-- Ver todas -->
@@ -300,14 +300,14 @@
                         <p class="small text-md-start">
                             Encuentra oportunidades laborales<br>en tecnología y negocios.
                         </p>
-                        <a href="https://instagram.com"><img src="../img/instagram.png" alt="instagram icon" width="24"
-                                height="24"></a>
-                        <a href="https://facebook.com"><img src="../img/facebook.png" alt="facebook icon" width="24"
-                                height="24"></a>
-                        <a href="https://linkedin.com"><img src="../img/linkedin.png" alt="linkedin icon" width="24"
-                                height="24"></a>
-                        <a href="https://www.youtube.com"><img src="../img/youtube.png" alt="youtube icon" width="24"
-                                height="24"></a>
+                        <a href="https://instagram.com"><img src="../../public/img/instagram.png" alt="instagram icon"
+                                width="24" height="24"></a>
+                        <a href="https://facebook.com"><img src="../../public/img/facebook.png" alt="facebook icon"
+                                width="24" height="24"></a>
+                        <a href="https://linkedin.com"><img src="../../public/img/linkedin.png" alt="linkedin icon"
+                                width="24" height="24"></a>
+                        <a href="https://www.youtube.com"><img src="../../public/img/youtube.png" alt="youtube icon"
+                                width="24" height="24"></a>
                     </div>
                     <div class="col-md-3">
                         <h6 class="fw-bold ">Plataforma</h6>
@@ -356,5 +356,6 @@
             integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
             crossorigin="anonymous"></script>
 </body>
+
 </html>
 </main>
