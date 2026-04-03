@@ -16,7 +16,6 @@ class Database
             $this->pass,
             $this->db
         );
-
         if ($conn->connect_error) {
             echo"Conexion fallida";
             die("Error conexión: " . $conn->connect_error);

@@ -23,8 +23,10 @@ class TestController
 
     public function index()
     {
-        echo "Controller funcionando con DB";
+        
         $nombres = $this->model->getAll();
+        
+        echo "Controller funcionando con DB";
 
         require_once __DIR__ . '/../views/sandbox.php';
     }
