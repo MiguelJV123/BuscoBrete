@@ -17,10 +17,9 @@ class Database
             $this->db
         );
         if ($conn->connect_error) {
-            echo"Conexion fallida";
             die("Error conexión: " . $conn->connect_error);
         }
-        echo"Conexion existosa";
+
         return $conn;
     }
 }

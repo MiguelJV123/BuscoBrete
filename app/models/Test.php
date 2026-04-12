@@ -9,7 +9,7 @@ class Test
     }
 
     public function getAll(){
-        $sql = "SELECT * FROM testingTable";
+       $sql = "SELECT id_candidato AS id, CONCAT(nombre, ' ', apellidos) AS nombre FROM candidatos ORDER BY id_candidato";
         $result = $this->conn->query($sql);
 
         return $result;
