@@ -15,9 +15,9 @@ class Oferta
 	public function getAll()
 	{
 		/*
-		Lista todas las ofertas de la mas reciente a la mas antigua.
+		Lista todas las ofertas.
 		*/
-		$sql = "SELECT * FROM ofertas ORDER BY idOferta DESC";
+		$sql = "SELECT * FROM ofertas ORDER BY RAND()";
 		$result = $this->conn->query($sql);
 
 		return $result;

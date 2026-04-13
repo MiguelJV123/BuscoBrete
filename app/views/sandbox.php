@@ -26,13 +26,14 @@
         rel="stylesheet">
 </head>
 
-<body class="bg-dark a">
+<body class="bg-dark a white-text">
     <h1 class="titulares">BuscoBrete</h1>
     <div class="mt-3 col-3">
-        <a style="font-size: 20px;" href="app/views/home.php">Ir al inicio</a>
+        <a style="font-size: 20px;" href="<?= BASE_URL ?>/app/views/home.php">Ir al inicio</a>
         
     
-
+    <?php echo $_SERVER['DOCUMENT_ROOT'];    ?>
+    <?php echo __DIR__;    ?>
     <!-- Para que un boton ejecute una accion tiene que pasar por un metodo POST o getAll
         La forma más cómoda y sencillo que encontré es mediante un form y darle el 
         atributo type='submit' al boton para que ejecute el metodo
@@ -71,16 +72,6 @@
     <?if (isset($_POST['adios'])) {
         echo "<h1 id='mensaje' style='color: white'>Adios Mundo</h1>";
     }?>
-
-    <?if (isset($_POST['cargar'])){?>
-        <table class='table table-bordered'>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>                
-            </tr>
-        </thead>
-        <tbody>
 <!-- Aqui si se recibe el POST cargar entonces  prepara una tabla
     y procede a cargarla con la informacion de nuestra base de datos
     
@@ -90,6 +81,15 @@
     Ademas en el mismo index del controller se le dijo que iba a usar esta ruta de este .php,
     es asi como logra acceder a esta informacion.
 -->
+    <?if (isset($_POST['cargar'])){?>
+        <table class='table table-bordered'>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>                
+            </tr>
+        </thead>
+        <tbody>
         <?foreach ($nombres as $n){?>
         <tr>
             <td><?= $n['id']?></td>

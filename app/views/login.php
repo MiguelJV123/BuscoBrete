@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BuscoBrete - Iniciar Sesión</title>
-    <link rel="stylesheet" href="../../public/css/styles.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/public/css/styles.css">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -20,37 +20,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <!-- Inter font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <script src="public/js/auth.js"></script>
 </head>
 
 <body class="body-bckg">
 
-    <!-- TOP NAV BAR -->
-    <nav class="navbar navbar-expand-lg bg-white border-bottom">
-        <div class="container-fluid px-4">
-            <a href="home.php" class="navbar-brand fw-bold fs-4">
-                <span class="brand-busco">Busco</span><span class="brand-brete">Brete</span>
-            </a>
-            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="menu">
-                <ul class="navbar-nav align-items-center gap-3">
-                    <li class="nav-item">
-                        <a href="home.php" class="nav-link">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="buscarEmpleos.php" class="nav-link">Buscar empleos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="login.php" class="nav-link">Iniciar sesión</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="registro.php"><button class="btn btn-primary">Registrarse</button></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <!--Top Nav Bar  -->
+    <?php require_once __DIR__ .'/templates/navbar.php';?>
+    <!--Top Nav Bar  -->
 
     <main>
         <!-- PAGE HEADER -->
@@ -66,15 +43,15 @@
             <div class="row justify-content-center">
                 <div class="auth-card">
                     <h5>Iniciar sesión</h5>
-
+                <form id="formLogin">
                     <div class="mb-3">
                         <label class="auth-label" for="correo">Correo</label>
-                        <input class="auth-input" type="email" id="correo" placeholder="correo@correo.com">
+                        <input class="auth-input" type="email" name="correo" id="correo" placeholder="correo@correo.com">
                     </div>
 
                     <div class="mb-3">
                         <label class="auth-label" for="contrasena">Contraseña</label>
-                        <input class="auth-input" type="password" id="contrasena" placeholder="****************">
+                        <input class="auth-input" type="password" name="password" id="password" placeholder="****************">
                     </div>
 
                     <div class="d-flex justify-content-between align-items-center mb-3">
@@ -85,13 +62,14 @@
                         <a href="#" class="small text-primary text-decoration-none">¿Olvidaste tu contraseña?</a>
                     </div>
 
-                    <button class="btn-auth" onclick="iniciarSesion()">Iniciar Sesión</button>
-
+                    <button class="btn-auth" type="submit">Iniciar Sesión</button>
+                </form>
                     <div class="auth-divider">o</div>
 
                     <div class="auth-card-links">
-                        <p class="mb-1">¿No tienes cuenta? <a href="registro.php">Crear cuenta</a></p>
-                        <p class="mb-0">¿Eres empleador? <a href="dashboardReclutador.php">Publicar ofertas</a></p>
+                        <p class="mb-1">¿No tienes cuenta? <a href="<?= BASE_URL ?>/?page=registro">Registrarse</a></p>
+                        <p class="mb-0">¿Eres empleador? <a href="<?= BASE_URL ?>/?page=dashboardReclutador">Publicar ofertas</a></p>
+                        <p>Boton temporal para acceder al panel</p>
                     </div>
                 </div>
             </div>
@@ -99,60 +77,9 @@
     </main>  
 
     <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row text-center text-md-start">
-                <div class="col-md-3 mb-4">
-                    <h5 class="fw-bold">BuscoBrete</h5>
-                    <p class="small text-md-start">
-                        Encuentra oportunidades laborales<br>en tecnología y negocios.
-                    </p>
-                    <a href="https://instagram.com"><img src="../../public/img/instagram.png" alt="instagram icon"
-                        width="24" height="24"></a>
-                    <a href="https://facebook.com"><img src="../../public/img/facebook.png" alt="facebook icon" 
-                        width="24" height="24"></a>
-                    <a href="https://linkedin.com"><img src="../../public/img/linkedin.png" alt="linkedin icon" 
-                        width="24" height="24"></a>
-                    <a href="https://www.youtube.com"><img src="../../public/img/youtube.png" alt="youtube icon" 
-                        width="24" height="24"></a>
-                </div>
-                <div class="col-md-3">
-                    <h6 class="fw-bold">Plataforma</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="buscarEmpleos.php">Buscar empleos</a></li>
-                        <li><a href="#">Publicar empleo</a></li>
-                        <li><a href="registro.php">Crear cuenta</a></li>
-                        <li><a href="login.php">Iniciar sesión</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-                    <h6 class="fw-bold">Recursos</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Consejos de CV</a></li>
-                        <li><a href="#">Guía de entrevistas</a></li>
-                        <li><a href="#">Ayuda</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-                    <h6 class="fw-bold">Legal</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Términos y condiciones</a></li>
-                        <li><a href="#">Política de privacidad</a></li>
-                        <li><a href="#">Cookies</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- SUBFOOTER -->
-    <div class="subfooter text-center">
-        <div class="d-flex container align-items-center gap-5">
-            <p class="mx-0">© 2026 BuscoBrete. Todos los derechos reservados</p>
-            <p class="mx-0">Términos de servicio y privacidad</p>
-        </div>
-    </div>
+    <?php require_once __DIR__ .'/templates/footer.php';?>
+    <!-- FOOTER -->
 
 </body>
+
 </html>

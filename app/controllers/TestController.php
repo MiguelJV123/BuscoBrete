@@ -1,12 +1,12 @@
 <?php
-session_start();
-
+require_once __DIR__ . '/../models/Test.php';
 require_once __DIR__ . '/../../config/database.php';
 require_once __DIR__ . '/../models/Usuario.php';
 require_once __DIR__ . '/../models/Candidato.php';
 require_once __DIR__ . '/../models/Empleador.php';
 require_once __DIR__ . '/../models/Oferta.php';
 require_once __DIR__ . '/../models/Postulacion.php';
+require_once __DIR__ . '/../models/Ubicacion.php';
 
 /*
 URLS PARA PROBAR LOS MODELOS:
@@ -15,34 +15,43 @@ http://localhost:8080/BuscoBrete/index.php?model=candidato
 http://localhost:8080/BuscoBrete/index.php?model=empleador
 http://localhost:8080/BuscoBrete/index.php?model=oferta
 http://localhost:8080/BuscoBrete/index.php?model=postulacion
-*/ 
+*/
 
 class TestController
 {
+    private $testModel;
     private $userModel;
     private $candidatoModel;
     private $empleadorModel;
     private $ofertaModel;
     private $postulacionModel;
+    private $ubicacionModel;
 
     public function __construct()
     {
         $database = new Database();
         $db = $database->connect();
 
+        $this->testModel = new Test($db); //TESTEO
+
         $this->userModel = new Usuario($db);
+        $this->ubicacionModel = new Ubicacion($db);
         $this->candidatoModel = new Candidato($db);
         $this->empleadorModel = new Empleador($db);
         $this->ofertaModel = new Oferta($db);
         $this->postulacionModel = new Postulacion($db);
+        
     }
 
     public function index()
     {
+        $nombres = $this->testModel->getAll();
+        $ofertas = $this->ofertaModel->getAll();
+
         $model = strtolower($_GET['model'] ?? '');
 
         if ($model === '') {
-            require_once __DIR__ . '/../views/sandbox.php';
+            require_once __DIR__ . '/../views/home.php';
             return;
         }
 
@@ -74,4 +83,15 @@ class TestController
                 break;
         }
     }
+
+    public function getOfertas()
+    {
+        return $this->ofertaModel->getAll()->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getUbicaciones()
+    {
+        return $this->ubicacionModel->getAll()->fetch_all(MYSQLI_ASSOC);
+    }
 }
+

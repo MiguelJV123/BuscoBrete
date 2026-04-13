@@ -5,57 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BuscoBrete - Home</title>
-    
-    <link rel="stylesheet" href="../../public/css/styles.css">
-    
+
+    <link rel="stylesheet" href="<?= BASE_URL ?>/public/css/styles.css">
+
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">    
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 
     <!-- Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <!-- Inter font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body class="body-bckg">
 
+
+
     <!--Top Nav Bar  -->
-    <nav class="navbar navbar-expand-lg bg-white border-bottom">
-        <div class="container-fluid px-4">
-            <a href="home.php" class="navbar-brand fw-bold fs-4">
-                <span class="brand-busco">Busco</span><span class="brand-brete">Brete</span>
-            </a>
-            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="menu">
-                <ul class="navbar-nav align-items-center gap-3">
-                    <li class="nav-item">
-                        <a href="home.php" class="nav-link">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="buscarEmpleos.php" class="nav-link">Buscar empleos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="login.php" class="nav-link">Iniciar sesión</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="registro.php"><button class="btn btn-primary">Registrarse</button></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<?php require_once __DIR__ . '/templates/navbar.php'; ?>
+    <!--Top Nav Bar  -->
 
     <main>
-       <!-- top banner -->
+        <!-- top banner -->
         <section class="topBanner">
             <div class="container">
                 <h1 class="fw-bold display-5 mb-3 text-center shado">
@@ -92,87 +73,40 @@
                     Explora oportunidades recomendadas según tu perfil.
                 </p>
 
-                <!-- ESTAS TARJETAS SE VAN A REEMPLAZAR A POSTERIOR CON PHP PARA CARGARLAS DESDE LA BBDD -->
-                <!-- ESTAS TARJETAS SE VAN A REEMPLAZAR A POSTERIOR CON PHP PARA CARGARLAS DESDE LA BBDD -->
+                
                 <div class="row g-4">
-                    <!-- tarjeta -->
-                    <div class="col-md-3">
-                        <div class="card shadow-sm h-100">
-                            <div class="card-body">
-                                <h5 class="fw-bold">
-                                    Programador
-                                </h5>
-                                <p class="text-muted">
-                                    Intel, Heredia
-                                </p>
-                                <p class="text-secondary">
-                                    Requisitos: Java, C...
-                                </p>
-                                <button class="btn btn-primary btn-sm">
-                                    Ver más
-                                </button>
+                    <?
+                    $i = 0;
+                    foreach ($ofertas as $o) {
+                        if ($i >= 4)
+                            break;
+                        ?>
+                        <!-- tarjeta -->
+                        <div class="col-md-3">
+                            <div class="card shadow-sm h-100">
+                                <div class="card-body">
+                                    <h5 class="fw-bold">
+                                        <?= $o['titulo'] ?>
+                                    </h5>
+                                    <p class="text-muted">
+                                        <? foreach ($ubicaciones as $u) {
+                                            if ($u['idUbicacion'] == $o['idUbicacion']) {
+                                                echo $u['provincia'] . ', ' . $u['canton'];
+                                            }
+                                        } ?>
+                                    </p>
+                                    <p class="text-secondary">
+                                        <?= $o['requisitos'] ?>
+                                    </p>
+                                    <button class="btn btn-primary btn-sm">
+                                        Ver más
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- tarjeta -->
-                    <div class="col-md-3">
-                        <div class="card shadow-sm h-100">
-                            <div class="card-body">
-                                <h5 class="fw-bold">
-                                    Programador
-                                </h5>
-                                <p class="text-muted">
-                                    Intel, Heredia
-                                </p>
-                                <p class="text-secondary">
-                                    Requisitos: Java, C...
-                                </p>
-                                <button class="btn btn-primary btn-sm">
-                                    Ver más
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- tarjeta -->
-                    <div class="col-md-3">
-                        <div class="card shadow-sm h-100">
-                            <div class="card-body">
-                                <h5 class="fw-bold">
-                                    Programador
-                                </h5>
-                                <p class="text-muted">
-                                    Intel, Heredia
-                                </p>
-                                <p class="text-secondary">
-                                    Requisitos: Java, C...
-                                </p>
-                                <button class="btn btn-primary btn-sm">
-                                    Ver más
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- tarjeta -->
-                    <div class="col-md-3">
-                        <div class="card shadow-sm h-100">
-                            <div class="card-body">
-                                <h5 class="fw-bold">
-                                    Programador
-                                </h5>
-                                <p class="text-muted">
-                                    Intel, Heredia
-                                </p>
-                                <p class="text-secondary">
-                                    Requisitos: Java, C...
-                                </p>
-                                <button class="btn btn-primary btn-sm">
-                                    Ver más
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ESTAS TARJETAS SE VAN A REEMPLAZAR A POSTERIOR CON PHP PARA CARGARLAS DESDE LA BBDD -->
-                    <!-- ESTAS TARJETAS SE VAN A REEMPLAZAR A POSTERIOR CON PHP PARA CARGARLAS DESDE LA BBDD -->
+                        <? $i++;
+                    } ?>
+
                 </div>
             </div>
         </section>
@@ -189,14 +123,12 @@
                 <div class="d-flex flex-column justify-content-center gap-3 ">
                     <ul class="d-flex flex-column align-items-center list-unstyled center">
                         <li>
-                            <button class="btn btn-primary mb-2">
-                                Crear cuenta gratis
-                            </button>
+                            <a href="<?= BASE_URL ?>/?page=registro"><button class="btn btn-primary mb-2">
+                                    Crear cuenta gratis</button></a>
                         </li>
                         <li>
-                            <button class="mb btn btn-light mb-2">
-                                Ver ofertas
-                            </button>
+                            <a href="<?= BASE_URL ?>/?page=buscarEmpleos"><button class="btn btn-light mb-2">
+                                    Ver ofertas</button></a>
                         </li>
                     </ul>
                 </div>
@@ -205,66 +137,10 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row text-center text-md-start">
-                <div class="col-md-3 mb-4">
-                    <h5 class="fw-bold">
-                        BuscoBrete
-                    </h5>
-                    <p class="small text-md-start">
-                        Encuentra oportunidades laborales<br>en tecnología y negocios.
-                    </p>
-                    <a href="https://instagram.com"><img src="../../public/img/instagram.png" alt="instagram icon"
-                        width="24" height="24"></a>
-                    <a href="https://facebook.com"><img src="../../public/img/facebook.png" alt="facebook icon" 
-                        width="24" height="24"></a>
-                    <a href="https://linkedin.com"><img src="../../public/img/linkedin.png" alt="linkedin icon" 
-                        width="24" height="24"></a>
-                    <a href="https://www.youtube.com"><img src="../../public/img/youtube.png" alt="youtube icon" 
-                        width="24" height="24"></a>
-                </div>
-                <div class="col-md-3">
-                    <h6 class="fw-bold ">Plataforma</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Buscar empleos</a></li>
-                        <li><a href="#">Publicar empleo</a></li>
-                        <li><a href="#">Crear cuenta</a></li>
-                        <li><a href="#">Iniciar sesión</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-                    <h6 class="fw-bold">Recursos</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Consejos de CV</a></li>
-                        <li><a href="#">Guía de entrevistas</a></li>
-                        <li><a href="#">Ayuda</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-                    <h6 class="fw-bold">Legal</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Términos y condiciones</a></li>
-                        <li><a href="#">Política de privacidad</a></li>
-                        <li><a href="#">Cookies</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <?php require_once __DIR__ . '/templates/footer.php'; ?>
+    <!-- FOOTER -->
 
-    <!-- SUBFOOTER -->
-    <div class="subfooter text-center ">
-        <div class="d-flex container align-items-center gap-5">
-            <p class="mx-0">
-                © 2026 BuscoBrete. Todos los derechos reservados
-            </p>
-            <p class="mx-0" href="#">
-                Términos de servicio y privacidad
-            </p>
-        </div>
-    </div>
+
 </body>
 
 </html>

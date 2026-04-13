@@ -5,52 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BuscoBrete - Buscar Empleos</title>
-    <link rel="stylesheet" href="../../public/css/styles.css">
+    <link rel="stylesheet" href="public/css/styles.css">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">    
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 
     <!-- Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <!-- Inter font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body class="body-bckg">
 
+
     <!--Top Nav Bar  -->
-    <nav class="navbar navbar-expand-lg bg-white border-bottom">
-        <div class="container-fluid px-4">
-            <a href="home.php" class="navbar-brand fw-bold fs-4">
-                <span class="brand-busco">Busco</span><span class="brand-brete">Brete</span>
-            </a>
-            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="menu">
-                <ul class="navbar-nav align-items-center gap-3">
-                    <li class="nav-item">
-                        <a href="home.php" class="nav-link">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="buscarEmpleos.php" class="nav-link">Buscar empleos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="login.php" class="nav-link">Iniciar sesión</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="registro.php"><button class="btn btn-primary">Registrarse</button></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php require_once __DIR__ . '/templates/navbar.php'; ?>
+    <!--Top Nav Bar  -->
 
     <main>
         <!-- BUSCADORR -->
@@ -83,41 +63,37 @@
                 <div class="col-md-3">
                     <div class="tarjeta-filtros p-3">
                         <h5 class="text-center mb-3">Filtros</h5>
-                        <!--PROVINICIAS-->
+                        <!--PROVINCIAS-->
                         <label class="small fw-bold">Provincia</label>
                         <select class="form-select mb-3">
                             <option value="" disabled selected hidden>Seleccionar provincia</option>
-                            <option value="alajuela">Alajuela</option>
-                            <option value="cartago">Cartago</option>
-                            <option value="guanacaste">Guanacaste</option>
-                            <option value="heredia">Heredia</option>
-                            <option value="limon">Limon</option>
-                            <option value="puntarenas">Puntarenas</option>
-                            <option value="san jose">San Jose</option>
+                            <?php foreach($provincias as $p){
+                                echo "<option value='".$p['provincia']."'>".ucwords($p['provincia'])."</option>";
+                            }?>                            
                         </select>
                         <!--TIPO DE EMPLEO-->
                         <label class="small fw-bold">Tipo de empleo</label>
                         <select class="form-select mb-3">
                             <option value="" disabled selected hidden>Seleccionar tipo de empleo</option>
-                            <option value="internship">Internship</option>
-                            <option value="freelance">Freelance</option>
-                            <option value="full-time">Full-time</option>
+                            <option value="internship">WORK IN PROGRESS</option>
+                            <option value="freelance">WORK IN PROGRESS</option>
+                            <option value="full-time">WORK IN PROGRESS</option>
                         </select>
                         <!--CATEGORIAS-->
                         <label class="small fw-bold">Categoria</label>
                         <select class="form-select mb-3">
                             <option value="" disabled selected hidden>Seleccionar categoria</option>
-                            <option value="software">Software</option>
-                            <option value="mecanica">Mecanica</option>
-                            <option value="otros">Otros</option>
+                            <?php foreach($categoriasDistinct as $cd){
+                                echo "<option value='".$cd['nombre']."'>".ucwords($cd['nombre'])."</option>";
+                            }?>     
                         </select>
                         <!--MODALIDAD-->
                         <label class="small fw-bold">Modalidad</label>
                         <select class="form-select">
                             <option value="" disabled selected hidden>Seleccionar modalidad</option>
-                            <option value="presencial">Presencial</option>
-                            <option value="hibrido">Hibrido</option>
-                            <option value="virtual">Virtual</option>
+                            <option value="presencial">WORK IN PROGRESS</option>
+                            <option value="hibrido">WORK IN PROGRESS</option>
+                            <option value="virtual">WORK IN PROGRESS</option>
                         </select>
                     </div>
                 </div>
@@ -126,45 +102,58 @@
                 <!-- RESULTADOS EMPLEOS -->
                 <div class="col-md-9">
                     <div class="d-flex justify-content-between mb-3">
-                        <h5>Resultados (4)</h5>
+                        <h5>Resultados (<?= count($ofertas) ?>)</h5>
                         <select class="form-select w-auto">
                             <option value="" disabled selected hidden>Ordenar por</option>
-                            <option>Pago</option>
-                            <option>Proximidad</option>
+                            <option>WORK IN PROGRESS</option>
+                            <option>WORK IN PROGRESS</option>
                         </select>
                     </div>
                     <!-- Los resultados se modificaran con informacion desde la DB -->
                     <!-- tarjeta 1 -->
-                    <div class="tarjeta-trabajo p-4 mb-3">
-                        <div class="row align-items-center">
-                            <div class="col-md-3 text-center">
-                                <h5>Intel</h5>
+                    <?php foreach ($ofertas as $o) { ?>
+                        <div class="tarjeta-trabajo p-4 mb-3">
+                            <div class="row align-items-center">
+                                <div class="col-md-3 text-center">
+                                    <h5><?php foreach ($empleadores as $e) {
+                                        if ($e['idEmpleador'] == $o['idEmpleador']) {
+                                            echo $e['nombreEmpresa'];
+                                        }
+                                    } ?></h5>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="fw-bold">
+                                        <?= $o['titulo'] ?>
+                                    </h6>
+                                    <p class="text-primary mb-1">
+                                        <? foreach ($ubicaciones as $u) {
+                                            if ($u['idUbicacion'] == $o['idUbicacion']) {
+                                                echo $u['provincia'] . ', ' . $u['canton'];
+                                            }
+                                        } ?>
+                                    </p>
+                                    <p class="text-secondary small">
+                                        <?= $o['requisitos'] ?>
+                                    </p>
+                                    <p class="text-secondary small"> 
+                                        <?foreach($categorias as $c){
+                                            if($c['idCategoria'] == $o['idCategoria']){
+                                                echo $c['nombre'];
+                                            }
+                                        }?>  <? echo ' | ' . ucwords($o['tipoEmpleo']) . ' | ₡' . $o['salario'] ?>
+                                    </p>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <button class="btn btn-primary btn-sm mb-2" id="btnVerDetalles">
+                                        Ver detalles
+                                    </button>
+                                    <br>
+                                    <button class="btn btn-light btn-sm" id="btnGuardar">
+                                        Guardar
+                                    </button>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <h6 class="fw-bold">
-                                    Backend Developer
-                                </h6>
-                                <p class="text-primary mb-1">
-                                    Intel, Heredia
-                                </p>
-                                <p class="text-secondary small">
-                                    Requisitos: Java, C#
-                                </p>
-                                <p class="text-secondary small">
-                                    Remoto | Tiempo completo | ₡900000
-                                </p>
-                            </div>
-                            <div class="col-md-3 text-center">
-                                <button class="btn btn-primary btn-sm mb-2" id="btnVerDetalles">
-                                    Ver detalles
-                                </button>
-                                <br>
-                                <button class="btn btn-light btn-sm" id="btnGuardar">
-                                    Guardar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                        </div><?php } ?>
 
                     <!-- tarjeta 2 -->
                     <div class="tarjeta-trabajo p-4 mb-3">
@@ -266,68 +255,11 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row text-center text-md-start">
-                <div class="col-md-3 mb-4">
-                    <h5 class="fw-bold">
-                        BuscoBrete
-                    </h5>
-                    <p class="small text-md-start">
-                        Encuentra oportunidades laborales<br>en tecnología y negocios.
-                    </p>
-                    <a href="https://instagram.com"><img src="../../public/img/instagram.png" alt="instagram icon"
-                        width="24" height="24"></a>
-                    <a href="https://facebook.com"><img src="../../public/img/facebook.png" alt="facebook icon" 
-                        width="24" height="24"></a>
-                    <a href="https://linkedin.com"><img src="../../public/img/linkedin.png" alt="linkedin icon" 
-                        width="24" height="24"></a>
-                    <a href="https://www.youtube.com"><img src="../../public/img/youtube.png" alt="youtube icon" 
-                        width="24" height="24"></a>
-                </div>
-                <div class="col-md-3">
-                    <h6 class="fw-bold ">Plataforma</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Buscar empleos</a></li>
-                        <li><a href="#">Publicar empleo</a></li>
-                        <li><a href="#">Crear cuenta</a></li>
-                        <li><a href="#">Iniciar sesión</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-                    <h6 class="fw-bold">Recursos</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Consejos de CV</a></li>
-                        <li><a href="#">Guía de entrevistas</a></li>
-                        <li><a href="#">Ayuda</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-                    <h6 class="fw-bold">Legal</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Términos y condiciones</a></li>
-                        <li><a href="#">Política de privacidad</a></li>
-                        <li><a href="#">Cookies</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- SUBFOOTER -->
-    <div class="subfooter text-center ">
-        <div class="d-flex container align-items-center gap-5">
-            <p class="mx-0">
-                © 2026 BuscoBrete. Todos los derechos reservados
-            </p>
-            <p class="mx-0" href="#">
-                Términos de servicio y privacidad
-            </p>
-        </div>
-    </div>
+    <?php require_once __DIR__ . '/templates/footer.php'; ?>
+    <!-- FOOTER -->
 
     <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>-->
 
 </body>
+
 </html>
