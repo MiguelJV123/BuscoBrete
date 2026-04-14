@@ -48,17 +48,17 @@ class UserController
     public function login()
     {
 
-        $correo = $_POST['correo'];
-        $password = $_POST['password'];
+        $correo = $_POST['correo'] ?? '';
+        $password = $_POST['password'] ?? '';
 
-        $usuario = $this->userModel->login($correo);
+        $usuario = $this->userModel->findByCorreo($correo);
 
         if ($usuario && password_verify($password, $usuario['passwordEnc'])) {
-            $_SESSION['id'] = $usuario['id'];
-            $_SESSION['correo'] = $usuario['correo'];
+            $_SESSION['usuario'] = $usuario['correo'];
             $_SESSION['rol'] = $usuario['rol'];
+            $_SESSION['idUsuario'] = $usuario['idUsuario'];
 
-            echo json_encode(['response' => "00", 'rol' => $usuario['rol'], 'message' => "Login exitoso"]);
+            echo json_encode(['response' => '00', 'rol' => $_SESSION['rol']]);
         } else {
             echo json_encode(['response' => "01", 'message' => "Error de autentificacion"]);
         }

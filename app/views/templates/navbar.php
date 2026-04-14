@@ -1,4 +1,4 @@
-<?php if ($_SESSION['rol'] == 'invitado'): ?>
+<?php if ($_SESSION['rol'] == ''): ?>
     <nav class="navbar navbar-expand-lg bg-white border-bottom">
         <div class="container-fluid px-4">
             <a href="<?= BASE_URL ?>/?page=home" class="navbar-brand fw-bold fs-4">
@@ -25,7 +25,7 @@
             </div>
         </div>
     </nav>
-<?php elseif ($_SESSION['rol'] == 'usuario'): ?>
+<?php elseif ($_SESSION['rol'] == 'candidato'): ?>
     <nav class="navbar navbar-expand-lg bg-white border-bottom">
         <div class="container-fluid px-4">
             <a href="<?= BASE_URL ?>/?page=home" class="navbar-brand fw-bold fs-4">
@@ -52,7 +52,7 @@
             </div>
         </div>
     </nav>
-<?php elseif ($_SESSION['rol'] == 'reclutador'): ?>
+<?php elseif ($_SESSION['rol'] == 'empleador'): ?>
     <!--// RECLUTADOR -->
     <nav class="navbar navbar-expand-lg bg-white border-bottom">
         <div class="container-fluid px-4">
