@@ -22,11 +22,13 @@ $_SESSION['rol'] = 'invitado';
 $page = $_GET['page'] ?? 'home';
 
 switch ($page) {
+    
     case 'home':
         $ofertas = $buscadorController->getOfertas();
         $ubicaciones = $buscadorController->getUbicaciones();
         require 'app/views/home.php';
         break;
+
     case 'buscarEmpleos':
         $ofertas = $buscadorController->getOfertas();
         $empleadores = $buscadorController->getEmpleadores();
@@ -36,12 +38,15 @@ switch ($page) {
         $categoriasDistinct = $buscadorController->getDistinctCategoria();
         require 'app/views/buscarEmpleos.php';
         break;
+
     case 'login':
         require 'app/views/login.php';
         break;
+
     case 'registro':
         require 'app/views/registro.php';
         break;
+
     case 'dashboardReclutador':
         if ($_SESSION['rol'] != 'reclutador') {
             $_GET['page'] = 'home';
@@ -50,12 +55,17 @@ switch ($page) {
             require 'app/views/dashboardReclutador.php';
         }
         break;
+
     case 'dashboardUsuario':
-        require 'app/views/dashboardUsuario.php';
+        require_once __DIR__ . '/app/controllers/UserController.php';
+        $controller = new UserController();
+        $controller->dashboard();
         break;
+
     case 'publicarOferta':
         require 'app/views/publicarOferta.php';
         break;
+
     case 'ofertaInfo':
         require 'app/views/ofertaInfo.php';
         break;
