@@ -1,4 +1,4 @@
-<?php if ($_SESSION['rol'] == ''): ?>
+<?php if ($_SESSION['rol'] == 'invitado'): ?>
     <nav class="navbar navbar-expand-lg bg-white border-bottom">
         <div class="container-fluid px-4">
             <a href="<?= BASE_URL ?>/?page=home" class="navbar-brand fw-bold fs-4">
@@ -36,18 +36,40 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="menu">
                 <ul class="navbar-nav align-items-center gap-3">
-                    <li class="nav-item">
-                        <a href="<?= BASE_URL ?>/?page=home" class="nav-link">Inicio</a>
+                    <li>
+                    <a href="<?= BASE_URL ?>/?page=home" class="nav-link <?php if ($_GET['page'] == 'home') {
+                          echo 'active';
+                      } ?>">Inicio</a>
+                    </li>
+                    <li>
+                    <a href="<?= BASE_URL ?>/?page=buscarEmpleos" class="nav-link <?php if ($_GET['page'] == 'buscarEmpleos') {
+                          echo 'active';
+                      } ?>">Buscar empleos</a>
+                    </li>
+
+                    <li>
+                    <a href="<?= BASE_URL ?>/?page=dashboardUsuario" class="nav-link <?php if ($_GET['page'] == 'dashboardUsuario') {
+                          echo 'active';
+                      } ?>">Panel de usuario</a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= BASE_URL ?>/?page=buscarEmpleos" class="nav-link">Buscar empleos</a>
+                        <button class="btn btn-primary">
+                            <a class="nav-item text-white text-decoration-none" href="index.php?page=logout">Cerrar
+                                Sesion</a>
+                        </button>
                     </li>
-                    <li class="nav-item">
-                        <a href="<?= BASE_URL ?>/?page=login" class="nav-link">Panel de usuario</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="<?= BASE_URL ?>/?page=logout"><button class="btn btn-primary">Cerrar Sesion</button></a>
-                    </li>
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle shadow-sm bb-hi-btn" type="button" id="dropdownMenuButton"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="bb-avatar mx-auto"></div>
+                            <?php echo $_SESSION['usuario'] ?>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Publicar ofertas</a>
+                            <a class="dropdown-item" href="#">Información personal</a>
+                            <a class="dropdown-item" href="#">Configuración</a>
+                        </div>
+                    </div>
                 </ul>
             </div>
         </div>
@@ -65,29 +87,27 @@
             <div class="collapse navbar-collapse justify-content-end" id="menu">
                 <ul class="navbar-nav align-items-center gap-3">
                     <li class="nav-item">
-                        <a href="<?= BASE_URL ?>/?page=home"
-                            class="nav-link <?php if ($_GET['page'] == 'home') {
-                                echo 'active';
-                            } ?>">Inicio</a>
+                        <a href="<?= BASE_URL ?>/?page=home" class="nav-link <?php if ($_GET['page'] == 'home') {
+                              echo 'active';
+                          } ?>">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= BASE_URL ?>/?page=buscarEmpleos"
-                            class="nav-link <?php if ($_GET['page'] == 'buscarEmpleos') {
-                                echo 'active';
-                            } ?>">Publicar
+                        <a href="<?= BASE_URL ?>/?page=buscarEmpleos" class="nav-link <?php if ($_GET['page'] == 'buscarEmpleos') {
+                              echo 'active';
+                          } ?>">Publicar
                             empleos</a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= BASE_URL ?>/?page=dashboardReclutador"
-                            class="nav-link <?php if ($_GET['page'] == 'dashboardReclutador') {
-                                echo 'active';
-                            } ?>">Panel de
+                        <a href="<?= BASE_URL ?>/?page=dashboardReclutador" class="nav-link <?php if ($_GET['page'] == 'dashboardReclutador') {
+                              echo 'active';
+                          } ?>">Panel de
                             reclutador</a>
                     </li>
                     <li class="nav-item">
                         <button class="btn btn-primary">
-                            <a class="nav-link" href="index.php?page=logout">Cerrar Sesion</a>    
-                        </button>                        
+                            <a class="nav-item text-white text-decoration-none" href="index.php?page=logout">Cerrar
+                                Sesion</a>
+                        </button>
                     </li>
                     <div class="dropdown">
                         <button class="btn dropdown-toggle shadow-sm bb-hi-btn" type="button" id="dropdownMenuButton"

@@ -130,6 +130,9 @@
                             <a href="<?= BASE_URL ?>/?page=buscarEmpleos"><button class="btn btn-light mb-2">
                                     Ver ofertas</button></a>
                         </li>
+                        <button class="btn btn-primary">
+                            <a class="nav-link" href="index.php?page=logout">Cerrar Sesion</a>    
+                        </button> 
                     </ul>
                 </div>
             </div>

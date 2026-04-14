@@ -1,57 +1,44 @@
 <?php
-
+//session_destroy();
 ob_start();
 if (session_status() == PHP_SESSION_NONE)
     session_start();
 
 if (!isset($_SESSION['rol'])) {
-    $_SESSION['correo'] = 'invitado';
+    $_SESSION['usuario'] = 'invitado';
     $_SESSION['rol'] = 'invitado';
 }
-if(!defined('BASE_URL')) {
+
+
+if(!defined('BASE_URL'))
     define('BASE_URL', '/proyectoGit/BuscoBrete');
-}
-
-if (isset($_POST['option']) && $_POST['option'] === 'login') {
-    ob_clean();
-    header('Content-Type: application/json');
-
-    $correo = isset($_POST['correo']) ? $_POST['correo'] :'';
-    $password = isset($_POST['password']) ? $_POST['password'] :'';
-
-
-    $_SESSION['usuario'] = $_POST['correo'];
-    $_SESSION['rol'] = 'reclutador';
-    echo json_encode(['response' => '00', 'rol' => $_SESSION['rol']]);
-    exit;
-}
 
 require_once __DIR__ . '/app/controllers/TestController.php';
 require_once __DIR__ . '/app/controllers/buscadorController.php';
 require_once __DIR__ . '/app/controllers/UserController.php';
 require_once __DIR__ . '/app/controllers/reclutadorController.php';
 
-
-
+//var_dump($_SESSION);
+//prueba de branching
 
 $page = $_GET['page'] ?? 'home';
 
 
-
-// ========== RUTAS FORMULARIO POST ==========
+// ========== POST ==========
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    if ($_POST['option'] == "login") {
-        $auth = new UserController();
-        $auth->login();
-        exit;
-    }
-
-
-if ($_POST['option'] == "logout") {
-        $auth = new UserController();
-        $auth->logout();
-        exit;
+    if (isset($_POST['option'])) {
+        if ($_POST['option'] === 'login') {
+            ob_clean();
+            header('Content-Type: application/json');
+            $auth = new UserController();
+            $auth->login();
+            exit;
+        }
+        if ($_POST['option'] === 'logout') {
+            $auth = new UserController();
+            $auth->logout();
+            exit;
+        }
     }
 }
 
@@ -80,9 +67,8 @@ switch ($page) {
         $reclutador->showDashboardReclutador();
         break;
     case 'dashboardUsuario':
-        $usuario = new UserController();
-        $usuario->showDashboardUsuario();
-        require 'app/views/dashboardUsuario.php';
+        $postulaciones = new UserController();
+        $postulaciones->showDashboardUsuario();        
         break;
     case "publicarOferta":
         $reclutador = new reclutadorController();
