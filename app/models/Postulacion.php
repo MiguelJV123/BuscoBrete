@@ -1,8 +1,5 @@
 <?php
 
-/*
-Aqui vive la logica basica de postulaciones.
-*/
 class Postulacion
 {
 	private $conn;
@@ -95,4 +92,32 @@ class Postulacion
 
 		return $stmt->execute();
 	}
+
+	public function getByCandidatoFull($idCandidato)
+	{
+    	$query = "
+        	SELECT 
+            	p.idPostulacion,
+            	p.estado,
+            	p.fechaPostulacion,
+            	o.titulo,
+            	emp.nombreEmpresa AS nombreEmpresa,
+            	u.provincia AS provincia,
+            	u.canton AS canton
+        	FROM postulaciones p
+        	INNER JOIN ofertas o ON p.idOferta = o.idOferta
+        	INNER JOIN empleadores emp ON o.idEmpleador = emp.idEmpleador
+        	INNER JOIN ubicaciones u ON o.idUbicacion = u.idUbicacion
+        	WHERE p.idCandidato = ?
+        	ORDER BY p.fechaPostulacion DESC
+    	";
+
+    	$stmt = $this->conn->prepare($query);
+    	$stmt->bind_param("i", $idCandidato);
+    	$stmt->execute();
+
+    	return $stmt->get_result();
+	}
+
+
 }
