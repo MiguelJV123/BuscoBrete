@@ -12,6 +12,8 @@ class buscadorController
     private $empleadorModel;
     private $categoriaModel;
 
+    
+
     public function __construct()
     {
         $database = new Database();
@@ -23,11 +25,24 @@ class buscadorController
         $this->categoriaModel = new Categoria($db);
     }
 
-    public function index()
+    public function showBuscador()
     {
-        
+        $ofertas = $this->ofertaModel->getAll()->fetch_all(MYSQLI_ASSOC);
+        $ubicaciones = $this->ubicacionModel->getAll();
+        $provincias = $this->ubicacionModel->getDistinctProvincias();
+        $empleadores = $this->empleadorModel->getAll();
+        $categorias = $this->categoriaModel->getAll();
+        $categoriasDistinct = $this->categoriaModel->getDistinctCategoria();
+
+        require 'app/views/buscarEmpleos.php';
     }
-        public function getOfertas()
+
+    public function showOfertaInfo()
+    {
+        require 'app/views/ofertaInfo.php';
+    }
+
+    public function getOfertas()
     {
         return $this->ofertaModel->getAll()->fetch_all(MYSQLI_ASSOC);
     }
