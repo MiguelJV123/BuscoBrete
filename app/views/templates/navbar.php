@@ -46,7 +46,7 @@
                         <a href="<?= BASE_URL ?>/?page=login" class="nav-link">Panel de usuario</a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= BASE_URL ?>/?page=registro"><button class="btn btn-primary">Cerrar Sesion</button></a>
+                        <a href="<?= BASE_URL ?>/?page=logout"><button class="btn btn-primary">Cerrar Sesion</button></a>
                     </li>
                 </ul>
             </div>
@@ -85,13 +85,15 @@
                             reclutador</a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= BASE_URL ?>/?page=registro"><button class="btn btn-primary">Cerrar Sesion</button></a>
+                        <button class="btn btn-primary">
+                            <a class="nav-link" href="index.php?page=logout">Cerrar Sesion</a>    
+                        </button>                        
                     </li>
                     <div class="dropdown">
                         <button class="btn dropdown-toggle shadow-sm bb-hi-btn" type="button" id="dropdownMenuButton"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             <div class="bb-avatar mx-auto"></div>
-                            <?php echo 'Hola, ' . $_SESSION['usuario'] ?>
+                            <?php echo $_SESSION['usuario'] ?>
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="#">Publicar ofertas</a>

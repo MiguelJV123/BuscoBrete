@@ -1,67 +1,105 @@
 <?php
+
+ob_start();
 if (session_status() == PHP_SESSION_NONE)
     session_start();
-/*Aquí viene a caer todo por default al entrar al sitio web
-Con este require de linea 5 es que se asigna el controlador que lo va a arrancar
-*/
-require_once __DIR__ . '/app/controllers/TestController.php';
-require_once __DIR__ . '/app/controllers/buscadorController.php';
-$mainController = new TestController();
-$buscadorController = new buscadorController();
 
+if (!isset($_SESSION['rol'])) {
+    $_SESSION['correo'] = 'invitado';
+    $_SESSION['rol'] = 'invitado';
+}
 if(!defined('BASE_URL')) {
     define('BASE_URL', '/proyectoGit/BuscoBrete');
 }
-/*Entonces se crea el objeto de la ruta que se le dio y con
-$controller->index(); se accede al metodo y este por default 
-abre la vista que le decimos en el index
-*/
-$_SESSION['usuario'] = 'invitado';
-$_SESSION['rol'] = 'invitado';
+
+if (isset($_POST['option']) && $_POST['option'] === 'login') {
+    ob_clean();
+    header('Content-Type: application/json');
+
+    $correo = isset($_POST['correo']) ? $_POST['correo'] :'';
+    $password = isset($_POST['password']) ? $_POST['password'] :'';
+
+
+    $_SESSION['usuario'] = $_POST['correo'];
+    $_SESSION['rol'] = 'reclutador';
+    echo json_encode(['response' => '00', 'rol' => $_SESSION['rol']]);
+    exit;
+}
+
+require_once __DIR__ . '/app/controllers/TestController.php';
+require_once __DIR__ . '/app/controllers/buscadorController.php';
+require_once __DIR__ . '/app/controllers/UserController.php';
+require_once __DIR__ . '/app/controllers/reclutadorController.php';
+
+
+
 
 $page = $_GET['page'] ?? 'home';
 
-switch ($page) {
-    case 'home':
-        $ofertas = $buscadorController->getOfertas();
-        $ubicaciones = $buscadorController->getUbicaciones();
-        require 'app/views/home.php';
-        break;
-    case 'buscarEmpleos':
-        $ofertas = $buscadorController->getOfertas();
-        $empleadores = $buscadorController->getEmpleadores();
-        $ubicaciones = $buscadorController->getUbicaciones();
-        $provincias = $buscadorController->getProvincias();
-        $categorias = $buscadorController->getCategorias();
-        $categoriasDistinct = $buscadorController->getDistinctCategoria();
-        require 'app/views/buscarEmpleos.php';
-        break;
-    case 'login':
-        require 'app/views/login.php';
-        break;
-    case 'registro':
-        require 'app/views/registro.php';
-        break;
-    case 'dashboardReclutador':
-        if ($_SESSION['rol'] != 'reclutador') {
-            $_GET['page'] = 'home';
-            require 'index.php';
-        } else {
-            require 'app/views/dashboardReclutador.php';
-        }
-        break;
-    case 'dashboardUsuario':
-        require 'app/views/dashboardUsuario.php';
-        break;
-    case 'publicarOferta':
-        require 'app/views/publicarOferta.php';
-        break;
-    case 'ofertaInfo':
-        require 'app/views/ofertaInfo.php';
-        break;
+
+
+// ========== RUTAS FORMULARIO POST ==========
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    if ($_POST['option'] == "login") {
+        $auth = new UserController();
+        $auth->login();
+        exit;
+    }
+
+
+if ($_POST['option'] == "logout") {
+        $auth = new UserController();
+        $auth->logout();
+        exit;
+    }
 }
 
 
+// ========== RUTAS DE VISTAS ==========
+switch ($page) {
+
+    case "home":
+        $home = new UserController();
+        $home->showHome();
+        break;
+    case "login":
+        $auth = new UserController();
+        $auth->showLogin();
+        break;
+    case "registro":
+        $auth = new UserController();
+        $auth->showRegistro();
+        break;
+    case "buscarEmpleos":
+        $empleos = new buscadorController();
+        $empleos->showBuscador();
+        break;
+    case "dashboardReclutador":
+        $reclutador = new reclutadorController();
+        $reclutador->showDashboardReclutador();
+        break;
+    case 'dashboardUsuario':
+        $usuario = new UserController();
+        $usuario->showDashboardUsuario();
+        require 'app/views/dashboardUsuario.php';
+        break;
+    case "publicarOferta":
+        $reclutador = new reclutadorController();
+        $reclutador->showPublicarOferta();
+        break;
+    case 'ofertaInfo':
+        $ofertaInfo = new buscadorController();
+        $ofertaInfo->showOfertaInfo();
+        require 'app/views/ofertaInfo.php';
+        break;
+    case 'logout':
+        $auth = new UserController();
+        $auth->logout();
+        break;
+            
+   
+}
 
 
 
