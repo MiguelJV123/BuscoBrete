@@ -1,18 +1,11 @@
 <?php
 
+require_once __DIR__ . '/../models/Postulacion.php';
 require_once __DIR__ . '/../../config/database.php';
-require_once __DIR__ . '/../models/Usuario.php';
-require_once __DIR__ . '/../models/Oferta.php';
-require_once __DIR__ . '/../models/Ubicacion.php';
 
-class UserController
-{
-    private $userModel;
-    private $ofertaModel;
-    private $ubicacionModel;
+class UserController {
 
-    public function __construct()
-    {
+    public function dashboard() {
 
         $database = new Database();
         $db = $database->connect();
@@ -70,5 +63,13 @@ class UserController
         session_destroy();
         header('Location: ' . BASE_URL . '/?page=home');
         exit;
+        $postulacionModel = new Postulacion($db);
+
+        // temporal (cuando haya login real cambia)
+        $idCandidato = 1;
+
+        $postulaciones = $postulacionModel->getByCandidatoFull($idCandidato);
+
+        require __DIR__ . '/../views/dashboardUsuario.php';
     }
 }
