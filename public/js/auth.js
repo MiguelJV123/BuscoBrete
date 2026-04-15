@@ -16,15 +16,13 @@ $(function () {
                     option: "login"
                 },
                 function (data, status) {
-                    console.log(data);
                     if (data.response == "00") {
                         if (data.rol == 'empleador') {
                             window.location = BASE_URL + "/?page=dashboardReclutador";
-                        } else {
-                            window.location = BASE_URL + "/?page=home";
-                            
-                        }
-                    }alert(data.message)
+                        } else if (data.rol == 'candidato') {
+                            window.location = BASE_URL + "/?page=home";                            
+                        }else{alert(data.message)}
+                    }
                 });
         }
     })
