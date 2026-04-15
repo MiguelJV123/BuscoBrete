@@ -38,19 +38,19 @@
                 <ul class="navbar-nav align-items-center gap-3">
                     <li>
                     <a href="<?= BASE_URL ?>/?page=home" class="nav-link <?php if ($_GET['page'] == 'home') {
-                          echo 'active';
-                      } ?>">Inicio</a>
+                        echo 'active';
+                    } ?>">Inicio</a>
                     </li>
                     <li>
                     <a href="<?= BASE_URL ?>/?page=buscarEmpleos" class="nav-link <?php if ($_GET['page'] == 'buscarEmpleos') {
-                          echo 'active';
-                      } ?>">Buscar empleos</a>
+                        echo 'active';
+                    } ?>">Buscar empleos</a>
                     </li>
 
                     <li>
                     <a href="<?= BASE_URL ?>/?page=dashboardUsuario" class="nav-link <?php if ($_GET['page'] == 'dashboardUsuario') {
-                          echo 'active';
-                      } ?>">Panel de usuario</a>
+                        echo 'active';
+                    } ?>">Panel de usuario</a>
                     </li>
                     <li class="nav-item">
                         <button class="btn btn-primary">
@@ -88,19 +88,19 @@
                 <ul class="navbar-nav align-items-center gap-3">
                     <li class="nav-item">
                         <a href="<?= BASE_URL ?>/?page=home" class="nav-link <?php if ($_GET['page'] == 'home') {
-                              echo 'active';
-                          } ?>">Inicio</a>
+                            echo 'active';
+                        } ?>">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a href="<?= BASE_URL ?>/?page=buscarEmpleos" class="nav-link <?php if ($_GET['page'] == 'buscarEmpleos') {
-                              echo 'active';
-                          } ?>">Publicar
+                            echo 'active';
+                        } ?>">Publicar
                             empleos</a>
                     </li>
                     <li class="nav-item">
                         <a href="<?= BASE_URL ?>/?page=dashboardReclutador" class="nav-link <?php if ($_GET['page'] == 'dashboardReclutador') {
-                              echo 'active';
-                          } ?>">Panel de
+                            echo 'active';
+                        } ?>">Panel de
                             reclutador</a>
                     </li>
                     <li class="nav-item">

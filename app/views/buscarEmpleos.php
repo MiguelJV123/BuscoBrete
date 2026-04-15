@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BuscoBrete - Buscar Empleos</title>
-    <link rel="stylesheet" href="public/css/styles.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/public/css/styles.css">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -67,9 +67,9 @@
                         <label class="small fw-bold">Provincia</label>
                         <select class="form-select mb-3">
                             <option value="" disabled selected hidden>Seleccionar provincia</option>
-                            <?php foreach($provincias as $p){
-                                echo "<option value='".$p['provincia']."'>".ucwords($p['provincia'])."</option>";
-                            }?>                            
+                            <?php foreach ($provincias as $p) {
+                                echo "<option value='" . $p['provincia'] . "'>" . ucwords($p['provincia']) . "</option>";
+                            } ?>
                         </select>
                         <!--TIPO DE EMPLEO-->
                         <label class="small fw-bold">Tipo de empleo</label>
@@ -83,9 +83,9 @@
                         <label class="small fw-bold">Categoria</label>
                         <select class="form-select mb-3">
                             <option value="" disabled selected hidden>Seleccionar categoria</option>
-                            <?php foreach($categoriasDistinct as $cd){
-                                echo "<option value='".$cd['nombre']."'>".ucwords($cd['nombre'])."</option>";
-                            }?>     
+                            <?php foreach ($categoriasDistinct as $cd) {
+                                echo "<option value='" . $cd['nombre'] . "'>" . ucwords($cd['nombre']) . "</option>";
+                            } ?>
                         </select>
                         <!--MODALIDAD-->
                         <label class="small fw-bold">Modalidad</label>
@@ -116,10 +116,10 @@
                             <div class="row align-items-center">
                                 <div class="col-md-3 text-center">
                                     <h5><?php foreach ($empleadores as $e) {
-                                        if ($e['idEmpleador'] == $o['idEmpleador']) {
-                                            echo $e['nombreEmpresa'];
-                                        }
-                                    } ?></h5>
+                                            if ($e['idEmpleador'] == $o['idEmpleador']) {
+                                                echo $e['nombreEmpresa'];
+                                            }
+                                        } ?></h5>
                                 </div>
                                 <div class="col-md-6">
                                     <h6 class="fw-bold">
@@ -135,12 +135,12 @@
                                     <p class="text-secondary small">
                                         <?= $o['requisitos'] ?>
                                     </p>
-                                    <p class="text-secondary small"> 
-                                        <?foreach($categorias as $c){
-                                            if($c['idCategoria'] == $o['idCategoria']){
+                                    <p class="text-secondary small">
+                                        <? foreach ($categorias as $c) {
+                                            if ($c['idCategoria'] == $o['idCategoria']) {
                                                 echo $c['nombre'];
                                             }
-                                        }?>  <? echo ' | ' . ucwords($o['tipoEmpleo']) . ' | ₡' . $o['salario'] ?>
+                                        } ?> <? echo ' | ' . ucwords($o['tipoEmpleo']) . ' | ₡' . $o['salario'] ?>
                                     </p>
                                 </div>
                                 <div class="col-md-3 text-center">

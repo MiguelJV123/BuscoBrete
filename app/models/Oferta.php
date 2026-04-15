@@ -37,26 +37,66 @@ class Oferta
 		return $result->fetch_assoc();
 	}
 
-	public function create($idEmpleador, $idCategoria, $idUbicacion, $titulo, $descripcion, $requisitos, $salario, $tipoEmpleo, $estado)
+	public function create(
+		$idEmpleador, $idCategoria, $idUbicacion, $titulo, $descripcion, $requisitos, $salario, $tipoEmpleo, $estado
+		)
 	{
 		/*
 		Crea una oferta nueva con todos sus datos base.
 		*/
-		$query = "INSERT INTO ofertas (idEmpleador, idCategoria, idUbicacion, titulo, descripcion, requisitos, salario, tipoEmpleo, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		$query = "INSERT INTO ofertas
+		(idEmpleador, idCategoria, idUbicacion, titulo, descripcion, requisitos, salario, tipoEmpleo, estado)
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
 		$stmt = $this->conn->prepare($query);
-		$stmt->bind_param("iiisssdss", $idEmpleador, $idCategoria, $idUbicacion, $titulo, $descripcion, $requisitos, $salario, $tipoEmpleo, $estado);
+		$stmt->bind_param(
+			"iiisssdss",
+			$idEmpleador,
+			$idCategoria,
+			$idUbicacion,
+			$titulo,
+			$descripcion,
+			$requisitos,
+			$salario,
+			$tipoEmpleo,
+			$estado
+		);
 
 		return $stmt->execute();
 	}
 
-	public function update($idOferta, $idCategoria, $idUbicacion, $titulo, $descripcion, $requisitos, $salario, $tipoEmpleo, $estado)
+	public function update(
+		$idOferta, $idCategoria, $idUbicacion, $titulo, $descripcion, $requisitos, $salario, $tipoEmpleo, $estado
+		)
 	{
 		/*
 		Actualiza los datos editables de una oferta existente.
 		*/
-		$query = "UPDATE ofertas SET idCategoria = ?, idUbicacion = ?, titulo = ?, descripcion = ?, requisitos = ?, salario = ?, tipoEmpleo = ?, estado = ? WHERE idOferta = ?";
+		$query = "UPDATE ofertas
+		SET 
+			idCategoria = ?,
+			idUbicacion = ?,
+			titulo = ?,
+			descripcion = ?,
+			requisitos = ?,
+			salario = ?,
+			tipoEmpleo = ?,
+			estado = ?
+		WHERE idOferta = ?";
+		
 		$stmt = $this->conn->prepare($query);
-		$stmt->bind_param("iisssdssi", $idCategoria, $idUbicacion, $titulo, $descripcion, $requisitos, $salario, $tipoEmpleo, $estado, $idOferta);
+		$stmt->bind_param(
+			"iisssdssi",
+			$idCategoria,
+			$idUbicacion,
+			$titulo,
+			$descripcion,
+			$requisitos,
+			$salario,
+			$tipoEmpleo,
+			$estado,
+			$idOferta
+		);
 
 		return $stmt->execute();
 	}
@@ -99,4 +139,36 @@ class Oferta
 
 		return $stmt->get_result();
 	}
+
+	public function createSimple($idEmpleador, $titulo, $descripcion, $salario)
+	{
+		// Otra version de crear oferta, pero sin tocar la otra.
+		// Valores por defecto para los campos que no se pasan por parametro, para q no de error por falta de datos.
+		$idCategoria = 1;
+		$idUbicacion = 1;
+		$requisitos = '';
+		$tipoEmpleo = 'Tiempo completo';
+		$estado = 'activo';
+
+		$query = "INSERT INTO ofertas 
+        (idEmpleador, idCategoria, idUbicacion, titulo, descripcion, requisitos, salario, tipoEmpleo, estado) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+		$stmt = $this->conn->prepare($query);
+		$stmt->bind_param(
+			"iiisssdss",
+			$idEmpleador,
+			$idCategoria,
+			$idUbicacion,
+			$titulo,
+			$descripcion,
+			$requisitos,
+			$salario,
+			$tipoEmpleo,
+			$estado
+		);
+
+		return $stmt->execute();
+	}
+	
 }

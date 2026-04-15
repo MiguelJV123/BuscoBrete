@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BuscoBrete - SandBox</title>
-    <link rel="stylesheet" href="public/css/styles.css">
-    
+    <link rel="stylesheet" href="<?= BASE_URL ?>/public/css/styles.css">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -30,49 +29,49 @@
     <h1 class="titulares">BuscoBrete</h1>
     <div class="mt-3 col-3">
         <a style="font-size: 20px;" href="<?= BASE_URL ?>/app/views/home.php">Ir al inicio</a>
-        
-    
-    <?php echo $_SERVER['DOCUMENT_ROOT'];    ?>
-    <?php echo __DIR__;    ?>
-    <!-- Para que un boton ejecute una accion tiene que pasar por un metodo POST o getAll
+
+
+        <?php echo $_SERVER['DOCUMENT_ROOT'];    ?>
+        <?php echo __DIR__;    ?>
+        <!-- Para que un boton ejecute una accion tiene que pasar por un metodo POST o getAll
         La forma más cómoda y sencillo que encontré es mediante un form y darle el 
         atributo type='submit' al boton para que ejecute el metodo
         el atributo name del boton es el valor que se pasará meiante el POST -->
-    <form method="POST">
-        <input type="hidden" name="option" value="getAll">
-        <button type="submit" name="hola" class="btn btn-primary">
-            Hola Mundo
-        </button>
-    </form>
+        <form method="POST">
+            <input type="hidden" name="option" value="getAll">
+            <button type="submit" name="hola" class="btn btn-primary">
+                Hola Mundo
+            </button>
+        </form>
 
-    <form method="POST">
-        <input type="hidden" name="option" value="getAll">
-        <button type="submit" name="adios" class="btn btn-primary">
-            Adios Mundo
-        </button>
-    </form>
+        <form method="POST">
+            <input type="hidden" name="option" value="getAll">
+            <button type="submit" name="adios" class="btn btn-primary">
+                Adios Mundo
+            </button>
+        </form>
 
-    <form method="POST">
-        <input type="hidden" name="option" value="getAll">
-        <button type="submit" name="cargar" class="btn btn-primary">
-            Cargar Mundo
-        </button>
-    </form>
+        <form method="POST">
+            <input type="hidden" name="option" value="getAll">
+            <button type="submit" name="cargar" class="btn btn-primary">
+                Cargar Mundo
+            </button>
+        </form>
 
-    
-    <!--Aqui probe varias formas de hacer funcionar la logica php bien en medio de html 
+
+        <!--Aqui probe varias formas de hacer funcionar la logica php bien en medio de html 
     con solo poner < ? para abrir y ?> para cerrar funciona entonces se logra mezclar bien
     -->
-    <?if (isset($_POST['hola'])) {
-        echo "<h1 id='mensaje' style='color: white'>Hola Mundo</h1>";
-    }?>
+        <? if (isset($_POST['hola'])) {
+            echo "<h1 id='mensaje' style='color: white'>Hola Mundo</h1>";
+        } ?>
 
-    <!-- En estos if basicamente estan esperando escuchar el boton respectivo,
+        <!-- En estos if basicamente estan esperando escuchar el boton respectivo,
      segun sea 'hola', 'adios' o 'cargar'-->
-    <?if (isset($_POST['adios'])) {
-        echo "<h1 id='mensaje' style='color: white'>Adios Mundo</h1>";
-    }?>
-<!-- Aqui si se recibe el POST cargar entonces  prepara una tabla
+        <? if (isset($_POST['adios'])) {
+            echo "<h1 id='mensaje' style='color: white'>Adios Mundo</h1>";
+        } ?>
+        <!-- Aqui si se recibe el POST cargar entonces  prepara una tabla
     y procede a cargarla con la informacion de nuestra base de datos
     
     Algo que me costo mucho entender es porque solo poner $nombres funcionaba, es porque en el
@@ -81,25 +80,25 @@
     Ademas en el mismo index del controller se le dijo que iba a usar esta ruta de este .php,
     es asi como logra acceder a esta informacion.
 -->
-    <?if (isset($_POST['cargar'])){?>
-        <table class='table table-bordered'>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>                
-            </tr>
-        </thead>
-        <tbody>
-        <?foreach ($nombres as $n){?>
-        <tr>
-            <td><?= $n['id']?></td>
-            <td><?= $n['nombre']?></td>
-        </tr>
-    <?}?>
-    </tbody>
-    </table> 
-    <?}?>
-     
+        <? if (isset($_POST['cargar'])) { ?>
+            <table class='table table-bordered'>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <? foreach ($nombres as $n) { ?>
+                        <tr>
+                            <td><?= $n['id'] ?></td>
+                            <td><?= $n['nombre'] ?></td>
+                        </tr>
+                    <? } ?>
+                </tbody>
+            </table>
+        <? } ?>
+
 
 </body>
 <footer>
