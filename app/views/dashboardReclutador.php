@@ -29,9 +29,9 @@
     <main>
 
 
-    <!--Top Nav Bar  -->
-    <?php require_once __DIR__ . '/templates/navbar.php'; ?>
-    <!--Top Nav Bar  -->
+        <!--Top Nav Bar  -->
+            <?php require_once __DIR__ . '/templates/navbar.php'; ?>
+        <!--Top Nav Bar  -->
 
         <!-- MAIN -->
         <main>
@@ -91,53 +91,28 @@
                         <!-- A posterior se cargaran desde la db -->
                         <div class="w-100">
                             <!-- fila 1 -->
+                             <? foreach($ofertasXEmpleador as $o){ ?>
                             <div class="bb-row d-flex align-items-center px-3 py-2">
-                                <div class="flex-grow-1">Diseñador</div>
-                                <div class="flex-grow-1">Cartago</div>
+                                <div class="flex-grow-1"><? echo $o['titulo'];?></div>
+                                <div class="flex-grow-1"><? echo $o['provincia'];?></div>
                                 <div class="flex-grow-1">
-                                    <span class="bb-badge bb-badge--green">Activo</span>
+                                    <?if($o['estado'] == 'activa'){
+                                        echo '<span class="bb-badge bb-badge--green">Activo</span>';
+                                    }elseif($o['estado'] == 'cerrada'){
+                                        echo '<span class="bb-badge bb-badge--red">Cerrado</span>';
+                                    }elseif($o['estado'] == 'pausada'){
+                                        echo '<span class="bb-badge bb-badge--red">Pausado</span>';
+                                    }
+                                    
+                                    ?>                                    
                                 </div>
-                                <div class="flex-grow-1">8</div>
+                                <div class="flex-grow-1"><?  ?></div>
                                 <div style="width:100px">
                                     <button class="bb-btn-chip w-100">Ver</button>
                                 </div>
                             </div>
-                            <!-- fila 2 -->
-                            <div class="bb-row d-flex align-items-center px-3 py-2">
-                                <div class="flex-grow-1">Diseñador</div>
-                                <div class="flex-grow-1">Cartago</div>
-                                <div class="flex-grow-1">
-                                    <span class="bb-badge bb-badge--red">Cerrado</span>
-                                </div>
-                                <div class="flex-grow-1">18</div>
-                                <div style="width:100px">
-                                    <button class="bb-btn-chip w-100">Ver</button>
-                                </div>
-                            </div>
-                            <!-- fila 3 -->
-                            <div class="bb-row d-flex align-items-center px-3 py-2">
-                                <div class="flex-grow-1">Diseñador</div>
-                                <div class="flex-grow-1">Cartago</div>
-                                <div class="flex-grow-1">
-                                    <span class="bb-badge bb-badge--amber">En revisión</span>
-                                </div>
-                                <div class="flex-grow-1">11</div>
-                                <div style="width:100px">
-                                    <button class="bb-btn-chip w-100">Ver</button>
-                                </div>
-                            </div>
-                            <!-- fila 4 -->
-                            <div class="bb-row d-flex align-items-center px-3 py-2">
-                                <div class="flex-grow-1">Diseñador</div>
-                                <div class="flex-grow-1">Cartago</div>
-                                <div class="flex-grow-1">
-                                    <span class="bb-badge bb-badge--green">Activo</span>
-                                </div>
-                                <div class="flex-grow-1">18</div>
-                                <div style="width:100px">
-                                    <button class="bb-btn-chip w-100">Ver</button>
-                                </div>
-                            </div>
+                            <?}?>
+                            
 
 
                             <!-- Ver todas -->
@@ -170,41 +145,23 @@
                         <!-- filas seran cargadas de la db -->
                         <div class="w-100">
                             <!-- fila 1 -->
+                             
+                            <?  
+                            foreach($postulacionesXEmpleador as $p){
+                            ?>
                             <div class="bb-row d-flex align-items-center px-3 py-2">
-                                <div class="flex-grow-1 text-center">Ana Solís</div>
-                                <div class="flex-grow-1 text-center">Diseñador UI</div>
-                                <div class="flex-grow-1 text-center">Hoy</div>
+                                <div class="flex-grow-1 text-center"><? echo $p['nombreCandidato'] . ' ' . $p['apellidosCandidato']?></div>
+                                <div class="flex-grow-1 text-center"><? echo $p['oferta']?></div>
+                                <div class="flex-grow-1 text-center"><? echo $p['fechaPostulacion']?></div>
                                 <div class="flex-grow-1 d-flex justify-content-center">
                                     <button class="bb-btn-chip" style="min-width:93px;">Ver</button>
                                 </div>
                             </div>
-                            <!-- fila 2 -->
-                            <div class="bb-row d-flex align-items-center px-3 py-2">
-                                <div class="flex-grow-1 text-center">Ana Solís</div>
-                                <div class="flex-grow-1 text-center">Diseñador UI</div>
-                                <div class="flex-grow-1 text-center">Hoy</div>
-                                <div class="flex-grow-1 d-flex justify-content-center">
-                                    <button class="bb-btn-chip" style="min-width:93px;">Ver</button>
-                                </div>
-                            </div>
-                            <!-- fila 3 -->
-                            <div class="bb-row d-flex align-items-center px-3 py-2">
-                                <div class="flex-grow-1 text-center">Ana Solís</div>
-                                <div class="flex-grow-1 text-center">Diseñador UI</div>
-                                <div class="flex-grow-1 text-center">Hoy</div>
-                                <div class="flex-grow-1 d-flex justify-content-center">
-                                    <button class="bb-btn-chip" style="min-width:93px;">Ver</button>
-                                </div>
-                            </div>
-
+                            <?}?>
                         </div>
 
-                        <!-- Ver todas -->
-                        <div class="mt-3">
-                            <button class="bb-btn-primary">
-                                Ver todas las postulaciones &rarr;
-                            </button>
-                        </div>
+                        
+                        
                     </div>
                 </section>
 
@@ -257,9 +214,9 @@
             </div>
         </main>
 
-    <!-- FOOTER -->
-    <?php require_once __DIR__ . '/templates/footer.php'; ?>
-    <!-- FOOTER -->
+        <!-- FOOTER -->
+            <?php require_once __DIR__ . '/templates/footer.php'; ?>
+        <!-- FOOTER -->
 
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

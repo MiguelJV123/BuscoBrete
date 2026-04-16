@@ -82,4 +82,30 @@ class Empleador
 
 		return $stmt->execute();
 	}
+
+	public function getOfertasByEmpleador($idEmpleador)
+{
+    $stmt = $this->conn->prepare("
+        SELECT 
+            o.idOferta,
+            o.titulo,
+            o.descripcion,
+            o.requisitos,
+            o.salario,
+            o.tipoEmpleo,
+            o.estado,
+            o.fechaPublicacion,
+            c.nombre AS categoria,
+            u.provincia,
+            u.canton
+        FROM ofertas o
+        INNER JOIN categorias c ON o.idCategoria = c.idCategoria
+        INNER JOIN ubicaciones u ON o.idUbicacion = u.idUbicacion
+        WHERE o.idEmpleador = ?
+        ORDER BY o.fechaPublicacion DESC
+    ");
+    $stmt->bind_param("i", $idEmpleador);
+    $stmt->execute();
+    return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+}
 }
