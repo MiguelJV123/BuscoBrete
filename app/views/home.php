@@ -44,15 +44,17 @@
                 <p class="mb-4 text-center">
                     Explora miles de oportunidades en tecnología, negocios y más
                 </p>
+                <form id="formSearchBar">
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <div class="input-group shadow">
-                            <input class="form-control form-control-lg text-center"
+                            
+                            <input class="form-control form-control-lg text-center" name="keyword" id="keyword"
                                 placeholder="Busca por puesto, empresa o ubicación">
                             <button class="btn btn-primary">
                                 Buscar
                             </button>
-
+                            </form>
                         </div>
                     </div>
                 </div>

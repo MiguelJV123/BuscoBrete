@@ -170,5 +170,32 @@ class Oferta
 
 		return $stmt->execute();
 	}
+
+	public function getBySearch($keyword)
+{
+    $busqueda = "%" . $keyword . "%";
+    $stmt = $this->conn->prepare("
+        SELECT 
+            o.idOferta,
+            o.titulo,
+            o.salario,
+            o.tipoEmpleo,
+            o.estado,
+            e.nombre AS nombreEmpleador,
+            e.nombreEmpresa,
+            u.provincia,
+            u.canton
+        FROM ofertas o
+        INNER JOIN empleadores e ON o.idEmpleador = e.idEmpleador
+        INNER JOIN ubicaciones u ON o.idUbicacion = u.idUbicacion
+        WHERE o.titulo LIKE ?
+           OR e.nombre LIKE ?
+           OR e.nombreEmpresa LIKE ?
+        ORDER BY o.fechaPublicacion DESC
+    ");
+    $stmt->bind_param("sss", $busqueda, $busqueda, $busqueda);
+    $stmt->execute();
+    return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+}
 	
 }
