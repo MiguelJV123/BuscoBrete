@@ -23,7 +23,6 @@ require_once __DIR__ . '/app/controllers/UserController.php';
 require_once __DIR__ . '/app/controllers/reclutadorController.php';
 
 //var_dump($_SESSION);
-//prueba de branching
 
 $page = $_GET['page'] ?? 'home';
 
