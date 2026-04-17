@@ -31,6 +31,31 @@ class Postulacion
 		return $stmt->get_result()->fetch_assoc();
 	}
 
+	public function getPostulacionesByEmpleador($idEmpleador)
+{
+    $stmt = $this->conn->prepare("
+        SELECT 
+            p.idPostulacion,
+            p.estado AS estadoPostulacion,
+            p.fechaPostulacion,
+            o.titulo AS oferta,
+            o.salario,
+            c.nombre AS nombreCandidato,
+            c.apellidos AS apellidosCandidato,
+            c.telefono,
+            u.correo
+        FROM postulaciones p
+        INNER JOIN ofertas o ON p.idOferta = o.idOferta
+        INNER JOIN candidatos c ON p.idCandidato = c.id_candidato
+        INNER JOIN usuarios u ON c.idUsuario = u.idUsuario
+        WHERE o.idEmpleador = ?
+        ORDER BY p.fechaPostulacion DESC
+    ");
+    $stmt->bind_param("i", $idEmpleador);
+    $stmt->execute();
+    return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+}
+
 	public function getByCandidato($idCandidato)
 	{
 		/*

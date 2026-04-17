@@ -60,6 +60,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             (new UserController())->aplicarOferta();
             break;
 
+        case 'busqueda':
+            (new buscadorController())->getBySearch();
+            break;
+
         default:
             http_response_code(400);
             echo json_encode(['error' => 'Opción no válida']);
