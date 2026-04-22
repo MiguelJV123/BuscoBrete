@@ -1,13 +1,14 @@
 <?php
 
-class Ubicacion{
-    private $conn;
-    public function __construct($db)
-    {
-        $this->conn = $db;
-    }
+class Ubicacion
+{
+	private $conn;
+	public function __construct($db)
+	{
+		$this->conn = $db;
+	}
 
-    	public function getAll()
+	public function getAll()
 	{
 		/*
 		Lista todas las ubicaciones.
@@ -18,7 +19,7 @@ class Ubicacion{
 		return $result;
 	}
 
-	    	public function getDistinctProvincias()
+	public function getDistinctProvincias()
 	{
 		/*
 		Lista todas las provincias

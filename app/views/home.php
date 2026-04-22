@@ -31,7 +31,7 @@
 
 
     <!--Top Nav Bar  -->
-<?php require_once __DIR__ . '/templates/navbar.php'; ?>
+    <?php require_once __DIR__ . '/templates/navbar.php'; ?>
     <!--Top Nav Bar  -->
 
     <main>
@@ -45,19 +45,19 @@
                     Explora miles de oportunidades en tecnología, negocios y más
                 </p>
                 <form id="formSearchBar">
-                <div class="row justify-content-center">
-                    <div class="col-md-8">
-                        <div class="input-group shadow">
-                            
-                            <input class="form-control form-control-lg text-center" name="keyword" id="keyword"
-                                placeholder="Busca por puesto, empresa o ubicación">
-                            <button class="btn btn-primary">
-                                Buscar
-                            </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="input-group shadow">
+
+                                <input class="form-control form-control-lg text-center" name="keyword" id="keyword"
+                                    placeholder="Busca por puesto, empresa o ubicación">
+                                <button class="btn btn-primary">
+                                    Buscar
+                                </button>
+                </form>
+            </div>
+            </div>
+            </div>
             </div>
         </section>
 
@@ -74,14 +74,14 @@
                     Explora oportunidades recomendadas según tu perfil.
                 </p>
 
-                
+
                 <div class="row g-4">
                     <?
                     $i = 0;
                     foreach ($ofertas as $o) {
                         if ($i >= 4)
                             break;
-                        ?>
+                    ?>
                         <!-- tarjeta -->
                         <div class="col-md-3">
                             <div class="card shadow-sm h-100">
@@ -105,7 +105,7 @@
                                 </div>
                             </div>
                         </div>
-                        <? $i++;
+                    <? $i++;
                     } ?>
 
                 </div>
@@ -132,8 +132,8 @@
                                     Ver ofertas</button></a>
                         </li>
                         <button class="btn btn-primary">
-                            <a class="nav-link" href="index.php?page=logout">Cerrar Sesion</a>    
-                        </button> 
+                            <a class="nav-link" href="index.php?page=logout">Cerrar Sesion</a>
+                        </button>
                     </ul>
                 </div>
             </div>

@@ -1,26 +1,26 @@
-$(function(){
+$(function () {
     let formSearchBar = $("#formSearchBar");
 
-    formSearchBar.on("submit", function (event){
+    formSearchBar.on("submit", function (event) {
         event.preventDefault();
         let keyword = $("#keyword");
 
-        if(keyword.val() == ""){
+        if (keyword.val() == "") {
             alert("No hay parametro de busqueda");
-        }else{
+        } else {
             $.post(BASE_URL + "/index.php",
                 {
                     keyword: keyword.val(),
                     option: "busqueda"
                 },
-                function(data, status){                
-                    
-            });
+                function (data, status) {
+
+                });
 
         }
 
 
-    
+
     })
 
 

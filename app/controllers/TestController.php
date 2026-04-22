@@ -40,7 +40,6 @@ class TestController
         $this->empleadorModel = new Empleador($db);
         $this->ofertaModel = new Oferta($db);
         $this->postulacionModel = new Postulacion($db);
-        
     }
 
     public function index()
@@ -94,4 +93,3 @@ class TestController
         return $this->ubicacionModel->getAll()->fetch_all(MYSQLI_ASSOC);
     }
 }
-
