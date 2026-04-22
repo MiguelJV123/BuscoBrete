@@ -5,6 +5,8 @@ require_once __DIR__ . '/../models/Oferta.php';
 require_once __DIR__ . '/../models/Empleador.php';
 require_once __DIR__ . '/../models/Categoria.php';
 
+// TODO: BD INTEGRACIONNNNNN
+
 class buscadorController
 {
     private $ubicacionModel;
@@ -37,9 +39,21 @@ class buscadorController
         require 'app/views/buscarEmpleos.php';
     }
 
-    public function showOfertaInfo()
+    public function verOferta()
     {
-        require 'app/views/ofertaInfo.php';
+        $idOferta = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+
+        $oferta = null;
+
+        if ($idOferta > 0) {
+            // Busca la oferta por id en la BD
+            $oferta = $this->ofertaModel->getById($idOferta);
+            // TODO: cuando la BD esté integrada, cambiar getById() por
+            // TODO: un método con JOIN que traiga también empresa y ubicación
+        }
+
+        // $oferta llega a la vista (null si no se escontro)
+        require 'app/views/verOferta.php';
     }
 
     public function getOfertas()

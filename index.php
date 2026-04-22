@@ -112,10 +112,9 @@ switch ($page) {
         $reclutador->showPublicarOferta();
         break;
 
-    case 'ofertaInfo':
-        $ofertaInfo = new buscadorController();
-        $ofertaInfo->showOfertaInfo();
-        require 'app/views/ofertaInfo.php';
+    case 'verOferta':
+        $verOferta = new buscadorController();
+        $verOferta->verOferta();
         break;
 
     case 'logout':

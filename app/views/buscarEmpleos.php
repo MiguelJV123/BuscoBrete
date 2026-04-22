@@ -33,6 +33,17 @@
     <!--Top Nav Bar  -->
 
     <main>
+
+
+        <!-- Boton para publicar ofertas, se ve teeerrrible :D -->
+        <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'empleador'): ?>
+            <div class="text-end mb-3">
+                <a href="<?= BASE_URL ?>/?page=publicarOferta" class="btn btn-success">
+                    + Publicar oferta
+                </a>
+            </div>
+        <?php endif; ?>
+
         <!-- BUSCADORR -->
         <section class="py-5 text-center">
             <div class="container">
@@ -144,9 +155,10 @@
                                     </p>
                                 </div>
                                 <div class="col-md-3 text-center">
-                                    <button class="btn btn-primary btn-sm mb-2" id="btnVerDetalles">
-                                        Ver detalles
-                                    </button>
+                                    <a href="<?= BASE_URL ?>/?page=verOferta&id=<?= $o['idOferta'] ?>"
+                                        class="btn btn-primary btn-sm d-block mb-2">
+                                        Ver más
+                                    </a>
                                     <br>
                                     <button class="btn btn-light btn-sm" id="btnGuardar">
                                         Guardar
@@ -154,100 +166,7 @@
                                 </div>
                             </div>
                         </div><?php } ?>
-
-                    <!-- tarjeta 2 -->
-                    <div class="tarjeta-trabajo p-4 mb-3">
-                        <div class="row align-items-center">
-                            <div class="col-md-3 text-center">
-                                <h5>Intel</h5>
-                            </div>
-                            <div class="col-md-6">
-                                <h6 class="fw-bold">
-                                    Backend Developer
-                                </h6>
-                                <p class="text-primary mb-1">
-                                    Intel, Heredia
-                                </p>
-                                <p class="text-secondary small">
-                                    Requisitos: Java, C#
-                                </p>
-                                <p class="text-secondary small">
-                                    Remoto | Tiempo completo | ₡900000
-                                </p>
-                            </div>
-                            <div class="col-md-3 text-center">
-                                <button class="btn btn-primary btn-sm mb-2" id="btnVerDetalles">
-                                    Ver detalles
-                                </button>
-                                <br>
-                                <button class="btn btn-light btn-sm" id="btnGuardar">
-                                    Guardar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- tarjeta 3 -->
-                    <div class="tarjeta-trabajo p-4 mb-3">
-                        <div class="row align-items-center">
-                            <div class="col-md-3 text-center">
-                                <h5>Intel</h5>
-                            </div>
-                            <div class="col-md-6">
-                                <h6 class="fw-bold">
-                                    Backend Developer
-                                </h6>
-                                <p class="text-primary mb-1">
-                                    Intel, Heredia
-                                </p>
-                                <p class="text-secondary small">
-                                    Requisitos: Java, C#
-                                </p>
-                                <p class="text-secondary small">
-                                    Remoto | Tiempo completo | ₡900000
-                                </p>
-                            </div>
-                            <div class="col-md-3 text-center">
-                                <button class="btn btn-primary btn-sm mb-2" id="btnVerDetalles">
-                                    Ver detalles
-                                </button>
-                                <br>
-                                <button class="btn btn-light btn-sm" id="btnGuardar">
-                                    Guardar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- tarjeta 4 -->
-                    <div class="tarjeta-trabajo p-4 mb-3">
-                        <div class="row align-items-center">
-                            <div class="col-md-3 text-center">
-                                <h5>Intel</h5>
-                            </div>
-                            <div class="col-md-6">
-                                <h6 class="fw-bold">
-                                    Backend Developer
-                                </h6>
-                                <p class="text-primary mb-1">
-                                    Intel, Heredia
-                                </p>
-                                <p class="text-secondary small">
-                                    Requisitos: Java, C#
-                                </p>
-                                <p class="text-secondary small">
-                                    Remoto | Tiempo completo | ₡900000
-                                </p>
-                            </div>
-                            <div class="col-md-3 text-center">
-                                <button class="btn btn-primary btn-sm mb-2" id="btnVerDetalles">
-                                    Ver detalles
-                                </button>
-                                <br>
-                                <button class="btn btn-light btn-sm" id="btnGuardar">
-                                    Guardar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- ¿Las otras tarjetas no son necestarias? No se porque se dejaron si se tiene un for each-->
                 </div>
             </div>
             </div>
@@ -257,9 +176,6 @@
     <!-- FOOTER -->
     <?php require_once __DIR__ . '/templates/footer.php'; ?>
     <!-- FOOTER -->
-
-    <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>-->
-
 </body>
 
 </html>
