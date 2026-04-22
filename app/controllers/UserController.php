@@ -29,7 +29,7 @@ class UserController
     }
 
     public function showHome()
-    {
+    {        
         $ofertas = $this->ofertaModel->getAll();
         $ubicaciones = $this->ubicacionModel->getAll();
         require 'app/views/home.php';
