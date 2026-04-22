@@ -30,7 +30,7 @@
 
 
         <!--Top Nav Bar  -->
-            <?php require_once __DIR__ . '/templates/navbar.php'; ?>
+        <?php require_once __DIR__ . '/templates/navbar.php'; ?>
         <!--Top Nav Bar  -->
 
         <!-- MAIN -->
@@ -42,6 +42,15 @@
                     <h1 class="bb-hero-title mb-2">Dashboard del Reclutador</h1>
                     <p class="bb-hero-subtitle mb-0">Resumen y gestión de tus procesos de contratación</p>
                 </section>
+
+                <div class="d-flex gap-2 justify-content-center mb-4">
+                    <a href="<?= BASE_URL ?>/?page=publicarOferta" class="btn btn-success">
+                        + Publicar nueva oferta
+                    </a>
+                    <a href="<?= BASE_URL ?>/?page=buscarEmpleos" class="btn btn-outline-secondary">
+                        Ver buscador de empleos
+                    </a>
+                </div>
 
                 <!-- STATS -->
                 <section class="d-flex justify-content-center">
@@ -91,28 +100,28 @@
                         <!-- A posterior se cargaran desde la db -->
                         <div class="w-100">
                             <!-- fila 1 -->
-                             <? foreach($ofertasXEmpleador as $o){ ?>
-                            <div class="bb-row d-flex align-items-center px-3 py-2">
-                                <div class="flex-grow-1"><? echo $o['titulo'];?></div>
-                                <div class="flex-grow-1"><? echo $o['provincia'];?></div>
-                                <div class="flex-grow-1">
-                                    <?if($o['estado'] == 'activa'){
-                                        echo '<span class="bb-badge bb-badge--green">Activo</span>';
-                                    }elseif($o['estado'] == 'cerrada'){
-                                        echo '<span class="bb-badge bb-badge--red">Cerrado</span>';
-                                    }elseif($o['estado'] == 'pausada'){
-                                        echo '<span class="bb-badge bb-badge--red">Pausado</span>';
-                                    }
-                                    
-                                    ?>                                    
+                            <? foreach ($ofertasXEmpleador as $o) { ?>
+                                <div class="bb-row d-flex align-items-center px-3 py-2">
+                                    <div class="flex-grow-1"><? echo $o['titulo']; ?></div>
+                                    <div class="flex-grow-1"><? echo $o['provincia']; ?></div>
+                                    <div class="flex-grow-1">
+                                        <? if ($o['estado'] == 'activa') {
+                                            echo '<span class="bb-badge bb-badge--green">Activo</span>';
+                                        } elseif ($o['estado'] == 'cerrada') {
+                                            echo '<span class="bb-badge bb-badge--red">Cerrado</span>';
+                                        } elseif ($o['estado'] == 'pausada') {
+                                            echo '<span class="bb-badge bb-badge--red">Pausado</span>';
+                                        }
+
+                                        ?>
+                                    </div>
+                                    <div class="flex-grow-1"><?  ?></div>
+                                    <div style="width:100px">
+                                        <button class="bb-btn-chip w-100">Ver</button>
+                                    </div>
                                 </div>
-                                <div class="flex-grow-1"><?  ?></div>
-                                <div style="width:100px">
-                                    <button class="bb-btn-chip w-100">Ver</button>
-                                </div>
-                            </div>
-                            <?}?>
-                            
+                            <? } ?>
+
 
 
                             <!-- Ver todas -->
@@ -145,23 +154,23 @@
                         <!-- filas seran cargadas de la db -->
                         <div class="w-100">
                             <!-- fila 1 -->
-                             
-                            <?  
-                            foreach($postulacionesXEmpleador as $p){
+
+                            <?
+                            foreach ($postulacionesXEmpleador as $p) {
                             ?>
-                            <div class="bb-row d-flex align-items-center px-3 py-2">
-                                <div class="flex-grow-1 text-center"><? echo $p['nombreCandidato'] . ' ' . $p['apellidosCandidato']?></div>
-                                <div class="flex-grow-1 text-center"><? echo $p['oferta']?></div>
-                                <div class="flex-grow-1 text-center"><? echo $p['fechaPostulacion']?></div>
-                                <div class="flex-grow-1 d-flex justify-content-center">
-                                    <button class="bb-btn-chip" style="min-width:93px;">Ver</button>
+                                <div class="bb-row d-flex align-items-center px-3 py-2">
+                                    <div class="flex-grow-1 text-center"><? echo $p['nombreCandidato'] . ' ' . $p['apellidosCandidato'] ?></div>
+                                    <div class="flex-grow-1 text-center"><? echo $p['oferta'] ?></div>
+                                    <div class="flex-grow-1 text-center"><? echo $p['fechaPostulacion'] ?></div>
+                                    <div class="flex-grow-1 d-flex justify-content-center">
+                                        <button class="bb-btn-chip" style="min-width:93px;">Ver</button>
+                                    </div>
                                 </div>
-                            </div>
-                            <?}?>
+                            <? } ?>
                         </div>
 
-                        
-                        
+
+
                     </div>
                 </section>
 
@@ -215,7 +224,7 @@
         </main>
 
         <!-- FOOTER -->
-            <?php require_once __DIR__ . '/templates/footer.php'; ?>
+        <?php require_once __DIR__ . '/templates/footer.php'; ?>
         <!-- FOOTER -->
 
 

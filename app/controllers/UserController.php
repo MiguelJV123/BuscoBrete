@@ -75,13 +75,12 @@ class UserController
             $_SESSION['usuario'] = $usuario['correo'];
             $_SESSION['rol'] = $usuario['rol'];
             $_SESSION['idUsuario'] = $usuario['idUsuario'];
-        //Creo que aquí va candidatoMopdel para obtener el id del candidato y guardarlo en seson
+            //Creo que aquí va candidatoMopdel para obtener el id del candidato y guardarlo en seson
 
             echo json_encode(['response' => '00', 'rol' => $_SESSION['rol']]);
         } else {
-            echo json_encode(['response' => "01", 'message' => "Error de autentificacion"]);            
+            echo json_encode(['response' => "01", 'message' => "Error de autentificacion"]);
         }
-
     }
 
     public function logout()
@@ -91,10 +90,24 @@ class UserController
         exit;
     }
 
-    public function aplicarOferta() {
+    public function aplicarOferta()
+    {
+        // Verificar sesión
+        if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'candidato') {
+            echo json_encode(['response' => '01', 'message' => 'Debes iniciar sesión como candidato']);
+            return;
+        }
 
+        $idOferta = (int)($_POST['idOferta'] ?? 0);
 
+        if (!$idOferta) {
+            echo json_encode(['response' => '01', 'message' => 'Oferta no válida']);
+            return;
+        }
 
+        // TODO: obtener idCandidato desde la sesión
+        // TODO: insertar postulación
+
+        echo json_encode(['response' => '00', 'message' => 'Postulación enviada']);
     }
-
 }

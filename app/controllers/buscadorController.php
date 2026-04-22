@@ -5,7 +5,7 @@ require_once __DIR__ . '/../models/Oferta.php';
 require_once __DIR__ . '/../models/Empleador.php';
 require_once __DIR__ . '/../models/Categoria.php';
 
-// TODO: BD INTEGRACIONNNNNN
+// TODO: Falta integrar con BD
 
 class buscadorController
 {
