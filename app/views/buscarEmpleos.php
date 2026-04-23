@@ -48,23 +48,15 @@
                 </p>
                 <form id="formSearchBar">
                     <div class="row justify-content-center mt-4">
-
-                        <!-- Barra busqueda mejorada -->
-                        <div class="row justify-content-center mt-4">
-                            <div class="col-md-6">
-                                <div class="input-group shadow-sm">
-                                    <input
-                                        class="form-control"
-                                        name="keyword"
-                                        id="keyword"
-                                        placeholder="Busca por puesto, empresa o ubicación">
-                                    <button class="btn btn-primary px-4">
-                                        Buscar
-                                    </button>
-                                </div>
+                        <div class="col-md-6">
+                            <div class="input-group shadow-sm">
+                                <input class="form-control" name="keyword" id="keyword"
+                                    placeholder="Busca por puesto, empresa o ubicación">
+                                <button class="btn btn-primary px-4">Buscar</button>
                             </div>
                         </div>
                     </div>
+                </form>
             </div>
         </section>
 
@@ -95,7 +87,6 @@
                         </select>
                     </div>
                 </div>
-                </form>
 
                 <!-- RESULTADOS EMPLEOS -->
                 <div class="col-md-9">
@@ -138,7 +129,7 @@
                                     </p>
                                     <p class="text-secondary small mb-0">
                                         <?= ucwords($o['tipoEmpleo'] ?? '') ?>
-                                        
+
                                         <!-- Al hacerlo así, los números se formatean correctamente -->
                                         <?php if ($o['salario']): ?>
                                             &nbsp;|&nbsp; ₡<?= number_format($o['salario'], 0, ',', '.') ?>

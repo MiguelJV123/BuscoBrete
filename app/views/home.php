@@ -60,11 +60,10 @@
                                 <button class="btn btn-primary">
                                     Buscar
                                 </button>
+                            </div>
+                        </div>
+                    </div>
                 </form>
-            </div>
-            </div>
-            </div>
-            </div>
         </section>
 
         <!-- OFERTAS DESTACADAS -->
@@ -94,17 +93,17 @@
                             <div class="card shadow-sm h-100">
                                 <div class="card-body">
                                     <h5 class="fw-bold">
-                                        <?= $o['titulo'] ?>
+                                        <?= htmlspecialchars($o['titulo']) ?>
                                     </h5>
                                     <p class="text-muted">
                                         <?php foreach ($ubicaciones as $u) {
                                             if ($u['idUbicacion'] == $o['idUbicacion']) {
-                                                echo $u['provincia'] . ', ' . $u['canton'];
+                                                echo htmlspecialchars($u['provincia']) . ', ' . htmlspecialchars($u['canton']);
                                             }
                                         } ?>
                                     </p>
                                     <p class="text-secondary">
-                                        <?= $o['requisitos'] ?>
+                                        <?= htmlspecialchars($o['requisitos']) ?>
                                     </p>
                                     <button class="btn btn-primary btn-sm">
                                         Ver más
