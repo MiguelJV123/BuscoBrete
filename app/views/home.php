@@ -82,11 +82,12 @@
 
 
                 <div class="row g-4">
-                    <?
+                    <?php
                     $i = 0;
                     foreach ($ofertas as $o) {
                         if ($i >= 4)
                             break;
+                        $i++;
                     ?>
                         <!-- tarjeta -->
                         <div class="col-md-3">
@@ -96,7 +97,7 @@
                                         <?= $o['titulo'] ?>
                                     </h5>
                                     <p class="text-muted">
-                                        <? foreach ($ubicaciones as $u) {
+                                        <?php foreach ($ubicaciones as $u) {
                                             if ($u['idUbicacion'] == $o['idUbicacion']) {
                                                 echo $u['provincia'] . ', ' . $u['canton'];
                                             }
@@ -111,36 +112,39 @@
                                 </div>
                             </div>
                         </div>
-                    <? $i++;
-                    } ?>
-
+                    <?php
+                    }
+                    ?>
                 </div>
             </div>
         </section>
 
-        <!-- ofrecer la cuenta -->
-        <section class="ofrecerCuenta">
-            <div class="container">
-                <h2 class="display-6 fw-bold mb-3 text-center">
-                    Crea tu cuenta y empieza a <br> postularte hoy
-                </h2>
-                <p class="mb-4 text-center">
-                    Guarda ofertas, postúlate rápido y recibe recomendaciones.
-                </p>
-                <div class="d-flex flex-column justify-content-center gap-3 ">
-                    <ul class="d-flex flex-column align-items-center list-unstyled center">
-                        <li>
-                            <a href="<?= BASE_URL ?>/?page=registro"><button class="btn btn-primary mb-2">
-                                    Crear cuenta gratis</button></a>
-                        </li>
-                        <li>
-                            <a href="<?= BASE_URL ?>/?page=buscarEmpleos"><button class="btn btn-light mb-2">
-                                    Ver ofertas</button></a>
-                        </li>
-                    </ul>
+        <!-- Ofrecer crear cuenta para acceder a funciones adicionales  -->
+        <!-- Solo ofrecer si el usuario es un invitado -->
+        <?php if ($_SESSION['rol'] === 'invitado'): ?>
+            <section class="ofrecerCuenta">
+                <div class="container">
+                    <h2 class="display-6 fw-bold mb-3 text-center">
+                        Crea tu cuenta y empieza a <br> postularte hoy
+                    </h2>
+                    <p class="mb-4 text-center">
+                        Guarda ofertas, postúlate rápido y recibe recomendaciones.
+                    </p>
+                    <div class="d-flex flex-column justify-content-center gap-3 ">
+                        <ul class="d-flex flex-column align-items-center list-unstyled center">
+                            <li>
+                                <a href="<?= BASE_URL ?>/?page=registro"><button class="btn btn-primary mb-2">
+                                        Crear cuenta gratis</button></a>
+                            </li>
+                            <li>
+                                <a href="<?= BASE_URL ?>/?page=buscarEmpleos"><button class="btn btn-light mb-2">
+                                        Ver ofertas</button></a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        <?php endif; ?>
     </main>
 
     <!-- FOOTER -->
