@@ -29,7 +29,14 @@ class buscadorController
 
     public function showBuscador()
     {
-        $ofertas = $this->ofertaModel->getAll()->fetch_all(MYSQLI_ASSOC);
+        $keyword = $_GET['keyword'] ?? '';
+        $provincia = $_GET['provincia'] ?? '';
+        $categoria = $_GET['categoria'] ?? '';
+        if($keyword !== '' || $provincia !== '' || $categoria !== ''){
+            $ofertas = $this->ofertaModel->searchByKeyword($keyword, $provincia, $categoria);        
+        }else{
+            $ofertas = $this->ofertaModel->getAll()->fetch_all(MYSQLI_ASSOC);
+        }
         $ubicaciones = $this->ubicacionModel->getAll();
         $provincias = $this->ubicacionModel->getDistinctProvincias();
         $empleadores = $this->empleadorModel->getAll();
@@ -86,12 +93,5 @@ class buscadorController
         return $this->categoriaModel->getDistinctCategoria()->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getBySearch()
-    {
-        $keyword = $_POST['keyword'] ?? '';
 
-        if ($keyword != '') {
-            return $this->ofertaModel->getBySearch($keyword);
-        }
-    }
 }

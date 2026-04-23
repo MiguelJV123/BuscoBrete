@@ -29,7 +29,7 @@ class UserController
     }
 
     public function showHome()
-    {
+    {        
         $ofertas = $this->ofertaModel->getAll();
         $ubicaciones = $this->ubicacionModel->getAll();
         require 'app/views/home.php';
@@ -89,6 +89,22 @@ class UserController
         header('Location: ' . BASE_URL . '/?page=home');
         exit;
     }
+
+    public function registrar()
+{
+    $nombre = $_POST['nombre'] ?? '';
+    $apellido = $_POST['apellido'] ?? '';
+    $correo = $_POST['correo'] ?? '';
+    $password = $_POST['contrasena'] ?? '';
+
+    $id = $this->userModel->registrar($correo, $password, $nombre, $apellido);
+
+    if ($id) {
+        echo json_encode(['response' => '00']);
+    } else {
+        echo json_encode(['response' => '01', 'message' => 'Error al registrar']);
+    }
+}
 
     public function aplicarOferta()
     {

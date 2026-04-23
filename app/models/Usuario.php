@@ -77,6 +77,22 @@ class Usuario
 		return $stmt->execute();
 	}
 
+	public function registrar($correo, $password, $nombre, $apellidos)
+{
+    $passwordEnc = password_hash($password, PASSWORD_BCRYPT);
+
+    $stmt = $this->conn->prepare("INSERT INTO usuarios (correo, passwordEnc, rol, estado) VALUES (?, ?, 'candidato', 'activo')");
+    $stmt->bind_param("ss", $correo, $passwordEnc);
+    $stmt->execute();
+    $idUsuario = $this->conn->insert_id;
+
+    $stmt2 = $this->conn->prepare("INSERT INTO candidatos (idUsuario, nombre, apellidos) VALUES (?, ?, ?)");
+    $stmt2->bind_param("iss", $idUsuario, $nombre, $apellidos);
+    $stmt2->execute();
+
+    return $idUsuario;
+}
+
 	public function delete($idUsuario)
 	{
 		/*

@@ -23,7 +23,6 @@ require_once __DIR__ . '/app/controllers/UserController.php';
 require_once __DIR__ . '/app/controllers/reclutadorController.php';
 
 //var_dump($_SESSION);
-//prueba de branching
 
 $page = $_GET['page'] ?? 'home';
 
@@ -59,9 +58,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         case 'aplicarOferta':
             (new UserController())->aplicarOferta();
             break;
-
+            
         case 'busqueda':
-            (new buscadorController())->getBySearch();
+            (new buscadorController())->showBuscador();
+            break;
+
+        case 'registro':
+            (new UserController())->registrar();
             break;
 
         default:

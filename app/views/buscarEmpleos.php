@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BuscoBrete - Buscar Empleos</title>
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/css/styles.css">
-
+    <script>
+        const BASE_URL = "<?= BASE_URL ?>";
+    </script>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -23,6 +25,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
         rel="stylesheet">
+    <!-- JQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <!-- Script de busqueda -->
+     <script src="<?= BASE_URL ?>/public/js/search.js"></script>
 </head>
 
 <body class="body-bckg">
@@ -51,16 +57,18 @@
                 <p class="text-secondary text-center">
                     Explora oportunidades laborales en tecnología y negocios
                 </p>
+                <form id="formSearchBar">
                 <div class="row justify-content-center mt-4">
                     <div class="col-md-7">
                         <div class="buscador input-group">
                             <span class="input-group-text bg-transparent border-0">
                                 <i class="bi bi-search"></i>
-                            </span>
-                            <input class="form-control border-0" placeholder="Busca por puesto, empresa o ubicación">
+                            </span>                            
+                            <input class="form-control border-0" name="keyword" id="keyword" placeholder="Busca por puesto, empresa o ubicación">
                             <button class="btn btn-primary">
                                 Buscar
                             </button>
+                            
                         </div>
                     </div>
                 </div>
@@ -76,38 +84,25 @@
                         <h5 class="text-center mb-3">Filtros</h5>
                         <!--PROVINCIAS-->
                         <label class="small fw-bold">Provincia</label>
-                        <select class="form-select mb-3">
-                            <option value="" disabled selected hidden>Seleccionar provincia</option>
+                        <select id="selectorProvincia" class="form-select mb-3">
+                            <option value='' selected hidden>Seleccionar provincia</option>
                             <?php foreach ($provincias as $p) {
                                 echo "<option value='" . $p['provincia'] . "'>" . ucwords($p['provincia']) . "</option>";
                             } ?>
-                        </select>
-                        <!--TIPO DE EMPLEO-->
-                        <label class="small fw-bold">Tipo de empleo</label>
-                        <select class="form-select mb-3">
-                            <option value="" disabled selected hidden>Seleccionar tipo de empleo</option>
-                            <option value="internship">WORK IN PROGRESS</option>
-                            <option value="freelance">WORK IN PROGRESS</option>
-                            <option value="full-time">WORK IN PROGRESS</option>
-                        </select>
+                                <option value=''>Sin filtro</option>
+                        </select>                        
                         <!--CATEGORIAS-->
                         <label class="small fw-bold">Categoria</label>
-                        <select class="form-select mb-3">
-                            <option value="" disabled selected hidden>Seleccionar categoria</option>
+                        <select id="selectorCategoria" class="form-select mb-3">
+                            <option value="" selected hidden>Seleccionar categoria</option>
                             <?php foreach ($categoriasDistinct as $cd) {
                                 echo "<option value='" . $cd['nombre'] . "'>" . ucwords($cd['nombre']) . "</option>";
                             } ?>
-                        </select>
-                        <!--MODALIDAD-->
-                        <label class="small fw-bold">Modalidad</label>
-                        <select class="form-select">
-                            <option value="" disabled selected hidden>Seleccionar modalidad</option>
-                            <option value="presencial">WORK IN PROGRESS</option>
-                            <option value="hibrido">WORK IN PROGRESS</option>
-                            <option value="virtual">WORK IN PROGRESS</option>
+                            <option value=''>Sin filtro</option>
                         </select>
                     </div>
                 </div>
+                </form>
 
 
                 <!-- RESULTADOS EMPLEOS -->
@@ -120,17 +115,17 @@
                             <option>WORK IN PROGRESS</option>
                         </select>
                     </div>
-                    <!-- Los resultados se modificaran con informacion desde la DB -->
-                    <!-- tarjeta 1 -->
+
+                    <!-- tarjetas de ofertas  -->
                     <?php foreach ($ofertas as $o) { ?>
                         <div class="tarjeta-trabajo p-4 mb-3">
                             <div class="row align-items-center">
                                 <div class="col-md-3 text-center">
                                     <h5><?php foreach ($empleadores as $e) {
-                                            if ($e['idEmpleador'] == $o['idEmpleador']) {
-                                                echo $e['nombreEmpresa'];
-                                            }
-                                        } ?></h5>
+                                        if ($e['idEmpleador'] == $o['idEmpleador']) {
+                                            echo $e['nombreEmpresa'];
+                                        }
+                                    } ?></h5>
                                 </div>
                                 <div class="col-md-6">
                                     <h6 class="fw-bold">
@@ -151,7 +146,7 @@
                                             if ($c['idCategoria'] == $o['idCategoria']) {
                                                 echo $c['nombre'];
                                             }
-                                        } ?> <? echo ' | ' . ucwords($o['tipoEmpleo']) . ' | ₡' . $o['salario'] ?>
+                                        } ?>     <? echo ' | ' . ucwords($o['tipoEmpleo']) . ' | ₡' . $o['salario'] ?>
                                     </p>
                                 </div>
                                 <div class="col-md-3 text-center">
