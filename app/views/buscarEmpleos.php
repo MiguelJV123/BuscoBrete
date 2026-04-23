@@ -28,7 +28,7 @@
     <!-- JQuery -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <!-- Script de busqueda -->
-     <script src="<?= BASE_URL ?>/public/js/search.js"></script>
+    <script src="<?= BASE_URL ?>/public/js/search.js"></script>
 </head>
 
 <body class="body-bckg">
@@ -39,17 +39,6 @@
     <!--Top Nav Bar  -->
 
     <main>
-
-
-        <!-- Boton para publicar ofertas, se ve teeerrrible :D -->
-        <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'empleador'): ?>
-            <div class="text-end mb-3">
-                <a href="<?= BASE_URL ?>/?page=publicarOferta" class="btn btn-success">
-                    + Publicar oferta
-                </a>
-            </div>
-        <?php endif; ?>
-
         <!-- BUSCADORR -->
         <section class="py-5 text-center">
             <div class="container">
@@ -58,20 +47,24 @@
                     Explora oportunidades laborales en tecnología y negocios
                 </p>
                 <form id="formSearchBar">
-                <div class="row justify-content-center mt-4">
-                    <div class="col-md-7">
-                        <div class="buscador input-group">
-                            <span class="input-group-text bg-transparent border-0">
-                                <i class="bi bi-search"></i>
-                            </span>                            
-                            <input class="form-control border-0" name="keyword" id="keyword" placeholder="Busca por puesto, empresa o ubicación">
-                            <button class="btn btn-primary">
-                                Buscar
-                            </button>
-                            
+                    <div class="row justify-content-center mt-4">
+
+                        <!-- Barra busqueda mejorada -->
+                        <div class="row justify-content-center mt-4">
+                            <div class="col-md-6">
+                                <div class="input-group shadow-sm">
+                                    <input
+                                        class="form-control"
+                                        name="keyword"
+                                        id="keyword"
+                                        placeholder="Busca por puesto, empresa o ubicación">
+                                    <button class="btn btn-primary px-4">
+                                        Buscar
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
             </div>
         </section>
 
@@ -79,8 +72,8 @@
         <section class="container mb-5">
             <div class="row g-5">
                 <!-- FILTROS -->
-                <div class="col-md-3">
-                    <div class="tarjeta-filtros p-3">
+                <div class="col-md-3 d-flex justify-content-center">
+                    <div class="tarjeta-filtros p-3 text-center">
                         <h5 class="text-center mb-3">Filtros</h5>
                         <!--PROVINCIAS-->
                         <label class="small fw-bold">Provincia</label>
@@ -89,8 +82,8 @@
                             <?php foreach ($provincias as $p) {
                                 echo "<option value='" . $p['provincia'] . "'>" . ucwords($p['provincia']) . "</option>";
                             } ?>
-                                <option value=''>Sin filtro</option>
-                        </select>                        
+                            <option value=''>Sin filtro</option>
+                        </select>
                         <!--CATEGORIAS-->
                         <label class="small fw-bold">Categoria</label>
                         <select id="selectorCategoria" class="form-select mb-3">
@@ -104,7 +97,6 @@
                 </div>
                 </form>
 
-
                 <!-- RESULTADOS EMPLEOS -->
                 <div class="col-md-9">
                     <div class="d-flex justify-content-between mb-3">
@@ -116,18 +108,20 @@
                         </select>
                     </div>
 
-                    <!-- tarjetas de ofertas  -->
+                    <!-- tarjetas de ofertas -->
                     <?php foreach ($ofertas as $o) { ?>
                         <div class="tarjeta-trabajo p-4 mb-3">
-                            <div class="row align-items-center">
+                            <div class="row align-items-center text-center justify-content-center">
                                 <div class="col-md-3 text-center">
                                     <h5><?php foreach ($empleadores as $e) {
-                                        if ($e['idEmpleador'] == $o['idEmpleador']) {
-                                            echo $e['nombreEmpresa'];
-                                        }
-                                    } ?></h5>
+                                            if ($e['idEmpleador'] == $o['idEmpleador']) {
+                                                echo $e['nombreEmpresa'];
+                                            }
+                                        } ?></h5>
                                 </div>
-                                <div class="col-md-6">
+
+                                <!-- Importante centrarlo todo -->
+                                <div class="col-md-6 text-center">
                                     <h6 class="fw-bold">
                                         <?= $o['titulo'] ?>
                                     </h6>
@@ -146,22 +140,18 @@
                                             if ($c['idCategoria'] == $o['idCategoria']) {
                                                 echo $c['nombre'];
                                             }
-                                        } ?>     <? echo ' | ' . ucwords($o['tipoEmpleo']) . ' | ₡' . $o['salario'] ?>
+                                        } ?> <? echo ' | ' . ucwords($o['tipoEmpleo']) . ' | ₡' . $o['salario'] ?>
                                     </p>
                                 </div>
-                                <div class="col-md-3 text-center">
+                                <div class="col-md-3 d-flex justify-content-center">
                                     <a href="<?= BASE_URL ?>/?page=verOferta&id=<?= $o['idOferta'] ?>"
-                                        class="btn btn-primary btn-sm d-block mb-2">
+                                        class="btn btn-primary px-4">
                                         Ver más
                                     </a>
-                                    <br>
-                                    <button class="btn btn-light btn-sm" id="btnGuardar">
-                                        Guardar
-                                    </button>
                                 </div>
                             </div>
-                        </div><?php } ?>
-                    <!-- ¿Las otras tarjetas no son necestarias? No se porque se dejaron si se tiene un for each-->
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
             </div>

@@ -36,6 +36,15 @@
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
+.tarjeta-filtros label {
+    display: block;
+    text-align: center;
+}
+
+.tarjeta-filtros select {
+    text-align: center;
+}
+
 *,
 *::before,
 *::after {
