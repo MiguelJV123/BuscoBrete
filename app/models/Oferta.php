@@ -38,9 +38,16 @@ class Oferta
 	}
 
 	public function create(
-		$idEmpleador, $idCategoria, $idUbicacion, $titulo, $descripcion, $requisitos, $salario, $tipoEmpleo, $estado
-		)
-	{
+		$idEmpleador,
+		$idCategoria,
+		$idUbicacion,
+		$titulo,
+		$descripcion,
+		$requisitos,
+		$salario,
+		$tipoEmpleo,
+		$estado
+	) {
 		/*
 		Crea una oferta nueva con todos sus datos base.
 		*/
@@ -66,9 +73,16 @@ class Oferta
 	}
 
 	public function update(
-		$idOferta, $idCategoria, $idUbicacion, $titulo, $descripcion, $requisitos, $salario, $tipoEmpleo, $estado
-		)
-	{
+		$idOferta,
+		$idCategoria,
+		$idUbicacion,
+		$titulo,
+		$descripcion,
+		$requisitos,
+		$salario,
+		$tipoEmpleo,
+		$estado
+	) {
 		/*
 		Actualiza los datos editables de una oferta existente.
 		*/
@@ -83,7 +97,7 @@ class Oferta
 			tipoEmpleo = ?,
 			estado = ?
 		WHERE idOferta = ?";
-		
+
 		$stmt = $this->conn->prepare($query);
 		$stmt->bind_param(
 			"iisssdssi",
@@ -172,9 +186,9 @@ class Oferta
 	}
 
 	public function getBySearch($keyword)
-{
-    $busqueda = "%" . $keyword . "%";
-    $stmt = $this->conn->prepare("
+	{
+		$busqueda = "%" . $keyword . "%";
+		$stmt = $this->conn->prepare("
         SELECT 
             o.idOferta,
             o.titulo,
@@ -193,9 +207,8 @@ class Oferta
            OR e.nombreEmpresa LIKE ?
         ORDER BY o.fechaPublicacion DESC
     ");
-    $stmt->bind_param("sss", $busqueda, $busqueda, $busqueda);
-    $stmt->execute();
-    return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-}
-	
+		$stmt->bind_param("sss", $busqueda, $busqueda, $busqueda);
+		$stmt->execute();
+		return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+	}
 }

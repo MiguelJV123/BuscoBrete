@@ -14,7 +14,7 @@ class buscadorController
     private $empleadorModel;
     private $categoriaModel;
 
-    
+
 
     public function __construct()
     {
@@ -81,17 +81,17 @@ class buscadorController
         return $this->categoriaModel->getAll()->fetch_all(MYSQLI_ASSOC);
     }
 
-        public function getDistinctCategoria()
+    public function getDistinctCategoria()
     {
         return $this->categoriaModel->getDistinctCategoria()->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getBySearch(){
+    public function getBySearch()
+    {
         $keyword = $_POST['keyword'] ?? '';
-    
-        if($keyword != ''){
+
+        if ($keyword != '') {
             return $this->ofertaModel->getBySearch($keyword);
         }
-
     }
 }
