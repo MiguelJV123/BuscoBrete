@@ -7,7 +7,9 @@
     <title>BuscoBrete - Home</title>
 
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/css/styles.css">
-
+    <script>
+        const BASE_URL = "<?= BASE_URL ?>";
+    </script>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -24,6 +26,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
         rel="stylesheet">
+    <!-- JQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <!-- Script de busqueda -->
+     <script src="<?= BASE_URL ?>/public/js/search.js"></script>
 </head>
 
 <body class="body-bckg">
@@ -131,9 +137,6 @@
                             <a href="<?= BASE_URL ?>/?page=buscarEmpleos"><button class="btn btn-light mb-2">
                                     Ver ofertas</button></a>
                         </li>
-                        <button class="btn btn-primary">
-                            <a class="nav-link" href="index.php?page=logout">Cerrar Sesion</a>
-                        </button>
                     </ul>
                 </div>
             </div>

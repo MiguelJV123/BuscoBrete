@@ -127,19 +127,46 @@ class Oferta
 		return $stmt->execute();
 	}
 
-	public function searchByKeyword($texto)
-	{
-		/*
-		Filtra ofertas por titulo o descripcion usando LIKE.
-		*/
-		$textoBusqueda = "%" . $texto . "%";
-		$query = "SELECT * FROM ofertas WHERE titulo LIKE ? OR descripcion LIKE ? ORDER BY idOferta DESC";
-		$stmt = $this->conn->prepare($query);
-		$stmt->bind_param("ss", $textoBusqueda, $textoBusqueda);
-		$stmt->execute();
+public function searchByKeyword($keyword, $provincia = '', $categoria = '')
+{
+    $textoBusqueda = "%" . $keyword . "%";
+    
+    $query = "SELECT o.*, u.provincia, u.canton, e.nombreEmpresa, c.nombre AS categoria
+              FROM ofertas o 
+              INNER JOIN empleadores e ON o.idEmpleador = e.idEmpleador 
+              INNER JOIN ubicaciones u ON o.idUbicacion = u.idUbicacion
+              INNER JOIN categorias c ON o.idCategoria = c.idCategoria
+              WHERE (o.titulo LIKE ? OR o.descripcion LIKE ? OR e.nombreEmpresa LIKE ?)";
 
-		return $stmt->get_result();
-	}
+    if ($provincia !== '') {
+        $query .= " AND u.provincia = ?";
+    }
+
+    if ($categoria !== '') {
+        $query .= " AND c.nombre = ?";
+    }
+
+    $query .= " ORDER BY o.idOferta DESC";
+
+    $stmt = $this->conn->prepare($query);
+
+    $params = [$textoBusqueda, $textoBusqueda, $textoBusqueda];
+    $types = "sss";
+
+    if ($provincia !== '') {
+        $types .= "s";
+        $params[] = $provincia;
+    }
+
+    if ($categoria !== '') {
+        $types .= "s";
+        $params[] = $categoria;
+    }
+
+    $stmt->bind_param($types, ...$params);
+    $stmt->execute();
+    return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+}
 
 	public function searchByUbicacion($idUbicacion)
 	{

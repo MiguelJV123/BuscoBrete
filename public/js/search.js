@@ -1,28 +1,15 @@
 $(function () {
     let formSearchBar = $("#formSearchBar");
-
     formSearchBar.on("submit", function (event) {
         event.preventDefault();
-        let keyword = $("#keyword");
 
-        if (keyword.val() == "") {
-            alert("No hay parametro de busqueda");
-        } else {
-            $.post(BASE_URL + "/index.php",
-                {
-                    keyword: keyword.val(),
-                    option: "busqueda"
-                },
-                function (data, status) {
+        let keyword = $("#keyword").val();
+        let provincia = $("#selectorProvincia").length ? $("#selectorProvincia").val() : "";
+        let categoria = $("#selectorCategoria").length ? $("#selectorCategoria").val() : "";
 
-                });
-
-        }
-
-
-
-    })
-
-
-
-})
+        window.location = BASE_URL + "/?page=buscarEmpleos&keyword="
+            + encodeURIComponent(keyword) + "&provincia="
+            + encodeURIComponent(provincia) + "&categoria="
+            + encodeURIComponent(categoria);
+    });
+});
