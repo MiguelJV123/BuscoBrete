@@ -55,7 +55,7 @@
                     <li class="nav-item">
                         <button class="btn btn-primary">
                             <a class="nav-item text-white text-decoration-none" href="index.php?page=logout">Cerrar
-                                Sesion</a>
+                                Sesión</a>
                         </button>
                     </li>
                     <div class="dropdown">
@@ -74,8 +74,9 @@
             </div>
         </div>
     </nav>
+
+<!-- Si el usuario es un empleador/reclutador, mostrar opciones adicionales -->
 <?php elseif ($_SESSION['rol'] == 'empleador'): ?>
-    <!--// RECLUTADOR -->
     <nav class="navbar navbar-expand-lg bg-white border-bottom">
         <div class="container-fluid px-4">
             <a href="<?= BASE_URL ?>/?page=home" class="navbar-brand fw-bold fs-4">
@@ -100,13 +101,12 @@
                     <li class="nav-item">
                         <a href="<?= BASE_URL ?>/?page=dashboardReclutador" class="nav-link <?php if ($_GET['page'] == 'dashboardReclutador') {
                             echo 'active';
-                        } ?>">Panel de
-                            reclutador</a>
+                        } ?>">Panel de reclutador</a>
                     </li>
                     <li class="nav-item">
                         <button class="btn btn-primary">
                             <a class="nav-item text-white text-decoration-none" href="index.php?page=logout">Cerrar
-                                Sesion</a>
+                                Sesión</a>
                         </button>
                     </li>
                     <div class="dropdown">
@@ -115,11 +115,6 @@
                             <div class="bb-avatar mx-auto"></div>
                             <?php echo $_SESSION['usuario'] ?>
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Publicar ofertas</a>
-                            <a class="dropdown-item" href="#">Información personal</a>
-                            <a class="dropdown-item" href="#">Configuración</a>
-                        </div>
                     </div>
                 </ul>
             </div>

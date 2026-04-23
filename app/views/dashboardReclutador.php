@@ -45,7 +45,7 @@
 
                 <div class="d-flex gap-2 justify-content-center mb-4">
                     <a href="<?= BASE_URL ?>/?page=publicarOferta" class="btn btn-success">
-                        + Publicar nueva oferta
+                        + Publicar nueva oferta de empleo
                     </a>
                     <a href="<?= BASE_URL ?>/?page=buscarEmpleos" class="btn btn-outline-secondary">
                         Ver buscador de empleos
