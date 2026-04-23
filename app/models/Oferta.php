@@ -194,7 +194,7 @@ public function searchByKeyword($keyword, $provincia = '', $categoria = '')
 
 		$stmt = $this->conn->prepare($query);
 		$stmt->bind_param(
-			"iiisssdss",
+			"iiissdss",
 			$idEmpleador,
 			$idCategoria,
 			$idUbicacion,
