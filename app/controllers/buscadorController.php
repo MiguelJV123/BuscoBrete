@@ -5,6 +5,8 @@ require_once __DIR__ . '/../models/Oferta.php';
 require_once __DIR__ . '/../models/Empleador.php';
 require_once __DIR__ . '/../models/Categoria.php';
 
+// TODO: Falta integrar con BD
+
 class buscadorController
 {
     private $ubicacionModel;
@@ -12,7 +14,7 @@ class buscadorController
     private $empleadorModel;
     private $categoriaModel;
 
-    
+
 
     public function __construct()
     {
@@ -37,9 +39,21 @@ class buscadorController
         require 'app/views/buscarEmpleos.php';
     }
 
-    public function showOfertaInfo()
+    public function verOferta()
     {
-        require 'app/views/ofertaInfo.php';
+        $idOferta = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+
+        $oferta = null;
+
+        if ($idOferta > 0) {
+            // Busca la oferta por id en la BD
+            $oferta = $this->ofertaModel->getById($idOferta);
+            // TODO: cuando la BD esté integrada, cambiar getById() por
+            // TODO: un método con JOIN que traiga también empresa y ubicación
+        }
+
+        // $oferta llega a la vista (null si no se escontro)
+        require 'app/views/verOferta.php';
     }
 
     public function getOfertas()
@@ -67,17 +81,17 @@ class buscadorController
         return $this->categoriaModel->getAll()->fetch_all(MYSQLI_ASSOC);
     }
 
-        public function getDistinctCategoria()
+    public function getDistinctCategoria()
     {
         return $this->categoriaModel->getDistinctCategoria()->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getBySearch(){
+    public function getBySearch()
+    {
         $keyword = $_POST['keyword'] ?? '';
-    
-        if($keyword != ''){
+
+        if ($keyword != '') {
             return $this->ofertaModel->getBySearch($keyword);
         }
-
     }
 }

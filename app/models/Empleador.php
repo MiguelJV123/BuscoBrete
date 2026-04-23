@@ -84,8 +84,8 @@ class Empleador
 	}
 
 	public function getOfertasByEmpleador($idEmpleador)
-{
-    $stmt = $this->conn->prepare("
+	{
+		$stmt = $this->conn->prepare("
         SELECT 
             o.idOferta,
             o.titulo,
@@ -104,8 +104,8 @@ class Empleador
         WHERE o.idEmpleador = ?
         ORDER BY o.fechaPublicacion DESC
     ");
-    $stmt->bind_param("i", $idEmpleador);
-    $stmt->execute();
-    return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-}
+		$stmt->bind_param("i", $idEmpleador);
+		$stmt->execute();
+		return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+	}
 }

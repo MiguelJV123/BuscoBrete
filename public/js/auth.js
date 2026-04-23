@@ -20,8 +20,8 @@ $(function () {
                         if (data.rol == 'empleador') {
                             window.location = BASE_URL + "/?page=dashboardReclutador";
                         } else if (data.rol == 'candidato') {
-                            window.location = BASE_URL + "/?page=home";                            
-                        }else{alert(data.message)}
+                            window.location = BASE_URL + "/?page=home";
+                        } else { alert(data.message) }
                     }
                 });
         }

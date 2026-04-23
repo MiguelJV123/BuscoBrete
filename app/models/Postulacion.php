@@ -32,8 +32,8 @@ class Postulacion
 	}
 
 	public function getPostulacionesByEmpleador($idEmpleador)
-{
-    $stmt = $this->conn->prepare("
+	{
+		$stmt = $this->conn->prepare("
         SELECT 
             p.idPostulacion,
             p.estado AS estadoPostulacion,
@@ -51,10 +51,10 @@ class Postulacion
         WHERE o.idEmpleador = ?
         ORDER BY p.fechaPostulacion DESC
     ");
-    $stmt->bind_param("i", $idEmpleador);
-    $stmt->execute();
-    return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-}
+		$stmt->bind_param("i", $idEmpleador);
+		$stmt->execute();
+		return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+	}
 
 	public function getByCandidato($idCandidato)
 	{
@@ -143,6 +143,4 @@ class Postulacion
 
 		return $stmt->get_result();
 	}
-
-
 }
