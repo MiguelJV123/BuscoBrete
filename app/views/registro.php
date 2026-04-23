@@ -28,7 +28,7 @@
     <!-- JQuery -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <!-- Script de registro -->
-     <script src="<?= BASE_URL ?>/public/js/register.js"></script>
+    <script src="<?= BASE_URL ?>/public/js/register.js"></script>
 </head>
 
 <body class="body-bckg">

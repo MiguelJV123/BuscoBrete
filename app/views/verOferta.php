@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BuscoBrete - Detalle de oferta</title>
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/css/styles.css">
-
-
+    <script>
+        const BASE_URL = "<?= BASE_URL ?>";
+    </script>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -24,6 +25,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
         rel="stylesheet">
+    <!-- Script de aplicarOferta -->
+    <script src="<?= BASE_URL ?>/public/js/aplicarOferta.js"></script>
+
 </head>
 
 <body class="body-bckg">
@@ -96,38 +100,6 @@
     </main>
 
     <?php require_once __DIR__ . '/templates/footer.php'; ?>
-
-    <!-- Script para aplicar a la oferta, aqui mismo, o toca hacer un js nuevo -->
-    <script>
-        var BASE_URL = "<?= BASE_URL ?>";
-
-        var btn = document.getElementById('btnAplicar');
-        if (btn) {
-            btn.addEventListener('click', function() {
-                var fd = new FormData();
-                fd.append('option', 'aplicarOferta');
-                fd.append('idOferta', this.dataset.id);
-
-                fetch(BASE_URL + '/index.php', {
-                        method: 'POST',
-                        body: fd
-                    })
-                    .then(function(r) {
-                        return r.json();
-                    })
-                    .then(function(data) {
-                        var msg = document.getElementById('msgAplicar');
-                        if (data.response === '00') {
-                            msg.innerHTML = '<div class="alert alert-success">¡Postulación enviada!</div>';
-                            btn.disabled = true;
-                        } else {
-                            msg.innerHTML = '<div class="alert alert-danger">' + data.message + '</div>';
-                        }
-                    });
-            });
-        }
-    </script>
-
 </body>
 
 </html>

@@ -189,8 +189,8 @@ public function searchByKeyword($keyword, $provincia = '', $categoria = '')
 		$estado = 'activa';
 
 		$query = "INSERT INTO ofertas 
-        (idEmpleador, idCategoria, idUbicacion, titulo, descripcion, requisitos, salario, tipoEmpleo, estado) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        (idEmpleador, idCategoria, idUbicacion, titulo, descripcion, salario, tipoEmpleo, estado) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
 		$stmt = $this->conn->prepare($query);
 		$stmt->bind_param(

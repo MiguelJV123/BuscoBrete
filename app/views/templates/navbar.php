@@ -79,9 +79,13 @@ $paginaActual = $_GET['page'] ?? 'home';
                                 <hr class="dropdown-divider">
                             </li>
                             <li>
-                                <a class="dropdown-item text-danger" href="<?= BASE_URL ?>/?page=logout">
-                                    Cerrar Sesión
-                                </a>
+                                <form method="POST" action="<?= BASE_URL ?>/index.php">
+                                    <input type="hidden" name="option" value="logout">
+                                    <button type="submit"
+                                        class="dropdown-item text-danger w-100 text-start border-0 bg-transparent px-4">
+                                        Cerrar Sesión
+                                    </button>
+                                </form>
                             </li>
                         </ul>
                     </li>
@@ -142,10 +146,16 @@ $paginaActual = $_GET['page'] ?? 'home';
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
+
+                            <!-- Cambiar a post el cerrar sesion para prevenir "CSRF"  -->
                             <li>
-                                <a class="dropdown-item text-danger" href="<?= BASE_URL ?>/?page=logout">
-                                    Cerrar Sesión
-                                </a>
+                                <form method="POST" action="<?= BASE_URL ?>/index.php">
+                                    <input type="hidden" name="option" value="logout">
+                                    <button type="submit"
+                                        class="dropdown-item text-danger w-100 text-start border-0 bg-transparent px-4">
+                                        Cerrar Sesión
+                                    </button>
+                                </form>
                             </li>
                         </ul>
                     </li>

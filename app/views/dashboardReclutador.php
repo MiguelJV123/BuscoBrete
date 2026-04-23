@@ -53,14 +53,14 @@
             <section class="d-flex justify-content-center">
                 <div class="d-flex flex-wrap justify-content-center gap-80">
                     <div class="bb-stat-card d-flex flex-column gap-1">
-                        <div class="bb-number">12</div>
+                        <div class="bb-number"><?= count($ofertasXEmpleador) ?></div>
                         <div class="bb-label">Ofertas</div>
-                        <div class="bb-small">Activas</div>
+                        <div class="bb-small">Publicadas</div>
                     </div>
                     <div class="bb-stat-card d-flex flex-column gap-1">
-                        <div class="bb-number">42</div>
+                        <div class="bb-number"><?= count($postulacionesXEmpleador) ?></div>
                         <div class="bb-label">Postulaciones</div>
-                        <div class="bb-small">Nuevas</div>
+                        <div class="bb-small">Recibidas</div>
                     </div>
                     <div class="bb-stat-card d-flex flex-column gap-1">
                         <div class="bb-number">7</div>
