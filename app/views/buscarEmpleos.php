@@ -132,16 +132,19 @@
                                             }
                                         } ?>
                                     </p>
-                                    <p class="text-secondary small">
-                                        <?= $o['requisitos'] ?>
+
+                                    <p class="text-secondary small mb-1">
+                                        <?= htmlspecialchars($o['requisitos'] ?? '') ?>
                                     </p>
-                                    <p class="text-secondary small">
-                                        <? foreach ($categorias as $c) {
-                                            if ($c['idCategoria'] == $o['idCategoria']) {
-                                                echo $c['nombre'];
-                                            }
-                                        } ?> <? echo ' | ' . ucwords($o['tipoEmpleo']) . ' | ₡' . $o['salario'] ?>
+                                    <p class="text-secondary small mb-0">
+                                        <?= ucwords($o['tipoEmpleo'] ?? '') ?>
+                                        
+                                        <!-- Al hacerlo así, los números se formatean correctamente -->
+                                        <?php if ($o['salario']): ?>
+                                            &nbsp;|&nbsp; ₡<?= number_format($o['salario'], 0, ',', '.') ?>
+                                        <?php endif; ?>
                                     </p>
+
                                 </div>
                                 <div class="col-md-3 d-flex justify-content-center">
                                     <a href="<?= BASE_URL ?>/?page=verOferta&id=<?= $o['idOferta'] ?>"

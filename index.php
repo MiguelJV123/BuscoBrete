@@ -28,7 +28,7 @@ $page = $_GET['page'] ?? 'home';
 
 
 // ========== POST ==========
-if ($_SERVER['REQUEST_METHOD'] === 'POST') { 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     ob_clean(); // Limpia cualquier salida previa para JSON limpio
     header('Content-Type: application/json');
@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         case 'aplicarOferta':
             (new UserController())->aplicarOferta();
             break;
-            
+
         case 'busqueda':
             (new buscadorController())->showBuscador();
             break;
@@ -107,7 +107,7 @@ switch ($page) {
 
     case 'dashboardUsuario':
         $usuario = new UserController();
-        $usuario->showDashboardUsuario();        
+        $usuario->showDashboardUsuario();
         break;
 
     case "publicarOferta":

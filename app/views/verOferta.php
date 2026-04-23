@@ -44,11 +44,15 @@
 
                 <!-- Titulo y empresa -->
                 <div class="card border-0 shadow-sm p-4 mb-4">
-                    <h2 class="fw-bold"><?= htmlspecialchars($oferta['titulo']) ?></h2>
-                    <p class="text-secondary mb-0">
+                    <h2 class="fw-bold mb-1"><?= htmlspecialchars($oferta['titulo']) ?></h2>
+                    <p class="text-primary fw-semibold mb-1">
+                        <?= htmlspecialchars($oferta['nombreEmpresa'] ?? '') ?>
+                    </p>
+                    <p class="text-secondary small mb-0">
                         <?= ucwords($oferta['tipoEmpleo'] ?? '') ?>
-                        &nbsp;|&nbsp;
-                        ₡<?= number_format($oferta['salario'] ?? 0, 0, ',', '.') ?>
+                        <?php if (!empty($oferta['salario'])): ?>
+                            &nbsp;|&nbsp; ₡<?= number_format($oferta['salario'], 0, ',', '.') ?>
+                        <?php endif; ?>
                     </p>
                 </div>
 
@@ -63,6 +67,9 @@
                     <h5 class="fw-bold">Requisitos</h5>
                     <p><?= nl2br(htmlspecialchars($oferta['requisitos'] ?? 'No especificados.')) ?></p>
                 </div>
+
+                <!-- msg resultado -->
+                <div id="msgAplicar" class="mt-3"></div>
 
                 <!-- Botones (no puedo probar porque no tengo la base de datos integrada IMPORTANTE SER) -->
                 <div class="d-flex gap-3">
@@ -83,10 +90,6 @@
                     </a>
 
                 </div>
-
-                <!-- msg resultado -->
-                <div id="msgAplicar" class="mt-3"></div>
-
             <?php endif; ?>
 
         </div>
