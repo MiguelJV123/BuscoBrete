@@ -78,20 +78,31 @@ class Usuario
 	}
 
 	public function registrar($correo, $password, $nombre, $apellidos)
-{
-    $passwordEnc = password_hash($password, PASSWORD_BCRYPT);
+	{
+		$passwordEnc = password_hash($password, PASSWORD_BCRYPT);
 
-    $stmt = $this->conn->prepare("INSERT INTO usuarios (correo, passwordEnc, rol, estado) VALUES (?, ?, 'candidato', 'activo')");
-    $stmt->bind_param("ss", $correo, $passwordEnc);
-    $stmt->execute();
-    $idUsuario = $this->conn->insert_id;
+		$this->conn->begin_transaction();
 
-    $stmt2 = $this->conn->prepare("INSERT INTO candidatos (idUsuario, nombre, apellidos) VALUES (?, ?, ?)");
-    $stmt2->bind_param("iss", $idUsuario, $nombre, $apellidos);
-    $stmt2->execute();
+		// Meterlo en try catch para asegurar que si algo falla, se revierte lo que se hizo en la base de datos
+		try {
+			$stmt = $this->conn->prepare("INSERT INTO usuarios (correo, passwordEnc, rol, estado) VALUES (?, ?, 'candidato', 'activo')");
+			$stmt->bind_param("ss", $correo, $passwordEnc);
+			$stmt->execute();
+			$idUsuario = $this->conn->insert_id;
 
-    return $idUsuario;
-}
+			$stmt2 = $this->conn->prepare("INSERT INTO candidatos (idUsuario, nombre, apellidos) VALUES (?, ?, ?)");
+			$stmt2->bind_param("iss", $idUsuario, $nombre, $apellidos);
+			$stmt2->execute();
+
+			$this->conn->commit();
+			return $idUsuario;
+
+		// Si algo falla, se revierte todo
+		} catch (Exception $e) {
+			$this->conn->rollback();
+			return false;
+		}
+	}
 
 	public function delete($idUsuario)
 	{

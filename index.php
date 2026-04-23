@@ -59,10 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             (new UserController())->aplicarOferta();
             break;
 
-        case 'busqueda':
-            (new buscadorController())->showBuscador();
-            break;
-
         case 'registro':
             (new UserController())->registrar();
             break;

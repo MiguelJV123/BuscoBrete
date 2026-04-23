@@ -29,7 +29,7 @@
     <!-- JQuery -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <!-- Script de busqueda -->
-     <script src="<?= BASE_URL ?>/public/js/search.js"></script>
+    <script src="<?= BASE_URL ?>/public/js/search.js"></script>
 </head>
 
 <body class="body-bckg">
