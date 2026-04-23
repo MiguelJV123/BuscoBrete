@@ -183,13 +183,10 @@ public function searchByKeyword($keyword, $provincia = '', $categoria = '')
 
 	public function createSimple($idEmpleador, $titulo, $descripcion, $salario)
 	{
-		// Otra version de crear oferta, pero sin tocar la otra.
-		// Valores por defecto para los campos que no se pasan por parametro, para q no de error por falta de datos.
 		$idCategoria = 1;
 		$idUbicacion = 1;
-		$requisitos = '';
 		$tipoEmpleo = 'Tiempo completo';
-		$estado = 'activo';
+		$estado = 'activa';
 
 		$query = "INSERT INTO ofertas 
         (idEmpleador, idCategoria, idUbicacion, titulo, descripcion, requisitos, salario, tipoEmpleo, estado) 
@@ -203,7 +200,6 @@ public function searchByKeyword($keyword, $provincia = '', $categoria = '')
 			$idUbicacion,
 			$titulo,
 			$descripcion,
-			$requisitos,
 			$salario,
 			$tipoEmpleo,
 			$estado
@@ -237,5 +233,20 @@ public function searchByKeyword($keyword, $provincia = '', $categoria = '')
 		$stmt->bind_param("sss", $busqueda, $busqueda, $busqueda);
 		$stmt->execute();
 		return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+	}
+
+	public function getOfertaConEmpresa($idOferta)
+	{
+		$query = "SELECT o.*, e.nombreEmpresa
+				FROM ofertas o
+				INNER JOIN empleadores e ON o.idEmpleador = e.idEmpleador
+				WHERE o.idOferta = ?
+				LIMIT 1";
+
+		$stmt = $this->conn->prepare($query);
+		$stmt->bind_param("i", $idOferta);
+		$stmt->execute();
+
+		return $stmt->get_result()->fetch_assoc();
 	}
 }

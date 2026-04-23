@@ -32,9 +32,9 @@ class buscadorController
         $keyword = $_GET['keyword'] ?? '';
         $provincia = $_GET['provincia'] ?? '';
         $categoria = $_GET['categoria'] ?? '';
-        if($keyword !== '' || $provincia !== '' || $categoria !== ''){
-            $ofertas = $this->ofertaModel->searchByKeyword($keyword, $provincia, $categoria);        
-        }else{
+        if ($keyword !== '' || $provincia !== '' || $categoria !== '') {
+            $ofertas = $this->ofertaModel->searchByKeyword($keyword, $provincia, $categoria);
+        } else {
             $ofertas = $this->ofertaModel->getAll()->fetch_all(MYSQLI_ASSOC);
         }
         $ubicaciones = $this->ubicacionModel->getAll();
@@ -49,17 +49,12 @@ class buscadorController
     public function verOferta()
     {
         $idOferta = isset($_GET['id']) ? (int)$_GET['id'] : 0;
-
         $oferta = null;
 
         if ($idOferta > 0) {
-            // Busca la oferta por id en la BD
-            $oferta = $this->ofertaModel->getById($idOferta);
-            // TODO: cuando la BD esté integrada, cambiar getById() por
-            // TODO: un método con JOIN que traiga también empresa y ubicación
+            $oferta = $this->ofertaModel->getOfertaConEmpresa($idOferta);
         }
 
-        // $oferta llega a la vista (null si no se escontro)
         require 'app/views/verOferta.php';
     }
 
@@ -92,6 +87,4 @@ class buscadorController
     {
         return $this->categoriaModel->getDistinctCategoria()->fetch_all(MYSQLI_ASSOC);
     }
-
-
 }

@@ -109,7 +109,7 @@ class UserController
     public function aplicarOferta()
     {
         // Verificar sesión
-        if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'candidato') {
+        if (!isset($_SESSION['idUsuario']) || $_SESSION['rol'] !== 'candidato') {
             echo json_encode(['response' => '01', 'message' => 'Debes iniciar sesión como candidato']);
             return;
         }
@@ -121,9 +121,21 @@ class UserController
             return;
         }
 
-        // TODO: obtener idCandidato desde la sesión
-        // TODO: insertar postulación
+        // Obtener idCandidato desde la sesión
+        $candidato = $this->candidatoModel->getByUsuario($_SESSION['idUsuario']);
+        if (!$candidato) {
+            echo json_encode(['response' => '01', 'message' => 'No se encontró tu perfil de candidato']);
+            return;
+        }
+        $idCandidato = $candidato['id_candidato'];
 
-        echo json_encode(['response' => '00', 'message' => 'Postulación enviada']);
+        // Insertar postulació n
+        $resultado = $this->postulacionModel->create($idCandidato, $idOferta);
+
+        if ($resultado) {
+            echo json_encode(['response' => '00', 'message' => 'Postulación enviada']);
+        } else {
+            echo json_encode(['response' => '01', 'message' => 'Error al guardar la postulación']);
+        }
     }
 }

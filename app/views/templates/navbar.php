@@ -114,7 +114,7 @@ $paginaActual = $_GET['page'] ?? 'home';
                     <li class="nav-item">
                         <a href="<?= BASE_URL ?>/?page=publicarOferta" class="btn btn-success">+ Publicar oferta</a>
                     </li>
-                    
+
                     <li class="nav-item dropdown">
                         <a class="d-flex align-items-center gap-2 px-2 nav-link dropdown-toggle"
                             href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -136,7 +136,7 @@ $paginaActual = $_GET['page'] ?? 'home';
                             </li>
                             <li>
                                 <a class="dropdown-item" href="<?= BASE_URL ?>/?page=publicarOferta">
-                                    Publicar oferta
+                                    Publicar oferta de empleo
                                 </a>
                             </li>
                             <li>
@@ -144,7 +144,7 @@ $paginaActual = $_GET['page'] ?? 'home';
                             </li>
                             <li>
                                 <a class="dropdown-item text-danger" href="<?= BASE_URL ?>/?page=logout">
-                                    Cerrar sesión
+                                    Cerrar Sesión
                                 </a>
                             </li>
                         </ul>

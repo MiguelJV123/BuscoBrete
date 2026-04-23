@@ -11,6 +11,8 @@ class reclutadorController
 {
     private $empleadorModel;
     private $postulacionModel;
+    private $ofertaModel;
+
     public function __construct()
     {
 
@@ -19,45 +21,67 @@ class reclutadorController
 
         $this->empleadorModel = new Empleador($db);
         $this->postulacionModel = new Postulacion($db);
+        $this->ofertaModel = new Oferta($db);
     }
 
     public function showDashboardReclutador()
     {
-        $postulacionesXEmpleador = $this->postulacionModel->getPostulacionesByEmpleador($_SESSION['idUsuario']);
-        $ofertasXEmpleador = $this->empleadorModel->getOfertasByEmpleador($_SESSION['idUsuario']);
+        // Verificar que el usuario es un empleador
+        if (!isset($_SESSION['idUsuario']) || $_SESSION['rol'] !== 'empleador') {
+            header('Location: ' . BASE_URL . '/?page=login');
+            exit;
+        }
+
+        $empleador = $this->empleadorModel->getByUsuario($_SESSION['idUsuario']);
+        $idEmpleador = $empleador['idEmpleador'] ?? 0;
+
+        $postulacionesXEmpleador = $this->postulacionModel->getPostulacionesByEmpleador($idEmpleador);
+        $ofertasXEmpleador = $this->empleadorModel->getOfertasByEmpleador($idEmpleador);
+
         require 'app/views/dashboardReclutador.php';
     }
 
-    // Para mostrar sin post !IMPORTANTE!
     public function showPublicarOferta()
     {
+        // Verificar que el usuario es un empleador
+        if (!isset($_SESSION['idUsuario']) || $_SESSION['rol'] !== 'empleador') {
+            header('Location: ' . BASE_URL . '/?page=login');
+            exit;
+        }
+
         require 'app/views/publicarOferta.php';
     }
 
     public function publicarOferta()
     {
-        // Verificar que sea empleador
-        if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'empleador') {
+        if (!isset($_SESSION['idUsuario']) || $_SESSION['rol'] !== 'empleador') {
             echo json_encode(['response' => '01', 'message' => 'No autorizado']);
             return;
         }
 
-        $titulo = trim($_POST['titulo'] ?? '');
+        $titulo      = trim($_POST['titulo']      ?? '');
         $descripcion = trim($_POST['descripcion'] ?? '');
-        $requisitos = trim($_POST['requisitos'] ?? '');
+        $requisitos  = trim($_POST['requisitos']  ?? '');
 
-        // Si no tiene titulo o descrip cion, no se puede publicar
-        // Validar campos obligatorios (asegurarse de que el frontend envie titulo y descripcion)
         if (!$titulo || !$descripcion) {
-            echo json_encode(['response' => '01', 'message' => 'Faltan campos obligatorios']);
+            echo json_encode(['response' => '01', 'message' => 'Título y descripción son obligatorios']);
             return;
         }
 
-        // TODO: obtener idEmpleador desde la sesión
+        // Obtener idEmpleador desde la sesión
+        $empleador = $this->empleadorModel->getByUsuario($_SESSION['idUsuario']);
+        if (!$empleador) {
+            echo json_encode(['response' => '01', 'message' => 'No se encontró tu perfil de empleador']);
+            return;
+        }
+        $idEmpleador = $empleador['idEmpleador'];
 
-        // TODO: insertar en BD
+        $resultado = $this->ofertaModel->createSimple($idEmpleador, $titulo, $descripcion, 0, $requisitos);
 
-        // Por ahora devuelve 00 sin tocar la BD
-        echo json_encode(['response' => '00', 'message' => 'Oferta recibida correctamente']);
+        if ($resultado) {
+            echo json_encode(['response' => '00', 'message' => 'Oferta publicada correctamente']);
+        } else {
+            echo json_encode(['response' => '01', 'message' => 'Error al publicar la oferta']);
+        }
     }
 }

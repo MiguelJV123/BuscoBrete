@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BuscoBrete - Dashboard</title>
+    <title>BuscoBrete - Dashboard de Reclutador</title>
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/css/styles.css">
 
     <!-- Bootstrap CSS -->
