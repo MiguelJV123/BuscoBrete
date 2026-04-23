@@ -26,6 +26,12 @@ class reclutadorController
 
     public function showDashboardReclutador()
     {
+        // Verificar que el usuario es un empleador
+        if (!isset($_SESSION['idUsuario']) || $_SESSION['rol'] !== 'empleador') {
+            header('Location: ' . BASE_URL . '/?page=login');
+            exit;
+        }
+
         $empleador = $this->empleadorModel->getByUsuario($_SESSION['idUsuario']);
         $idEmpleador = $empleador['idEmpleador'] ?? 0;
 
@@ -35,9 +41,14 @@ class reclutadorController
         require 'app/views/dashboardReclutador.php';
     }
 
-    // Para mostrar sin post
     public function showPublicarOferta()
     {
+        // Verificar que el usuario es un empleador
+        if (!isset($_SESSION['idUsuario']) || $_SESSION['rol'] !== 'empleador') {
+            header('Location: ' . BASE_URL . '/?page=login');
+            exit;
+        }
+
         require 'app/views/publicarOferta.php';
     }
 
