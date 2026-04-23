@@ -54,62 +54,57 @@ La aplicación contempla tres roles principales:
 
 ---
 
-## Estructura general del repositorio
-
-```bash
-css/
-DataBase/
-html/
-img/
-js/
-php/
-templates/
-README.md
-```
-
----
-
 ## Avances del proyecto
 
 ### Avance 1 — Definición del proyecto
 
-En el primer avance se estableció la base conceptual y documental del proyecto, incluyendo la definición del problema, el enfoque de la solución, los objetivos, los roles del sistema y la documentación inicial en formato IEEE.
-
-Además, se definió la propuesta general de la aplicación web, su orientación innovadora y la estructura funcional inicial requerida por el curso.
-
-### Avance 2 — Desarrollo inicial del proyecto
-
-En el segundo avance se desarrollaron componentes clave del proyecto y se documentaron aportes concretos en el repositorio de GitHub, en cumplimiento de los lineamientos del curso.
-
-Durante esta etapa se trabajó en:
-
-- Prototipado y diseño **UI/UX en Figma**
-- Diseño y documentación de la **base de datos**
-- Desarrollo de vistas iniciales en **HTML**
-- Organización del código del proyecto dentro del repositorio colaborativo
+En el primer avance se estableció la base conceptual y documental del proyecto, incluyendo la definición del problema, los objetivos, los roles del sistema y la estructura general de la solución.
 
 ---
 
-## Distribución del trabajo del equipo
+### Avance 2 — Desarrollo inicial
 
-- **Miguel Jimenez Valverde** — Diseño UI/UX y prototipado en Figma
-- **Jeffry Elizondo Madrigal** — Diseño y desarrollo de base de datos
-- **Erick Ramos Vargas** — Desarrollo de vistas HTML
-- **Esteban Solis Campos** — Desarrollo de vistas HTML
+En esta etapa se desarrolló el **Front End del sistema**, incluyendo:
+
+- Vistas principales del sistema (home, búsqueda, login, registro)
+- Dashboards por rol (usuario, reclutador, administrador)
+- Prototipo en Figma como guía visual
+- Diseño del modelo relacional de la base de datos
+
+Esto permitió pasar de una idea conceptual a una representación visual funcional del sistema.
+
+---
+
+### Avance Final — Implementación del sistema
+
+En la fase final del proyecto se logró la **integración completa entre frontend y backend**, transformando el sistema en una aplicación funcional.
+
+Se implementaron:
+
+- Registro e inicio de sesión de usuarios
+- Conexión con base de datos MySQL
+- Lógica backend en PHP
+- Gestión de ofertas laborales
+- Sistema de postulaciones
+
+Además, se desarrollaron los siguientes módulos principales:
+
+- **Módulo 1:** Inicio y descubrimiento de ofertas
+- **Módulo 2:** Registro e inicio de sesión
+- **Módulo 3:** Búsqueda y filtrado de empleos
+- **Módulo 4:** Panel del candidato
+- **Módulo 5:** Panel del empleador
+- **Módulo 6:** Publicación y gestión de vacantes
+
+Este avance consolida el proyecto como una solución funcional, con interacción real con datos y una arquitectura organizada cliente-servidor.
 
 ---
 
 ## Prototipo en Figma
 
-El prototipo visual del proyecto puede consultarse en el siguiente enlace público:
+El prototipo visual del proyecto puede consultarse en el siguiente enlace:
 
-[Ver prototipo de BuscoBrete en Figma](https://www.figma.com/design/DkDUmgK9x3uydqZBFo3T5z/BuscoBrete-Prototipo?node-id=28-65&t=IZQFepip8wp7eEIP-1)
-
----
-
-## Repositorio del proyecto
-
-Este repositorio contiene el código, la documentación, los recursos visuales y los archivos de apoyo utilizados durante el desarrollo colaborativo del proyecto académico **BuscoBrete**.
+https://www.figma.com/design/DkDUmgK9x3uydqZBFo3T5z/BuscoBrete-Prototipo
 
 ---
 
@@ -147,14 +142,6 @@ Este repositorio contiene el código, la documentación, los recursos visuales y
 - Moderación de empleadores
 - Módulo de soporte
 - Monitoreo del sistema
-
----
-
-## Estado actual del proyecto
-
-Actualmente, **BuscoBrete** se encuentra en desarrollo colaborativo como parte del curso **SC-502 Ambiente Web Cliente/Servidor**.
-
-El repositorio integra documentación del proyecto, prototipos visuales, estructura frontend, archivos de base de datos y recursos utilizados durante los avances del curso.
 
 ---
 
