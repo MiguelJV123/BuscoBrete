@@ -65,8 +65,7 @@ class reclutadorController
         }
         $idEmpleador = $empleador['idEmpleador'];
 
-        // createSimple() ya existe en Oferta.php, recibe estos 4 campos
-        $resultado = $this->ofertaModel->createSimple($idEmpleador, $titulo, $descripcion, 0);
+        $resultado = $this->ofertaModel->createSimple($idEmpleador, $titulo, $descripcion, 0, $requisitos);
 
         if ($resultado) {
             echo json_encode(['response' => '00', 'message' => 'Oferta publicada correctamente']);
