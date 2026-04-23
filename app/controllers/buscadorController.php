@@ -49,16 +49,13 @@ class buscadorController
     public function verOferta()
     {
         $idOferta = isset($_GET['id']) ? (int)$_GET['id'] : 0;
-
         $oferta = null;
 
         if ($idOferta > 0) {
-            if ($idOferta > 0) {
-                $oferta = $this->ofertaModel->getOfertaConEmpresa($idOferta);
-            }
-
-            require 'app/views/verOferta.php';
+            $oferta = $this->ofertaModel->getOfertaConEmpresa($idOferta);
         }
+
+        require 'app/views/verOferta.php';
     }
 
     public function getOfertas()
