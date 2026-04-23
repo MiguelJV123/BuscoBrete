@@ -53,14 +53,14 @@
             <section class="d-flex justify-content-center">
                 <div class="d-flex flex-wrap justify-content-center gap-80">
                     <div class="bb-stat-card d-flex flex-column gap-1">
-                        <div class="bb-number"><?= count($ofertasXEmpleador) ?></div>
+                        <div class="bb-number">12</div>
                         <div class="bb-label">Ofertas</div>
-                        <div class="bb-small">Publicadas</div>
+                        <div class="bb-small">Activas</div>
                     </div>
                     <div class="bb-stat-card d-flex flex-column gap-1">
-                        <div class="bb-number"><?= count($postulacionesXEmpleador) ?></div>
+                        <div class="bb-number">42</div>
                         <div class="bb-label">Postulaciones</div>
-                        <div class="bb-small">Recibidas</div>
+                        <div class="bb-small">Nuevas</div>
                     </div>
                     <div class="bb-stat-card d-flex flex-column gap-1">
                         <div class="bb-number">7</div>
@@ -77,20 +77,18 @@
 
             <!-- GESTIÓN DE OFERTAS -->
             <section class="d-flex flex-column align-items-center text-center">
-                <h2 class="fs-5 fw-bold mb-1" style="color:#1F2937;">Gestión de Ofertas</h2>
-                <p class="small fw-bold mb-3" style="color:#475569;">Administra y supervisa las vacantes
+                <h2 class="fs-5 fw-bold mb-1">Gestión de Ofertas</h2>
+                <p class="small fw-bold mb-3">Administra y supervisa las vacantes
                     publicadas</p>
 
                 <div class="bb-card w-100 d-flex flex-column align-items-center p-3" style="max-width:1000px;">
                     <!-- Table Header -->
-                    <div class="bb-table-header w-100 px-3 py-2 d-none d-md-flex"
-                        style="border-radius: 12px 12px 0 0;">
+                    <div class="bb-table-header w-100 px-3 py-2 d-none d-md-flex">
                         <div class="d-flex w-100">
-                            <div class="flex-grow-1 ">Puesto</div>
-                            <div class="flex-grow-1">Ubicación</div>
-                            <div class="flex-grow-1">Estado</div>
-                            <div class="flex-grow-1">Postulaciones</div>
-                            <div style="width:0px" class="flex-grow-1">Acción</div>
+                            <div class="flex-grow-1 text-center bb-col">Puesto</div>
+                            <div class="flex-grow-1 text-center bb-col">Ubicación</div>
+                            <div class="flex-grow-1 text-center bb-col">Estado</div>
+                            <div class="flex-grow-1 text-center">Acción</div>
                         </div>
                     </div>
 
@@ -99,35 +97,40 @@
                         <!-- fila 1 -->
                         <? foreach ($ofertasXEmpleador as $o) { ?>
                             <div class="bb-row d-flex align-items-center px-3 py-2">
-                                <div class="flex-grow-1"><? echo $o['titulo']; ?></div>
-                                <div class="flex-grow-1"><? echo $o['provincia']; ?></div>
-                                <div class="flex-grow-1">
-                                    <? if ($o['estado'] == 'activa') {
-                                        echo '<span class="bb-badge bb-badge--green">Activo</span>';
-                                    } elseif ($o['estado'] == 'cerrada') {
-                                        echo '<span class="bb-badge bb-badge--red">Cerrado</span>';
-                                    } elseif ($o['estado'] == 'pausada') {
-                                        echo '<span class="bb-badge bb-badge--red">Pausado</span>';
-                                    }
 
-                                    ?>
+                                <div class="flex-grow-1 text-center bb-col">
+                                    <?= htmlspecialchars($o['titulo']); ?>
                                 </div>
-                                <div class="flex-grow-1"><?  ?></div>
-                                <div style="width:100px">
-                                    <button class="bb-btn-chip w-100">Ver</button>
+
+                                <div class="flex-grow-1 text-center bb-col">
+                                    <?= htmlspecialchars($o['provincia']); ?>
                                 </div>
+
+                                <div class="flex-grow-1 text-center bb-col">
+                                    <? if ($o['estado'] == 'activa') { ?>
+                                        <span class="bb-badge bb-badge--green">Activo</span>
+                                    <? } elseif ($o['estado'] == 'cerrada') { ?>
+                                        <span class="bb-badge bb-badge--red">Cerrado</span>
+                                    <? } else { ?>
+                                        <span class="bb-badge bb-badge--yellow">Pausado</span>
+                                    <? } ?>
+                                </div>
+
+                                <div class="flex-grow-1 text-center">
+                                    <button class="bb-btn-chip">Ver</button>
+                                </div>
+
                             </div>
                         <? } ?>
 
-
-
-                        <!-- Ver todas -->
-                        <div class="mt-3">
-                            <button class="bb-btn-primary">
-                                Ver todas las ofertas &rarr;
-                            </button>
-                        </div>
+                        <!-- Ver todas NO FUNCIONA - Comentado  -->
+                        <!-- <div class="mt-3"> -->
+                            <!-- <button class="bb-btn-primary"> -->
+                                <!-- Ver todas las ofertas &rarr; -->
+                            <!-- </button> -->
+                        <!-- </div> -->
                     </div>
+                </div>
             </section>
 
             <!-- POSTULACIONES RECIENTES -->
@@ -141,9 +144,9 @@
                     <div class="bb-table-header w-100 px-3 py-2 d-none d-md-flex"
                         style="border-radius: 12px 12px 0 0;">
                         <div class="d-flex w-100">
-                            <div class="flex-grow-1 text-center">Candidato</div>
-                            <div class="flex-grow-1 text-center">Puesto Aplicado</div>
-                            <div class="flex-grow-1 text-center">Fecha</div>
+                            <div class="flex-grow-1 text-center bb-col">Candidato</div>
+                            <div class="flex-grow-1 text-center bb-col">Puesto Aplicado</div>
+                            <div class="flex-grow-1 text-center bb-col">Fecha</div>
                             <div class="flex-grow-1 text-center">Acción</div>
                         </div>
                     </div>
@@ -152,23 +155,30 @@
                     <div class="w-100">
                         <!-- fila 1 -->
 
-                        <?
-                        foreach ($postulacionesXEmpleador as $p) {
-                        ?>
+                        <? foreach ($postulacionesXEmpleador as $p) { ?>
                             <div class="bb-row d-flex align-items-center px-3 py-2">
-                                <div class="flex-grow-1 text-center"><? echo $p['nombreCandidato'] . ' ' . $p['apellidosCandidato'] ?></div>
-                                <div class="flex-grow-1 text-center"><? echo $p['oferta'] ?></div>
-                                <div class="flex-grow-1 text-center"><? echo $p['fechaPostulacion'] ?></div>
+
+                                <div class="flex-grow-1 text-center bb-col">
+                                    <?= htmlspecialchars($p['nombreCandidato'] . ' ' . $p['apellidosCandidato']) ?>
+                                </div>
+
+                                <div class="flex-grow-1 text-center bb-col">
+                                    <?= htmlspecialchars($p['oferta']) ?>
+                                </div>
+
+                                <div class="flex-grow-1 text-center bb-col">
+                                    <?= htmlspecialchars($p['fechaPostulacion']) ?>
+                                </div>
+
                                 <div class="flex-grow-1 d-flex justify-content-center">
                                     <button class="bb-btn-chip" style="min-width:93px;">Ver</button>
                                 </div>
+
                             </div>
                         <? } ?>
                     </div>
-
-
-
                 </div>
+
             </section>
 
             <!-- NOTIFICACIONES RECIENTES -->
@@ -223,6 +233,8 @@
     <!-- FOOTER -->
     <?php require_once __DIR__ . '/templates/footer.php'; ?>
     <!-- FOOTER -->
+
+
 </body>
 
 </html>

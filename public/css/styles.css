@@ -273,6 +273,14 @@ footer a:hover {
   border-bottom: 1px solid #e5e7eb;
 }
 
+.bb-col {
+  border-right: 1px solid var(--bb-border-2);
+}
+
+.bb-col:last-child {
+  border-right: none;
+}
+
 .bb-stat-card {
   background: var(--bb-white);
   border: 1px solid var(--bb-border);
